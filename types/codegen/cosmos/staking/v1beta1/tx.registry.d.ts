@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate, MsgCancelUnbondingDelegation } from "./tx";
+import { MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -21,10 +21,6 @@ export declare const MessageComposer: {
             value: Uint8Array;
         };
         undelegate(value: MsgUndelegate): {
-            typeUrl: string;
-            value: Uint8Array;
-        };
-        cancelUnbondingDelegation(value: MsgCancelUnbondingDelegation): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -50,9 +46,49 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgUndelegate;
         };
-        cancelUnbondingDelegation(value: MsgCancelUnbondingDelegation): {
+    };
+    toJSON: {
+        createValidator(value: MsgCreateValidator): {
             typeUrl: string;
-            value: MsgCancelUnbondingDelegation;
+            value: unknown;
+        };
+        editValidator(value: MsgEditValidator): {
+            typeUrl: string;
+            value: unknown;
+        };
+        delegate(value: MsgDelegate): {
+            typeUrl: string;
+            value: unknown;
+        };
+        beginRedelegate(value: MsgBeginRedelegate): {
+            typeUrl: string;
+            value: unknown;
+        };
+        undelegate(value: MsgUndelegate): {
+            typeUrl: string;
+            value: unknown;
+        };
+    };
+    fromJSON: {
+        createValidator(value: any): {
+            typeUrl: string;
+            value: MsgCreateValidator;
+        };
+        editValidator(value: any): {
+            typeUrl: string;
+            value: MsgEditValidator;
+        };
+        delegate(value: any): {
+            typeUrl: string;
+            value: MsgDelegate;
+        };
+        beginRedelegate(value: any): {
+            typeUrl: string;
+            value: MsgBeginRedelegate;
+        };
+        undelegate(value: any): {
+            typeUrl: string;
+            value: MsgUndelegate;
         };
     };
     fromPartial: {
@@ -75,10 +111,6 @@ export declare const MessageComposer: {
         undelegate(value: MsgUndelegate): {
             typeUrl: string;
             value: MsgUndelegate;
-        };
-        cancelUnbondingDelegation(value: MsgCancelUnbondingDelegation): {
-            typeUrl: string;
-            value: MsgCancelUnbondingDelegation;
         };
     };
 };

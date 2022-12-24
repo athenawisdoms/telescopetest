@@ -1,6 +1,5 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** Params defines the parameters for the bank module. */
 export interface Params {
     sendEnabled: SendEnabled[];
@@ -188,35 +187,49 @@ export interface MetadataSDKType {
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromPartial(object: DeepPartial<Params>): Params;
+    fromJSON(object: any): Params;
+    toJSON(message: Params): unknown;
+    fromPartial(object: Partial<Params>): Params;
 };
 export declare const SendEnabled: {
     encode(message: SendEnabled, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SendEnabled;
-    fromPartial(object: DeepPartial<SendEnabled>): SendEnabled;
+    fromJSON(object: any): SendEnabled;
+    toJSON(message: SendEnabled): unknown;
+    fromPartial(object: Partial<SendEnabled>): SendEnabled;
 };
 export declare const Input: {
     encode(message: Input, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Input;
-    fromPartial(object: DeepPartial<Input>): Input;
+    fromJSON(object: any): Input;
+    toJSON(message: Input): unknown;
+    fromPartial(object: Partial<Input>): Input;
 };
 export declare const Output: {
     encode(message: Output, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Output;
-    fromPartial(object: DeepPartial<Output>): Output;
+    fromJSON(object: any): Output;
+    toJSON(message: Output): unknown;
+    fromPartial(object: Partial<Output>): Output;
 };
 export declare const Supply: {
     encode(message: Supply, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Supply;
-    fromPartial(object: DeepPartial<Supply>): Supply;
+    fromJSON(object: any): Supply;
+    toJSON(message: Supply): unknown;
+    fromPartial(object: Partial<Supply>): Supply;
 };
 export declare const DenomUnit: {
     encode(message: DenomUnit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DenomUnit;
-    fromPartial(object: DeepPartial<DenomUnit>): DenomUnit;
+    fromJSON(object: any): DenomUnit;
+    toJSON(message: DenomUnit): unknown;
+    fromPartial(object: Partial<DenomUnit>): DenomUnit;
 };
 export declare const Metadata: {
     encode(message: Metadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Metadata;
-    fromPartial(object: DeepPartial<Metadata>): Metadata;
+    fromJSON(object: any): Metadata;
+    toJSON(message: Metadata): unknown;
+    fromPartial(object: Partial<Metadata>): Metadata;
 };

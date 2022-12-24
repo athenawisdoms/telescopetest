@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** TableDescriptor describes an ORM table. */
 export interface TableDescriptor {
     /** primary_key defines the primary key for the table. */
@@ -118,7 +117,7 @@ export interface SecondaryIndexDescriptor {
      * Index keys are prefixed by the varint encoded table id and the varint
      * encoded index id plus any additional prefix specified by the schema.
      *
-     * In addition the field segments, non-unique index keys are suffixed with
+     * In addition the the field segments, non-unique index keys are suffixed with
      * any additional primary key fields not present in the index fields so that the
      * primary key can be reconstructed. Unique indexes instead of being suffixed
      * store the remaining primary key fields in the value..
@@ -141,7 +140,7 @@ export interface SecondaryIndexDescriptorSDKType {
      * Index keys are prefixed by the varint encoded table id and the varint
      * encoded index id plus any additional prefix specified by the schema.
      *
-     * In addition the field segments, non-unique index keys are suffixed with
+     * In addition the the field segments, non-unique index keys are suffixed with
      * any additional primary key fields not present in the index fields so that the
      * primary key can be reconstructed. Unique indexes instead of being suffixed
      * store the remaining primary key fields in the value..
@@ -177,20 +176,28 @@ export interface SingletonDescriptorSDKType {
 export declare const TableDescriptor: {
     encode(message: TableDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TableDescriptor;
-    fromPartial(object: DeepPartial<TableDescriptor>): TableDescriptor;
+    fromJSON(object: any): TableDescriptor;
+    toJSON(message: TableDescriptor): unknown;
+    fromPartial(object: Partial<TableDescriptor>): TableDescriptor;
 };
 export declare const PrimaryKeyDescriptor: {
     encode(message: PrimaryKeyDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PrimaryKeyDescriptor;
-    fromPartial(object: DeepPartial<PrimaryKeyDescriptor>): PrimaryKeyDescriptor;
+    fromJSON(object: any): PrimaryKeyDescriptor;
+    toJSON(message: PrimaryKeyDescriptor): unknown;
+    fromPartial(object: Partial<PrimaryKeyDescriptor>): PrimaryKeyDescriptor;
 };
 export declare const SecondaryIndexDescriptor: {
     encode(message: SecondaryIndexDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SecondaryIndexDescriptor;
-    fromPartial(object: DeepPartial<SecondaryIndexDescriptor>): SecondaryIndexDescriptor;
+    fromJSON(object: any): SecondaryIndexDescriptor;
+    toJSON(message: SecondaryIndexDescriptor): unknown;
+    fromPartial(object: Partial<SecondaryIndexDescriptor>): SecondaryIndexDescriptor;
 };
 export declare const SingletonDescriptor: {
     encode(message: SingletonDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SingletonDescriptor;
-    fromPartial(object: DeepPartial<SingletonDescriptor>): SingletonDescriptor;
+    fromJSON(object: any): SingletonDescriptor;
+    toJSON(message: SingletonDescriptor): unknown;
+    fromPartial(object: Partial<SingletonDescriptor>): SingletonDescriptor;
 };

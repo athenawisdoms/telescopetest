@@ -1,5 +1,6 @@
+import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 export declare const createRPCQueryClient: ({ rpcEndpoint }: {
-    rpcEndpoint: string;
+    rpcEndpoint: string | HttpEndpoint;
 }) => Promise<{
     cosmos: {
         app: {
@@ -11,7 +12,6 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
             v1beta1: {
                 accounts(request?: import("./auth/v1beta1/query").QueryAccountsRequest): Promise<import("./auth/v1beta1/query").QueryAccountsResponse>;
                 account(request: import("./auth/v1beta1/query").QueryAccountRequest): Promise<import("./auth/v1beta1/query").QueryAccountResponse>;
-                accountAddressByID(request: import("./auth/v1beta1/query").QueryAccountAddressByIDRequest): Promise<import("./auth/v1beta1/query").QueryAccountAddressByIDResponse>;
                 params(request?: import("./auth/v1beta1/query").QueryParamsRequest): Promise<import("./auth/v1beta1/query").QueryParamsResponse>;
                 moduleAccounts(request?: import("./auth/v1beta1/query").QueryModuleAccountsRequest): Promise<import("./auth/v1beta1/query").QueryModuleAccountsResponse>;
                 bech32Prefix(request?: import("./auth/v1beta1/query").Bech32PrefixRequest): Promise<import("./auth/v1beta1/query").Bech32PrefixResponse>;
@@ -53,7 +53,6 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                     getBlockByHeight(request: import("./base/tendermint/v1beta1/query").GetBlockByHeightRequest): Promise<import("./base/tendermint/v1beta1/query").GetBlockByHeightResponse>;
                     getLatestValidatorSet(request?: import("./base/tendermint/v1beta1/query").GetLatestValidatorSetRequest): Promise<import("./base/tendermint/v1beta1/query").GetLatestValidatorSetResponse>;
                     getValidatorSetByHeight(request: import("./base/tendermint/v1beta1/query").GetValidatorSetByHeightRequest): Promise<import("./base/tendermint/v1beta1/query").GetValidatorSetByHeightResponse>;
-                    aBCIQuery(request: import("./base/tendermint/v1beta1/query").ABCIQueryRequest): Promise<import("./base/tendermint/v1beta1/query").ABCIQueryResponse>;
                 };
             };
         };

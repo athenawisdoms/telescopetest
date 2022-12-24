@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../helpers";
 export declare enum ScalarType {
     SCALAR_TYPE_UNSPECIFIED = 0,
     SCALAR_TYPE_STRING = 1,
@@ -80,18 +79,6 @@ export interface ScalarDescriptor {
      * bytes fields are supported for scalars.
      */
     fieldType: ScalarType[];
-    /**
-     * legacy_amino_encoding is an optional string to describe the encoding
-     * format used by Amino. The field type is chosen to be a string so that
-     * the value can either be:
-     * - a machine-readable string, such as "base64", "bech32" or "utf8",
-     * - or a human-readable string, for instance a short specification of how
-     * a big integer would be encoded using Amino.
-     *
-     * If left empty, then the Amino encoding is expected to be the same as the
-     * Protobuf one.
-     */
-    legacyAminoEncoding: string;
 }
 /**
  * ScalarDescriptor describes an scalar type to be used with
@@ -123,26 +110,18 @@ export interface ScalarDescriptorSDKType {
      * bytes fields are supported for scalars.
      */
     field_type: ScalarTypeSDKType[];
-    /**
-     * legacy_amino_encoding is an optional string to describe the encoding
-     * format used by Amino. The field type is chosen to be a string so that
-     * the value can either be:
-     * - a machine-readable string, such as "base64", "bech32" or "utf8",
-     * - or a human-readable string, for instance a short specification of how
-     * a big integer would be encoded using Amino.
-     *
-     * If left empty, then the Amino encoding is expected to be the same as the
-     * Protobuf one.
-     */
-    legacy_amino_encoding: string;
 }
 export declare const InterfaceDescriptor: {
     encode(message: InterfaceDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceDescriptor;
-    fromPartial(object: DeepPartial<InterfaceDescriptor>): InterfaceDescriptor;
+    fromJSON(object: any): InterfaceDescriptor;
+    toJSON(message: InterfaceDescriptor): unknown;
+    fromPartial(object: Partial<InterfaceDescriptor>): InterfaceDescriptor;
 };
 export declare const ScalarDescriptor: {
     encode(message: ScalarDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ScalarDescriptor;
-    fromPartial(object: DeepPartial<ScalarDescriptor>): ScalarDescriptor;
+    fromJSON(object: any): ScalarDescriptor;
+    toJSON(message: ScalarDescriptor): unknown;
+    fromPartial(object: Partial<ScalarDescriptor>): ScalarDescriptor;
 };

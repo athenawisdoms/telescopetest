@@ -1,8 +1,9 @@
 import { Data, DataSDKType, Commit, CommitSDKType, BlockID, BlockIDSDKType } from "../../../../tendermint/types/types";
 import { EvidenceList, EvidenceListSDKType } from "../../../../tendermint/types/evidence";
 import { Consensus, ConsensusSDKType } from "../../../../tendermint/version/types";
+import { Timestamp, TimestampSDKType } from "../../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * Block is tendermint type Block, with the Header proposer address
  * field converted to bech32 string.
@@ -29,7 +30,7 @@ export interface Header {
     version?: Consensus;
     chainId: string;
     height: Long;
-    time?: Date;
+    time?: Timestamp;
     /** prev block info */
     lastBlockId?: BlockID;
     /** hashes of block data */
@@ -59,7 +60,7 @@ export interface HeaderSDKType {
     version?: ConsensusSDKType;
     chain_id: string;
     height: Long;
-    time?: Date;
+    time?: TimestampSDKType;
     /** prev block info */
     last_block_id?: BlockIDSDKType;
     /** hashes of block data */
@@ -86,10 +87,14 @@ export interface HeaderSDKType {
 export declare const Block: {
     encode(message: Block, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Block;
-    fromPartial(object: DeepPartial<Block>): Block;
+    fromJSON(object: any): Block;
+    toJSON(message: Block): unknown;
+    fromPartial(object: Partial<Block>): Block;
 };
 export declare const Header: {
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
-    fromPartial(object: DeepPartial<Header>): Header;
+    fromJSON(object: any): Header;
+    toJSON(message: Header): unknown;
+    fromPartial(object: Partial<Header>): Header;
 };

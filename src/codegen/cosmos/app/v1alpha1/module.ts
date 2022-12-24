@@ -1,12 +1,14 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
+import { isSet } from "../../../helpers";
 /** ModuleDescriptor describes an app module. */
 
 export interface ModuleDescriptor {
   /**
    * go_import names the package that should be imported by an app to load the
-   * module in the runtime module registry. It is required to make debugging
-   * of configuration errors easier for users.
+   * module in the runtime module registry. Either go_import must be defined here
+   * or the go_package option must be defined at the file level to indicate
+   * to users where to location the module implementation. go_import takes
+   * precedence over go_package when both are defined.
    */
   goImport: string;
   /**
@@ -34,8 +36,10 @@ export interface ModuleDescriptor {
 export interface ModuleDescriptorSDKType {
   /**
    * go_import names the package that should be imported by an app to load the
-   * module in the runtime module registry. It is required to make debugging
-   * of configuration errors easier for users.
+   * module in the runtime module registry. Either go_import must be defined here
+   * or the go_package option must be defined at the file level to indicate
+   * to users where to location the module implementation. go_import takes
+   * precedence over go_package when both are defined.
    */
   go_import: string;
   /**
@@ -72,8 +76,8 @@ export interface PackageReference {
    * present in a previous version.
    * 
    * A package should indicate its revision with a source code comment
-   * above the package declaration in one of its files containing the
-   * text "Revision N" where N is an integer revision. All packages start
+   * above the package declaration in one of its fields containing the
+   * test "Revision N" where N is an integer revision. All packages start
    * at revision 0 the first time they are released in a module.
    * 
    * When a new version of a module is released and items are added to existing
@@ -117,8 +121,8 @@ export interface PackageReferenceSDKType {
    * present in a previous version.
    * 
    * A package should indicate its revision with a source code comment
-   * above the package declaration in one of its files containing the
-   * text "Revision N" where N is an integer revision. All packages start
+   * above the package declaration in one of its fields containing the
+   * test "Revision N" where N is an integer revision. All packages start
    * at revision 0 the first time they are released in a module.
    * 
    * When a new version of a module is released and items are added to existing
@@ -228,7 +232,34 @@ export const ModuleDescriptor = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ModuleDescriptor>): ModuleDescriptor {
+  fromJSON(object: any): ModuleDescriptor {
+    return {
+      goImport: isSet(object.goImport) ? String(object.goImport) : "",
+      usePackage: Array.isArray(object?.usePackage) ? object.usePackage.map((e: any) => PackageReference.fromJSON(e)) : [],
+      canMigrateFrom: Array.isArray(object?.canMigrateFrom) ? object.canMigrateFrom.map((e: any) => MigrateFromInfo.fromJSON(e)) : []
+    };
+  },
+
+  toJSON(message: ModuleDescriptor): unknown {
+    const obj: any = {};
+    message.goImport !== undefined && (obj.goImport = message.goImport);
+
+    if (message.usePackage) {
+      obj.usePackage = message.usePackage.map(e => e ? PackageReference.toJSON(e) : undefined);
+    } else {
+      obj.usePackage = [];
+    }
+
+    if (message.canMigrateFrom) {
+      obj.canMigrateFrom = message.canMigrateFrom.map(e => e ? MigrateFromInfo.toJSON(e) : undefined);
+    } else {
+      obj.canMigrateFrom = [];
+    }
+
+    return obj;
+  },
+
+  fromPartial(object: Partial<ModuleDescriptor>): ModuleDescriptor {
     const message = createBaseModuleDescriptor();
     message.goImport = object.goImport ?? "";
     message.usePackage = object.usePackage?.map(e => PackageReference.fromPartial(e)) || [];
@@ -284,7 +315,21 @@ export const PackageReference = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PackageReference>): PackageReference {
+  fromJSON(object: any): PackageReference {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      revision: isSet(object.revision) ? Number(object.revision) : 0
+    };
+  },
+
+  toJSON(message: PackageReference): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.revision !== undefined && (obj.revision = Math.round(message.revision));
+    return obj;
+  },
+
+  fromPartial(object: Partial<PackageReference>): PackageReference {
     const message = createBasePackageReference();
     message.name = object.name ?? "";
     message.revision = object.revision ?? 0;
@@ -330,7 +375,19 @@ export const MigrateFromInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MigrateFromInfo>): MigrateFromInfo {
+  fromJSON(object: any): MigrateFromInfo {
+    return {
+      module: isSet(object.module) ? String(object.module) : ""
+    };
+  },
+
+  toJSON(message: MigrateFromInfo): unknown {
+    const obj: any = {};
+    message.module !== undefined && (obj.module = message.module);
+    return obj;
+  },
+
+  fromPartial(object: Partial<MigrateFromInfo>): MigrateFromInfo {
     const message = createBaseMigrateFromInfo();
     message.module = object.module ?? "";
     return message;

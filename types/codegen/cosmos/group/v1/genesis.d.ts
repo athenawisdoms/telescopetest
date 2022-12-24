@@ -1,6 +1,6 @@
 import { GroupInfo, GroupInfoSDKType, GroupMember, GroupMemberSDKType, GroupPolicyInfo, GroupPolicyInfoSDKType, Proposal, ProposalSDKType, Vote, VoteSDKType } from "./types";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** GenesisState defines the group module's genesis state. */
 export interface GenesisState {
     /**
@@ -60,5 +60,7 @@ export interface GenesisStateSDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
-    fromPartial(object: DeepPartial<GenesisState>): GenesisState;
+    fromJSON(object: any): GenesisState;
+    toJSON(message: GenesisState): unknown;
+    fromPartial(object: Partial<GenesisState>): GenesisState;
 };

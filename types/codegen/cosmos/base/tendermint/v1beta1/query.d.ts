@@ -1,81 +1,54 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../query/v1beta1/pagination";
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { BlockID, BlockIDSDKType } from "../../../../tendermint/types/types";
-import { Block as Block1 } from "../../../../tendermint/types/block";
-import { BlockSDKType as Block1SDKType } from "../../../../tendermint/types/block";
-import { Block as Block2 } from "./types";
-import { BlockSDKType as Block2SDKType } from "./types";
-import { DefaultNodeInfo, DefaultNodeInfoSDKType } from "../../../../tendermint/p2p/types";
+import { Block, BlockSDKType } from "../../../../tendermint/types/block";
+import { NodeInfo, NodeInfoSDKType } from "../../../../tendermint/p2p/types";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
-/**
- * GetValidatorSetByHeightRequest is the request type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+import { Long } from "../../../../helpers";
+/** GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetValidatorSetByHeightRequest {
     height: Long;
     /** pagination defines an pagination for the request. */
     pagination?: PageRequest;
 }
-/**
- * GetValidatorSetByHeightRequest is the request type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetValidatorSetByHeightRequestSDKType {
     height: Long;
     /** pagination defines an pagination for the request. */
     pagination?: PageRequestSDKType;
 }
-/**
- * GetValidatorSetByHeightResponse is the response type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetValidatorSetByHeightResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetValidatorSetByHeightResponse {
     blockHeight: Long;
     validators: Validator[];
     /** pagination defines an pagination for the response. */
     pagination?: PageResponse;
 }
-/**
- * GetValidatorSetByHeightResponse is the response type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetValidatorSetByHeightResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetValidatorSetByHeightResponseSDKType {
     block_height: Long;
     validators: ValidatorSDKType[];
     /** pagination defines an pagination for the response. */
     pagination?: PageResponseSDKType;
 }
-/**
- * GetLatestValidatorSetRequest is the request type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetLatestValidatorSetRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetLatestValidatorSetRequest {
     /** pagination defines an pagination for the request. */
     pagination?: PageRequest;
 }
-/**
- * GetLatestValidatorSetRequest is the request type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetLatestValidatorSetRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetLatestValidatorSetRequestSDKType {
     /** pagination defines an pagination for the request. */
     pagination?: PageRequestSDKType;
 }
-/**
- * GetLatestValidatorSetResponse is the response type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetLatestValidatorSetResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetLatestValidatorSetResponse {
     blockHeight: Long;
     validators: Validator[];
     /** pagination defines an pagination for the response. */
     pagination?: PageResponse;
 }
-/**
- * GetLatestValidatorSetResponse is the response type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetLatestValidatorSetResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetLatestValidatorSetResponseSDKType {
     block_height: Long;
     validators: ValidatorSDKType[];
@@ -96,75 +69,39 @@ export interface ValidatorSDKType {
     voting_power: Long;
     proposer_priority: Long;
 }
-/**
- * GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight
- * RPC method.
- */
+/** GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight RPC method. */
 export interface GetBlockByHeightRequest {
     height: Long;
 }
-/**
- * GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight
- * RPC method.
- */
+/** GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight RPC method. */
 export interface GetBlockByHeightRequestSDKType {
     height: Long;
 }
-/**
- * GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight
- * RPC method.
- */
+/** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
 export interface GetBlockByHeightResponse {
     blockId?: BlockID;
-    /** Deprecated: please use `sdk_block` instead */
-    block?: Block1;
-    /** Since: cosmos-sdk 0.47 */
-    sdkBlock?: Block2;
+    block?: Block;
 }
-/**
- * GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight
- * RPC method.
- */
+/** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
 export interface GetBlockByHeightResponseSDKType {
     block_id?: BlockIDSDKType;
-    /** Deprecated: please use `sdk_block` instead */
-    block?: Block1SDKType;
-    /** Since: cosmos-sdk 0.47 */
-    sdk_block?: Block2SDKType;
+    block?: BlockSDKType;
 }
-/**
- * GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC
- * method.
- */
+/** GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC method. */
 export interface GetLatestBlockRequest {
 }
-/**
- * GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC
- * method.
- */
+/** GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC method. */
 export interface GetLatestBlockRequestSDKType {
 }
-/**
- * GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC
- * method.
- */
+/** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
 export interface GetLatestBlockResponse {
     blockId?: BlockID;
-    /** Deprecated: please use `sdk_block` instead */
-    block?: Block1;
-    /** Since: cosmos-sdk 0.47 */
-    sdkBlock?: Block2;
+    block?: Block;
 }
-/**
- * GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC
- * method.
- */
+/** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
 export interface GetLatestBlockResponseSDKType {
     block_id?: BlockIDSDKType;
-    /** Deprecated: please use `sdk_block` instead */
-    block?: Block1SDKType;
-    /** Since: cosmos-sdk 0.47 */
-    sdk_block?: Block2SDKType;
+    block?: BlockSDKType;
 }
 /** GetSyncingRequest is the request type for the Query/GetSyncing RPC method. */
 export interface GetSyncingRequest {
@@ -186,20 +123,14 @@ export interface GetNodeInfoRequest {
 /** GetNodeInfoRequest is the request type for the Query/GetNodeInfo RPC method. */
 export interface GetNodeInfoRequestSDKType {
 }
-/**
- * GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC
- * method.
- */
+/** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
 export interface GetNodeInfoResponse {
-    defaultNodeInfo?: DefaultNodeInfo;
+    nodeInfo?: NodeInfo;
     applicationVersion?: VersionInfo;
 }
-/**
- * GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC
- * method.
- */
+/** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
 export interface GetNodeInfoResponseSDKType {
-    default_node_info?: DefaultNodeInfoSDKType;
+    node_info?: NodeInfoSDKType;
     application_version?: VersionInfoSDKType;
 }
 /** VersionInfo is the type for the GetNodeInfoResponse message. */
@@ -244,196 +175,108 @@ export interface ModuleSDKType {
     /** checksum */
     sum: string;
 }
-/** ABCIQueryRequest defines the request structure for the ABCIQuery gRPC query. */
-export interface ABCIQueryRequest {
-    data: Uint8Array;
-    path: string;
-    height: Long;
-    prove: boolean;
-}
-/** ABCIQueryRequest defines the request structure for the ABCIQuery gRPC query. */
-export interface ABCIQueryRequestSDKType {
-    data: Uint8Array;
-    path: string;
-    height: Long;
-    prove: boolean;
-}
-/**
- * ABCIQueryResponse defines the response structure for the ABCIQuery gRPC
- * query.
- *
- * Note: This type is a duplicate of the ResponseQuery proto type defined in
- * Tendermint.
- */
-export interface ABCIQueryResponse {
-    code: number;
-    /** nondeterministic */
-    log: string;
-    /** nondeterministic */
-    info: string;
-    index: Long;
-    key: Uint8Array;
-    value: Uint8Array;
-    proofOps?: ProofOps;
-    height: Long;
-    codespace: string;
-}
-/**
- * ABCIQueryResponse defines the response structure for the ABCIQuery gRPC
- * query.
- *
- * Note: This type is a duplicate of the ResponseQuery proto type defined in
- * Tendermint.
- */
-export interface ABCIQueryResponseSDKType {
-    code: number;
-    /** nondeterministic */
-    log: string;
-    /** nondeterministic */
-    info: string;
-    index: Long;
-    key: Uint8Array;
-    value: Uint8Array;
-    proof_ops?: ProofOpsSDKType;
-    height: Long;
-    codespace: string;
-}
-/**
- * ProofOp defines an operation used for calculating Merkle root. The data could
- * be arbitrary format, providing nessecary data for example neighbouring node
- * hash.
- *
- * Note: This type is a duplicate of the ProofOp proto type defined in
- * Tendermint.
- */
-export interface ProofOp {
-    type: string;
-    key: Uint8Array;
-    data: Uint8Array;
-}
-/**
- * ProofOp defines an operation used for calculating Merkle root. The data could
- * be arbitrary format, providing nessecary data for example neighbouring node
- * hash.
- *
- * Note: This type is a duplicate of the ProofOp proto type defined in
- * Tendermint.
- */
-export interface ProofOpSDKType {
-    type: string;
-    key: Uint8Array;
-    data: Uint8Array;
-}
-/**
- * ProofOps is Merkle proof defined by the list of ProofOps.
- *
- * Note: This type is a duplicate of the ProofOps proto type defined in
- * Tendermint.
- */
-export interface ProofOps {
-    ops: ProofOp[];
-}
-/**
- * ProofOps is Merkle proof defined by the list of ProofOps.
- *
- * Note: This type is a duplicate of the ProofOps proto type defined in
- * Tendermint.
- */
-export interface ProofOpsSDKType {
-    ops: ProofOpSDKType[];
-}
 export declare const GetValidatorSetByHeightRequest: {
     encode(message: GetValidatorSetByHeightRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetValidatorSetByHeightRequest;
-    fromPartial(object: DeepPartial<GetValidatorSetByHeightRequest>): GetValidatorSetByHeightRequest;
+    fromJSON(object: any): GetValidatorSetByHeightRequest;
+    toJSON(message: GetValidatorSetByHeightRequest): unknown;
+    fromPartial(object: Partial<GetValidatorSetByHeightRequest>): GetValidatorSetByHeightRequest;
 };
 export declare const GetValidatorSetByHeightResponse: {
     encode(message: GetValidatorSetByHeightResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetValidatorSetByHeightResponse;
-    fromPartial(object: DeepPartial<GetValidatorSetByHeightResponse>): GetValidatorSetByHeightResponse;
+    fromJSON(object: any): GetValidatorSetByHeightResponse;
+    toJSON(message: GetValidatorSetByHeightResponse): unknown;
+    fromPartial(object: Partial<GetValidatorSetByHeightResponse>): GetValidatorSetByHeightResponse;
 };
 export declare const GetLatestValidatorSetRequest: {
     encode(message: GetLatestValidatorSetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestValidatorSetRequest;
-    fromPartial(object: DeepPartial<GetLatestValidatorSetRequest>): GetLatestValidatorSetRequest;
+    fromJSON(object: any): GetLatestValidatorSetRequest;
+    toJSON(message: GetLatestValidatorSetRequest): unknown;
+    fromPartial(object: Partial<GetLatestValidatorSetRequest>): GetLatestValidatorSetRequest;
 };
 export declare const GetLatestValidatorSetResponse: {
     encode(message: GetLatestValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestValidatorSetResponse;
-    fromPartial(object: DeepPartial<GetLatestValidatorSetResponse>): GetLatestValidatorSetResponse;
+    fromJSON(object: any): GetLatestValidatorSetResponse;
+    toJSON(message: GetLatestValidatorSetResponse): unknown;
+    fromPartial(object: Partial<GetLatestValidatorSetResponse>): GetLatestValidatorSetResponse;
 };
 export declare const Validator: {
     encode(message: Validator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Validator;
-    fromPartial(object: DeepPartial<Validator>): Validator;
+    fromJSON(object: any): Validator;
+    toJSON(message: Validator): unknown;
+    fromPartial(object: Partial<Validator>): Validator;
 };
 export declare const GetBlockByHeightRequest: {
     encode(message: GetBlockByHeightRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockByHeightRequest;
-    fromPartial(object: DeepPartial<GetBlockByHeightRequest>): GetBlockByHeightRequest;
+    fromJSON(object: any): GetBlockByHeightRequest;
+    toJSON(message: GetBlockByHeightRequest): unknown;
+    fromPartial(object: Partial<GetBlockByHeightRequest>): GetBlockByHeightRequest;
 };
 export declare const GetBlockByHeightResponse: {
     encode(message: GetBlockByHeightResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockByHeightResponse;
-    fromPartial(object: DeepPartial<GetBlockByHeightResponse>): GetBlockByHeightResponse;
+    fromJSON(object: any): GetBlockByHeightResponse;
+    toJSON(message: GetBlockByHeightResponse): unknown;
+    fromPartial(object: Partial<GetBlockByHeightResponse>): GetBlockByHeightResponse;
 };
 export declare const GetLatestBlockRequest: {
     encode(_: GetLatestBlockRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestBlockRequest;
-    fromPartial(_: DeepPartial<GetLatestBlockRequest>): GetLatestBlockRequest;
+    fromJSON(_: any): GetLatestBlockRequest;
+    toJSON(_: GetLatestBlockRequest): unknown;
+    fromPartial(_: Partial<GetLatestBlockRequest>): GetLatestBlockRequest;
 };
 export declare const GetLatestBlockResponse: {
     encode(message: GetLatestBlockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestBlockResponse;
-    fromPartial(object: DeepPartial<GetLatestBlockResponse>): GetLatestBlockResponse;
+    fromJSON(object: any): GetLatestBlockResponse;
+    toJSON(message: GetLatestBlockResponse): unknown;
+    fromPartial(object: Partial<GetLatestBlockResponse>): GetLatestBlockResponse;
 };
 export declare const GetSyncingRequest: {
     encode(_: GetSyncingRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetSyncingRequest;
-    fromPartial(_: DeepPartial<GetSyncingRequest>): GetSyncingRequest;
+    fromJSON(_: any): GetSyncingRequest;
+    toJSON(_: GetSyncingRequest): unknown;
+    fromPartial(_: Partial<GetSyncingRequest>): GetSyncingRequest;
 };
 export declare const GetSyncingResponse: {
     encode(message: GetSyncingResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetSyncingResponse;
-    fromPartial(object: DeepPartial<GetSyncingResponse>): GetSyncingResponse;
+    fromJSON(object: any): GetSyncingResponse;
+    toJSON(message: GetSyncingResponse): unknown;
+    fromPartial(object: Partial<GetSyncingResponse>): GetSyncingResponse;
 };
 export declare const GetNodeInfoRequest: {
     encode(_: GetNodeInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetNodeInfoRequest;
-    fromPartial(_: DeepPartial<GetNodeInfoRequest>): GetNodeInfoRequest;
+    fromJSON(_: any): GetNodeInfoRequest;
+    toJSON(_: GetNodeInfoRequest): unknown;
+    fromPartial(_: Partial<GetNodeInfoRequest>): GetNodeInfoRequest;
 };
 export declare const GetNodeInfoResponse: {
     encode(message: GetNodeInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetNodeInfoResponse;
-    fromPartial(object: DeepPartial<GetNodeInfoResponse>): GetNodeInfoResponse;
+    fromJSON(object: any): GetNodeInfoResponse;
+    toJSON(message: GetNodeInfoResponse): unknown;
+    fromPartial(object: Partial<GetNodeInfoResponse>): GetNodeInfoResponse;
 };
 export declare const VersionInfo: {
     encode(message: VersionInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): VersionInfo;
-    fromPartial(object: DeepPartial<VersionInfo>): VersionInfo;
+    fromJSON(object: any): VersionInfo;
+    toJSON(message: VersionInfo): unknown;
+    fromPartial(object: Partial<VersionInfo>): VersionInfo;
 };
 export declare const Module: {
     encode(message: Module, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Module;
-    fromPartial(object: DeepPartial<Module>): Module;
-};
-export declare const ABCIQueryRequest: {
-    encode(message: ABCIQueryRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ABCIQueryRequest;
-    fromPartial(object: DeepPartial<ABCIQueryRequest>): ABCIQueryRequest;
-};
-export declare const ABCIQueryResponse: {
-    encode(message: ABCIQueryResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ABCIQueryResponse;
-    fromPartial(object: DeepPartial<ABCIQueryResponse>): ABCIQueryResponse;
-};
-export declare const ProofOp: {
-    encode(message: ProofOp, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ProofOp;
-    fromPartial(object: DeepPartial<ProofOp>): ProofOp;
-};
-export declare const ProofOps: {
-    encode(message: ProofOps, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): ProofOps;
-    fromPartial(object: DeepPartial<ProofOps>): ProofOps;
+    fromJSON(object: any): Module;
+    toJSON(message: Module): unknown;
+    fromPartial(object: Partial<Module>): Module;
 };

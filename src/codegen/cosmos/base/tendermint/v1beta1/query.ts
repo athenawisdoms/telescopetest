@@ -1,17 +1,11 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../query/v1beta1/pagination";
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { BlockID, BlockIDSDKType } from "../../../../tendermint/types/types";
-import { Block as Block1 } from "../../../../tendermint/types/block";
-import { BlockSDKType as Block1SDKType } from "../../../../tendermint/types/block";
-import { Block as Block2 } from "./types";
-import { BlockSDKType as Block2SDKType } from "./types";
-import { DefaultNodeInfo, DefaultNodeInfoSDKType } from "../../../../tendermint/p2p/types";
+import { Block, BlockSDKType } from "../../../../tendermint/types/block";
+import { NodeInfo, NodeInfoSDKType } from "../../../../tendermint/p2p/types";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
-/**
- * GetValidatorSetByHeightRequest is the request type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+import { Long, isSet } from "../../../../helpers";
+/** GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 
 export interface GetValidatorSetByHeightRequest {
   height: Long;
@@ -19,10 +13,7 @@ export interface GetValidatorSetByHeightRequest {
 
   pagination?: PageRequest;
 }
-/**
- * GetValidatorSetByHeightRequest is the request type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 
 export interface GetValidatorSetByHeightRequestSDKType {
   height: Long;
@@ -30,10 +21,7 @@ export interface GetValidatorSetByHeightRequestSDKType {
 
   pagination?: PageRequestSDKType;
 }
-/**
- * GetValidatorSetByHeightResponse is the response type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetValidatorSetByHeightResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 
 export interface GetValidatorSetByHeightResponse {
   blockHeight: Long;
@@ -42,10 +30,7 @@ export interface GetValidatorSetByHeightResponse {
 
   pagination?: PageResponse;
 }
-/**
- * GetValidatorSetByHeightResponse is the response type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetValidatorSetByHeightResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 
 export interface GetValidatorSetByHeightResponseSDKType {
   block_height: Long;
@@ -54,28 +39,19 @@ export interface GetValidatorSetByHeightResponseSDKType {
 
   pagination?: PageResponseSDKType;
 }
-/**
- * GetLatestValidatorSetRequest is the request type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetLatestValidatorSetRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 
 export interface GetLatestValidatorSetRequest {
   /** pagination defines an pagination for the request. */
   pagination?: PageRequest;
 }
-/**
- * GetLatestValidatorSetRequest is the request type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetLatestValidatorSetRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 
 export interface GetLatestValidatorSetRequestSDKType {
   /** pagination defines an pagination for the request. */
   pagination?: PageRequestSDKType;
 }
-/**
- * GetLatestValidatorSetResponse is the response type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetLatestValidatorSetResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 
 export interface GetLatestValidatorSetResponse {
   blockHeight: Long;
@@ -84,10 +60,7 @@ export interface GetLatestValidatorSetResponse {
 
   pagination?: PageResponse;
 }
-/**
- * GetLatestValidatorSetResponse is the response type for the
- * Query/GetValidatorSetByHeight RPC method.
- */
+/** GetLatestValidatorSetResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 
 export interface GetLatestValidatorSetResponseSDKType {
   block_height: Long;
@@ -112,89 +85,45 @@ export interface ValidatorSDKType {
   voting_power: Long;
   proposer_priority: Long;
 }
-/**
- * GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight
- * RPC method.
- */
+/** GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight RPC method. */
 
 export interface GetBlockByHeightRequest {
   height: Long;
 }
-/**
- * GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight
- * RPC method.
- */
+/** GetBlockByHeightRequest is the request type for the Query/GetBlockByHeight RPC method. */
 
 export interface GetBlockByHeightRequestSDKType {
   height: Long;
 }
-/**
- * GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight
- * RPC method.
- */
+/** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
 
 export interface GetBlockByHeightResponse {
   blockId?: BlockID;
-  /** Deprecated: please use `sdk_block` instead */
-
-  block?: Block1;
-  /** Since: cosmos-sdk 0.47 */
-
-  sdkBlock?: Block2;
+  block?: Block;
 }
-/**
- * GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight
- * RPC method.
- */
+/** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
 
 export interface GetBlockByHeightResponseSDKType {
   block_id?: BlockIDSDKType;
-  /** Deprecated: please use `sdk_block` instead */
-
-  block?: Block1SDKType;
-  /** Since: cosmos-sdk 0.47 */
-
-  sdk_block?: Block2SDKType;
+  block?: BlockSDKType;
 }
-/**
- * GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC
- * method.
- */
+/** GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC method. */
 
 export interface GetLatestBlockRequest {}
-/**
- * GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC
- * method.
- */
+/** GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC method. */
 
 export interface GetLatestBlockRequestSDKType {}
-/**
- * GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC
- * method.
- */
+/** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
 
 export interface GetLatestBlockResponse {
   blockId?: BlockID;
-  /** Deprecated: please use `sdk_block` instead */
-
-  block?: Block1;
-  /** Since: cosmos-sdk 0.47 */
-
-  sdkBlock?: Block2;
+  block?: Block;
 }
-/**
- * GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC
- * method.
- */
+/** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
 
 export interface GetLatestBlockResponseSDKType {
   block_id?: BlockIDSDKType;
-  /** Deprecated: please use `sdk_block` instead */
-
-  block?: Block1SDKType;
-  /** Since: cosmos-sdk 0.47 */
-
-  sdk_block?: Block2SDKType;
+  block?: BlockSDKType;
 }
 /** GetSyncingRequest is the request type for the Query/GetSyncing RPC method. */
 
@@ -218,22 +147,16 @@ export interface GetNodeInfoRequest {}
 /** GetNodeInfoRequest is the request type for the Query/GetNodeInfo RPC method. */
 
 export interface GetNodeInfoRequestSDKType {}
-/**
- * GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC
- * method.
- */
+/** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
 
 export interface GetNodeInfoResponse {
-  defaultNodeInfo?: DefaultNodeInfo;
+  nodeInfo?: NodeInfo;
   applicationVersion?: VersionInfo;
 }
-/**
- * GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC
- * method.
- */
+/** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
 
 export interface GetNodeInfoResponseSDKType {
-  default_node_info?: DefaultNodeInfoSDKType;
+  node_info?: NodeInfoSDKType;
   application_version?: VersionInfoSDKType;
 }
 /** VersionInfo is the type for the GetNodeInfoResponse message. */
@@ -288,116 +211,6 @@ export interface ModuleSDKType {
 
   sum: string;
 }
-/** ABCIQueryRequest defines the request structure for the ABCIQuery gRPC query. */
-
-export interface ABCIQueryRequest {
-  data: Uint8Array;
-  path: string;
-  height: Long;
-  prove: boolean;
-}
-/** ABCIQueryRequest defines the request structure for the ABCIQuery gRPC query. */
-
-export interface ABCIQueryRequestSDKType {
-  data: Uint8Array;
-  path: string;
-  height: Long;
-  prove: boolean;
-}
-/**
- * ABCIQueryResponse defines the response structure for the ABCIQuery gRPC
- * query.
- * 
- * Note: This type is a duplicate of the ResponseQuery proto type defined in
- * Tendermint.
- */
-
-export interface ABCIQueryResponse {
-  code: number;
-  /** nondeterministic */
-
-  log: string;
-  /** nondeterministic */
-
-  info: string;
-  index: Long;
-  key: Uint8Array;
-  value: Uint8Array;
-  proofOps?: ProofOps;
-  height: Long;
-  codespace: string;
-}
-/**
- * ABCIQueryResponse defines the response structure for the ABCIQuery gRPC
- * query.
- * 
- * Note: This type is a duplicate of the ResponseQuery proto type defined in
- * Tendermint.
- */
-
-export interface ABCIQueryResponseSDKType {
-  code: number;
-  /** nondeterministic */
-
-  log: string;
-  /** nondeterministic */
-
-  info: string;
-  index: Long;
-  key: Uint8Array;
-  value: Uint8Array;
-  proof_ops?: ProofOpsSDKType;
-  height: Long;
-  codespace: string;
-}
-/**
- * ProofOp defines an operation used for calculating Merkle root. The data could
- * be arbitrary format, providing nessecary data for example neighbouring node
- * hash.
- * 
- * Note: This type is a duplicate of the ProofOp proto type defined in
- * Tendermint.
- */
-
-export interface ProofOp {
-  type: string;
-  key: Uint8Array;
-  data: Uint8Array;
-}
-/**
- * ProofOp defines an operation used for calculating Merkle root. The data could
- * be arbitrary format, providing nessecary data for example neighbouring node
- * hash.
- * 
- * Note: This type is a duplicate of the ProofOp proto type defined in
- * Tendermint.
- */
-
-export interface ProofOpSDKType {
-  type: string;
-  key: Uint8Array;
-  data: Uint8Array;
-}
-/**
- * ProofOps is Merkle proof defined by the list of ProofOps.
- * 
- * Note: This type is a duplicate of the ProofOps proto type defined in
- * Tendermint.
- */
-
-export interface ProofOps {
-  ops: ProofOp[];
-}
-/**
- * ProofOps is Merkle proof defined by the list of ProofOps.
- * 
- * Note: This type is a duplicate of the ProofOps proto type defined in
- * Tendermint.
- */
-
-export interface ProofOpsSDKType {
-  ops: ProofOpSDKType[];
-}
 
 function createBaseGetValidatorSetByHeightRequest(): GetValidatorSetByHeightRequest {
   return {
@@ -445,7 +258,21 @@ export const GetValidatorSetByHeightRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetValidatorSetByHeightRequest>): GetValidatorSetByHeightRequest {
+  fromJSON(object: any): GetValidatorSetByHeightRequest {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: GetValidatorSetByHeightRequest): unknown {
+    const obj: any = {};
+    message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<GetValidatorSetByHeightRequest>): GetValidatorSetByHeightRequest {
     const message = createBaseGetValidatorSetByHeightRequest();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -509,7 +336,29 @@ export const GetValidatorSetByHeightResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetValidatorSetByHeightResponse>): GetValidatorSetByHeightResponse {
+  fromJSON(object: any): GetValidatorSetByHeightResponse {
+    return {
+      blockHeight: isSet(object.blockHeight) ? Long.fromValue(object.blockHeight) : Long.ZERO,
+      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: GetValidatorSetByHeightResponse): unknown {
+    const obj: any = {};
+    message.blockHeight !== undefined && (obj.blockHeight = (message.blockHeight || Long.ZERO).toString());
+
+    if (message.validators) {
+      obj.validators = message.validators.map(e => e ? Validator.toJSON(e) : undefined);
+    } else {
+      obj.validators = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<GetValidatorSetByHeightResponse>): GetValidatorSetByHeightResponse {
     const message = createBaseGetValidatorSetByHeightResponse();
     message.blockHeight = object.blockHeight !== undefined && object.blockHeight !== null ? Long.fromValue(object.blockHeight) : Long.ZERO;
     message.validators = object.validators?.map(e => Validator.fromPartial(e)) || [];
@@ -556,7 +405,19 @@ export const GetLatestValidatorSetRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetLatestValidatorSetRequest>): GetLatestValidatorSetRequest {
+  fromJSON(object: any): GetLatestValidatorSetRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: GetLatestValidatorSetRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<GetLatestValidatorSetRequest>): GetLatestValidatorSetRequest {
     const message = createBaseGetLatestValidatorSetRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
@@ -619,7 +480,29 @@ export const GetLatestValidatorSetResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetLatestValidatorSetResponse>): GetLatestValidatorSetResponse {
+  fromJSON(object: any): GetLatestValidatorSetResponse {
+    return {
+      blockHeight: isSet(object.blockHeight) ? Long.fromValue(object.blockHeight) : Long.ZERO,
+      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: GetLatestValidatorSetResponse): unknown {
+    const obj: any = {};
+    message.blockHeight !== undefined && (obj.blockHeight = (message.blockHeight || Long.ZERO).toString());
+
+    if (message.validators) {
+      obj.validators = message.validators.map(e => e ? Validator.toJSON(e) : undefined);
+    } else {
+      obj.validators = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<GetLatestValidatorSetResponse>): GetLatestValidatorSetResponse {
     const message = createBaseGetLatestValidatorSetResponse();
     message.blockHeight = object.blockHeight !== undefined && object.blockHeight !== null ? Long.fromValue(object.blockHeight) : Long.ZERO;
     message.validators = object.validators?.map(e => Validator.fromPartial(e)) || [];
@@ -693,7 +576,25 @@ export const Validator = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Validator>): Validator {
+  fromJSON(object: any): Validator {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      pubKey: isSet(object.pubKey) ? Any.fromJSON(object.pubKey) : undefined,
+      votingPower: isSet(object.votingPower) ? Long.fromValue(object.votingPower) : Long.ZERO,
+      proposerPriority: isSet(object.proposerPriority) ? Long.fromValue(object.proposerPriority) : Long.ZERO
+    };
+  },
+
+  toJSON(message: Validator): unknown {
+    const obj: any = {};
+    message.address !== undefined && (obj.address = message.address);
+    message.pubKey !== undefined && (obj.pubKey = message.pubKey ? Any.toJSON(message.pubKey) : undefined);
+    message.votingPower !== undefined && (obj.votingPower = (message.votingPower || Long.ZERO).toString());
+    message.proposerPriority !== undefined && (obj.proposerPriority = (message.proposerPriority || Long.ZERO).toString());
+    return obj;
+  },
+
+  fromPartial(object: Partial<Validator>): Validator {
     const message = createBaseValidator();
     message.address = object.address ?? "";
     message.pubKey = object.pubKey !== undefined && object.pubKey !== null ? Any.fromPartial(object.pubKey) : undefined;
@@ -741,7 +642,19 @@ export const GetBlockByHeightRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetBlockByHeightRequest>): GetBlockByHeightRequest {
+  fromJSON(object: any): GetBlockByHeightRequest {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO
+    };
+  },
+
+  toJSON(message: GetBlockByHeightRequest): unknown {
+    const obj: any = {};
+    message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
+    return obj;
+  },
+
+  fromPartial(object: Partial<GetBlockByHeightRequest>): GetBlockByHeightRequest {
     const message = createBaseGetBlockByHeightRequest();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     return message;
@@ -752,8 +665,7 @@ export const GetBlockByHeightRequest = {
 function createBaseGetBlockByHeightResponse(): GetBlockByHeightResponse {
   return {
     blockId: undefined,
-    block: undefined,
-    sdkBlock: undefined
+    block: undefined
   };
 }
 
@@ -764,11 +676,7 @@ export const GetBlockByHeightResponse = {
     }
 
     if (message.block !== undefined) {
-      Block1.encode(message.block, writer.uint32(18).fork()).ldelim();
-    }
-
-    if (message.sdkBlock !== undefined) {
-      Block2.encode(message.sdkBlock, writer.uint32(26).fork()).ldelim();
+      Block.encode(message.block, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -788,11 +696,7 @@ export const GetBlockByHeightResponse = {
           break;
 
         case 2:
-          message.block = Block1.decode(reader, reader.uint32());
-          break;
-
-        case 3:
-          message.sdkBlock = Block2.decode(reader, reader.uint32());
+          message.block = Block.decode(reader, reader.uint32());
           break;
 
         default:
@@ -804,11 +708,24 @@ export const GetBlockByHeightResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetBlockByHeightResponse>): GetBlockByHeightResponse {
+  fromJSON(object: any): GetBlockByHeightResponse {
+    return {
+      blockId: isSet(object.blockId) ? BlockID.fromJSON(object.blockId) : undefined,
+      block: isSet(object.block) ? Block.fromJSON(object.block) : undefined
+    };
+  },
+
+  toJSON(message: GetBlockByHeightResponse): unknown {
+    const obj: any = {};
+    message.blockId !== undefined && (obj.blockId = message.blockId ? BlockID.toJSON(message.blockId) : undefined);
+    message.block !== undefined && (obj.block = message.block ? Block.toJSON(message.block) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<GetBlockByHeightResponse>): GetBlockByHeightResponse {
     const message = createBaseGetBlockByHeightResponse();
     message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
-    message.block = object.block !== undefined && object.block !== null ? Block1.fromPartial(object.block) : undefined;
-    message.sdkBlock = object.sdkBlock !== undefined && object.sdkBlock !== null ? Block2.fromPartial(object.sdkBlock) : undefined;
+    message.block = object.block !== undefined && object.block !== null ? Block.fromPartial(object.block) : undefined;
     return message;
   }
 
@@ -841,7 +758,16 @@ export const GetLatestBlockRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<GetLatestBlockRequest>): GetLatestBlockRequest {
+  fromJSON(_: any): GetLatestBlockRequest {
+    return {};
+  },
+
+  toJSON(_: GetLatestBlockRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: Partial<GetLatestBlockRequest>): GetLatestBlockRequest {
     const message = createBaseGetLatestBlockRequest();
     return message;
   }
@@ -851,8 +777,7 @@ export const GetLatestBlockRequest = {
 function createBaseGetLatestBlockResponse(): GetLatestBlockResponse {
   return {
     blockId: undefined,
-    block: undefined,
-    sdkBlock: undefined
+    block: undefined
   };
 }
 
@@ -863,11 +788,7 @@ export const GetLatestBlockResponse = {
     }
 
     if (message.block !== undefined) {
-      Block1.encode(message.block, writer.uint32(18).fork()).ldelim();
-    }
-
-    if (message.sdkBlock !== undefined) {
-      Block2.encode(message.sdkBlock, writer.uint32(26).fork()).ldelim();
+      Block.encode(message.block, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -887,11 +808,7 @@ export const GetLatestBlockResponse = {
           break;
 
         case 2:
-          message.block = Block1.decode(reader, reader.uint32());
-          break;
-
-        case 3:
-          message.sdkBlock = Block2.decode(reader, reader.uint32());
+          message.block = Block.decode(reader, reader.uint32());
           break;
 
         default:
@@ -903,11 +820,24 @@ export const GetLatestBlockResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetLatestBlockResponse>): GetLatestBlockResponse {
+  fromJSON(object: any): GetLatestBlockResponse {
+    return {
+      blockId: isSet(object.blockId) ? BlockID.fromJSON(object.blockId) : undefined,
+      block: isSet(object.block) ? Block.fromJSON(object.block) : undefined
+    };
+  },
+
+  toJSON(message: GetLatestBlockResponse): unknown {
+    const obj: any = {};
+    message.blockId !== undefined && (obj.blockId = message.blockId ? BlockID.toJSON(message.blockId) : undefined);
+    message.block !== undefined && (obj.block = message.block ? Block.toJSON(message.block) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<GetLatestBlockResponse>): GetLatestBlockResponse {
     const message = createBaseGetLatestBlockResponse();
     message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
-    message.block = object.block !== undefined && object.block !== null ? Block1.fromPartial(object.block) : undefined;
-    message.sdkBlock = object.sdkBlock !== undefined && object.sdkBlock !== null ? Block2.fromPartial(object.sdkBlock) : undefined;
+    message.block = object.block !== undefined && object.block !== null ? Block.fromPartial(object.block) : undefined;
     return message;
   }
 
@@ -940,7 +870,16 @@ export const GetSyncingRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<GetSyncingRequest>): GetSyncingRequest {
+  fromJSON(_: any): GetSyncingRequest {
+    return {};
+  },
+
+  toJSON(_: GetSyncingRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: Partial<GetSyncingRequest>): GetSyncingRequest {
     const message = createBaseGetSyncingRequest();
     return message;
   }
@@ -984,7 +923,19 @@ export const GetSyncingResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetSyncingResponse>): GetSyncingResponse {
+  fromJSON(object: any): GetSyncingResponse {
+    return {
+      syncing: isSet(object.syncing) ? Boolean(object.syncing) : false
+    };
+  },
+
+  toJSON(message: GetSyncingResponse): unknown {
+    const obj: any = {};
+    message.syncing !== undefined && (obj.syncing = message.syncing);
+    return obj;
+  },
+
+  fromPartial(object: Partial<GetSyncingResponse>): GetSyncingResponse {
     const message = createBaseGetSyncingResponse();
     message.syncing = object.syncing ?? false;
     return message;
@@ -1019,7 +970,16 @@ export const GetNodeInfoRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<GetNodeInfoRequest>): GetNodeInfoRequest {
+  fromJSON(_: any): GetNodeInfoRequest {
+    return {};
+  },
+
+  toJSON(_: GetNodeInfoRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: Partial<GetNodeInfoRequest>): GetNodeInfoRequest {
     const message = createBaseGetNodeInfoRequest();
     return message;
   }
@@ -1028,15 +988,15 @@ export const GetNodeInfoRequest = {
 
 function createBaseGetNodeInfoResponse(): GetNodeInfoResponse {
   return {
-    defaultNodeInfo: undefined,
+    nodeInfo: undefined,
     applicationVersion: undefined
   };
 }
 
 export const GetNodeInfoResponse = {
   encode(message: GetNodeInfoResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.defaultNodeInfo !== undefined) {
-      DefaultNodeInfo.encode(message.defaultNodeInfo, writer.uint32(10).fork()).ldelim();
+    if (message.nodeInfo !== undefined) {
+      NodeInfo.encode(message.nodeInfo, writer.uint32(10).fork()).ldelim();
     }
 
     if (message.applicationVersion !== undefined) {
@@ -1056,7 +1016,7 @@ export const GetNodeInfoResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.defaultNodeInfo = DefaultNodeInfo.decode(reader, reader.uint32());
+          message.nodeInfo = NodeInfo.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -1072,9 +1032,23 @@ export const GetNodeInfoResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<GetNodeInfoResponse>): GetNodeInfoResponse {
+  fromJSON(object: any): GetNodeInfoResponse {
+    return {
+      nodeInfo: isSet(object.nodeInfo) ? NodeInfo.fromJSON(object.nodeInfo) : undefined,
+      applicationVersion: isSet(object.applicationVersion) ? VersionInfo.fromJSON(object.applicationVersion) : undefined
+    };
+  },
+
+  toJSON(message: GetNodeInfoResponse): unknown {
+    const obj: any = {};
+    message.nodeInfo !== undefined && (obj.nodeInfo = message.nodeInfo ? NodeInfo.toJSON(message.nodeInfo) : undefined);
+    message.applicationVersion !== undefined && (obj.applicationVersion = message.applicationVersion ? VersionInfo.toJSON(message.applicationVersion) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<GetNodeInfoResponse>): GetNodeInfoResponse {
     const message = createBaseGetNodeInfoResponse();
-    message.defaultNodeInfo = object.defaultNodeInfo !== undefined && object.defaultNodeInfo !== null ? DefaultNodeInfo.fromPartial(object.defaultNodeInfo) : undefined;
+    message.nodeInfo = object.nodeInfo !== undefined && object.nodeInfo !== null ? NodeInfo.fromPartial(object.nodeInfo) : undefined;
     message.applicationVersion = object.applicationVersion !== undefined && object.applicationVersion !== null ? VersionInfo.fromPartial(object.applicationVersion) : undefined;
     return message;
   }
@@ -1181,7 +1155,39 @@ export const VersionInfo = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<VersionInfo>): VersionInfo {
+  fromJSON(object: any): VersionInfo {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      appName: isSet(object.appName) ? String(object.appName) : "",
+      version: isSet(object.version) ? String(object.version) : "",
+      gitCommit: isSet(object.gitCommit) ? String(object.gitCommit) : "",
+      buildTags: isSet(object.buildTags) ? String(object.buildTags) : "",
+      goVersion: isSet(object.goVersion) ? String(object.goVersion) : "",
+      buildDeps: Array.isArray(object?.buildDeps) ? object.buildDeps.map((e: any) => Module.fromJSON(e)) : [],
+      cosmosSdkVersion: isSet(object.cosmosSdkVersion) ? String(object.cosmosSdkVersion) : ""
+    };
+  },
+
+  toJSON(message: VersionInfo): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.appName !== undefined && (obj.appName = message.appName);
+    message.version !== undefined && (obj.version = message.version);
+    message.gitCommit !== undefined && (obj.gitCommit = message.gitCommit);
+    message.buildTags !== undefined && (obj.buildTags = message.buildTags);
+    message.goVersion !== undefined && (obj.goVersion = message.goVersion);
+
+    if (message.buildDeps) {
+      obj.buildDeps = message.buildDeps.map(e => e ? Module.toJSON(e) : undefined);
+    } else {
+      obj.buildDeps = [];
+    }
+
+    message.cosmosSdkVersion !== undefined && (obj.cosmosSdkVersion = message.cosmosSdkVersion);
+    return obj;
+  },
+
+  fromPartial(object: Partial<VersionInfo>): VersionInfo {
     const message = createBaseVersionInfo();
     message.name = object.name ?? "";
     message.appName = object.appName ?? "";
@@ -1251,321 +1257,27 @@ export const Module = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Module>): Module {
+  fromJSON(object: any): Module {
+    return {
+      path: isSet(object.path) ? String(object.path) : "",
+      version: isSet(object.version) ? String(object.version) : "",
+      sum: isSet(object.sum) ? String(object.sum) : ""
+    };
+  },
+
+  toJSON(message: Module): unknown {
+    const obj: any = {};
+    message.path !== undefined && (obj.path = message.path);
+    message.version !== undefined && (obj.version = message.version);
+    message.sum !== undefined && (obj.sum = message.sum);
+    return obj;
+  },
+
+  fromPartial(object: Partial<Module>): Module {
     const message = createBaseModule();
     message.path = object.path ?? "";
     message.version = object.version ?? "";
     message.sum = object.sum ?? "";
-    return message;
-  }
-
-};
-
-function createBaseABCIQueryRequest(): ABCIQueryRequest {
-  return {
-    data: new Uint8Array(),
-    path: "",
-    height: Long.ZERO,
-    prove: false
-  };
-}
-
-export const ABCIQueryRequest = {
-  encode(message: ABCIQueryRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.data.length !== 0) {
-      writer.uint32(10).bytes(message.data);
-    }
-
-    if (message.path !== "") {
-      writer.uint32(18).string(message.path);
-    }
-
-    if (!message.height.isZero()) {
-      writer.uint32(24).int64(message.height);
-    }
-
-    if (message.prove === true) {
-      writer.uint32(32).bool(message.prove);
-    }
-
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ABCIQueryRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseABCIQueryRequest();
-
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-
-      switch (tag >>> 3) {
-        case 1:
-          message.data = reader.bytes();
-          break;
-
-        case 2:
-          message.path = reader.string();
-          break;
-
-        case 3:
-          message.height = (reader.int64() as Long);
-          break;
-
-        case 4:
-          message.prove = reader.bool();
-          break;
-
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-
-    return message;
-  },
-
-  fromPartial(object: DeepPartial<ABCIQueryRequest>): ABCIQueryRequest {
-    const message = createBaseABCIQueryRequest();
-    message.data = object.data ?? new Uint8Array();
-    message.path = object.path ?? "";
-    message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
-    message.prove = object.prove ?? false;
-    return message;
-  }
-
-};
-
-function createBaseABCIQueryResponse(): ABCIQueryResponse {
-  return {
-    code: 0,
-    log: "",
-    info: "",
-    index: Long.ZERO,
-    key: new Uint8Array(),
-    value: new Uint8Array(),
-    proofOps: undefined,
-    height: Long.ZERO,
-    codespace: ""
-  };
-}
-
-export const ABCIQueryResponse = {
-  encode(message: ABCIQueryResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.code !== 0) {
-      writer.uint32(8).uint32(message.code);
-    }
-
-    if (message.log !== "") {
-      writer.uint32(26).string(message.log);
-    }
-
-    if (message.info !== "") {
-      writer.uint32(34).string(message.info);
-    }
-
-    if (!message.index.isZero()) {
-      writer.uint32(40).int64(message.index);
-    }
-
-    if (message.key.length !== 0) {
-      writer.uint32(50).bytes(message.key);
-    }
-
-    if (message.value.length !== 0) {
-      writer.uint32(58).bytes(message.value);
-    }
-
-    if (message.proofOps !== undefined) {
-      ProofOps.encode(message.proofOps, writer.uint32(66).fork()).ldelim();
-    }
-
-    if (!message.height.isZero()) {
-      writer.uint32(72).int64(message.height);
-    }
-
-    if (message.codespace !== "") {
-      writer.uint32(82).string(message.codespace);
-    }
-
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ABCIQueryResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseABCIQueryResponse();
-
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-
-      switch (tag >>> 3) {
-        case 1:
-          message.code = reader.uint32();
-          break;
-
-        case 3:
-          message.log = reader.string();
-          break;
-
-        case 4:
-          message.info = reader.string();
-          break;
-
-        case 5:
-          message.index = (reader.int64() as Long);
-          break;
-
-        case 6:
-          message.key = reader.bytes();
-          break;
-
-        case 7:
-          message.value = reader.bytes();
-          break;
-
-        case 8:
-          message.proofOps = ProofOps.decode(reader, reader.uint32());
-          break;
-
-        case 9:
-          message.height = (reader.int64() as Long);
-          break;
-
-        case 10:
-          message.codespace = reader.string();
-          break;
-
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-
-    return message;
-  },
-
-  fromPartial(object: DeepPartial<ABCIQueryResponse>): ABCIQueryResponse {
-    const message = createBaseABCIQueryResponse();
-    message.code = object.code ?? 0;
-    message.log = object.log ?? "";
-    message.info = object.info ?? "";
-    message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.ZERO;
-    message.key = object.key ?? new Uint8Array();
-    message.value = object.value ?? new Uint8Array();
-    message.proofOps = object.proofOps !== undefined && object.proofOps !== null ? ProofOps.fromPartial(object.proofOps) : undefined;
-    message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
-    message.codespace = object.codespace ?? "";
-    return message;
-  }
-
-};
-
-function createBaseProofOp(): ProofOp {
-  return {
-    type: "",
-    key: new Uint8Array(),
-    data: new Uint8Array()
-  };
-}
-
-export const ProofOp = {
-  encode(message: ProofOp, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.type !== "") {
-      writer.uint32(10).string(message.type);
-    }
-
-    if (message.key.length !== 0) {
-      writer.uint32(18).bytes(message.key);
-    }
-
-    if (message.data.length !== 0) {
-      writer.uint32(26).bytes(message.data);
-    }
-
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ProofOp {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseProofOp();
-
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-
-      switch (tag >>> 3) {
-        case 1:
-          message.type = reader.string();
-          break;
-
-        case 2:
-          message.key = reader.bytes();
-          break;
-
-        case 3:
-          message.data = reader.bytes();
-          break;
-
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-
-    return message;
-  },
-
-  fromPartial(object: DeepPartial<ProofOp>): ProofOp {
-    const message = createBaseProofOp();
-    message.type = object.type ?? "";
-    message.key = object.key ?? new Uint8Array();
-    message.data = object.data ?? new Uint8Array();
-    return message;
-  }
-
-};
-
-function createBaseProofOps(): ProofOps {
-  return {
-    ops: []
-  };
-}
-
-export const ProofOps = {
-  encode(message: ProofOps, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.ops) {
-      ProofOp.encode(v!, writer.uint32(10).fork()).ldelim();
-    }
-
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ProofOps {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseProofOps();
-
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-
-      switch (tag >>> 3) {
-        case 1:
-          message.ops.push(ProofOp.decode(reader, reader.uint32()));
-          break;
-
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-
-    return message;
-  },
-
-  fromPartial(object: DeepPartial<ProofOps>): ProofOps {
-    const message = createBaseProofOps();
-    message.ops = object.ops?.map(e => ProofOp.fromPartial(e)) || [];
     return message;
   }
 

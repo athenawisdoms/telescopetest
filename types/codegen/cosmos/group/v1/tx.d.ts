@@ -1,7 +1,7 @@
-import { MemberRequest, MemberRequestSDKType, VoteOption, VoteOptionSDKType, ProposalExecutorResult, ProposalExecutorResultSDKType } from "./types";
+import { Member, MemberSDKType, VoteOption, VoteOptionSDKType } from "./types";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** Exec defines modes of execution of a proposal on creation or on new vote. */
 export declare enum Exec {
     /**
@@ -41,7 +41,7 @@ export interface MsgCreateGroup {
     /** admin is the account address of the group admin. */
     admin: string;
     /** members defines the group members. */
-    members: MemberRequest[];
+    members: Member[];
     /** metadata is any arbitrary metadata to attached to the group. */
     metadata: string;
 }
@@ -50,7 +50,7 @@ export interface MsgCreateGroupSDKType {
     /** admin is the account address of the group admin. */
     admin: string;
     /** members defines the group members. */
-    members: MemberRequestSDKType[];
+    members: MemberSDKType[];
     /** metadata is any arbitrary metadata to attached to the group. */
     metadata: string;
 }
@@ -74,7 +74,7 @@ export interface MsgUpdateGroupMembers {
      * member_updates is the list of members to update,
      * set weight to 0 to remove a member.
      */
-    memberUpdates: MemberRequest[];
+    memberUpdates: Member[];
 }
 /** MsgUpdateGroupMembers is the Msg/UpdateGroupMembers request type. */
 export interface MsgUpdateGroupMembersSDKType {
@@ -86,7 +86,7 @@ export interface MsgUpdateGroupMembersSDKType {
      * member_updates is the list of members to update,
      * set weight to 0 to remove a member.
      */
-    member_updates: MemberRequestSDKType[];
+    member_updates: MemberSDKType[];
 }
 /** MsgUpdateGroupMembersResponse is the Msg/UpdateGroupMembers response type. */
 export interface MsgUpdateGroupMembersResponse {
@@ -178,8 +178,8 @@ export interface MsgCreateGroupPolicyResponseSDKType {
 export interface MsgUpdateGroupPolicyAdmin {
     /** admin is the account address of the group admin. */
     admin: string;
-    /** group_policy_address is the account address of the group policy. */
-    groupPolicyAddress: string;
+    /** address is the account address of the group policy. */
+    address: string;
     /** new_admin is the new group policy admin. */
     newAdmin: string;
 }
@@ -187,8 +187,8 @@ export interface MsgUpdateGroupPolicyAdmin {
 export interface MsgUpdateGroupPolicyAdminSDKType {
     /** admin is the account address of the group admin. */
     admin: string;
-    /** group_policy_address is the account address of the group policy. */
-    group_policy_address: string;
+    /** address is the account address of the group policy. */
+    address: string;
     /** new_admin is the new group policy admin. */
     new_admin: string;
 }
@@ -197,15 +197,12 @@ export interface MsgCreateGroupWithPolicy {
     /** admin is the account address of the group and group policy admin. */
     admin: string;
     /** members defines the group members. */
-    members: MemberRequest[];
+    members: Member[];
     /** group_metadata is any arbitrary metadata attached to the group. */
     groupMetadata: string;
     /** group_policy_metadata is any arbitrary metadata attached to the group policy. */
     groupPolicyMetadata: string;
-    /**
-     * group_policy_as_admin is a boolean field, if set to true, the group policy account address will be used as group
-     * and group policy admin.
-     */
+    /** group_policy_as_admin is a boolean field, if set to true, the group policy account address will be used as group and group policy admin. */
     groupPolicyAsAdmin: boolean;
     /** decision_policy specifies the group policy's decision policy. */
     decisionPolicy?: Any;
@@ -215,15 +212,12 @@ export interface MsgCreateGroupWithPolicySDKType {
     /** admin is the account address of the group and group policy admin. */
     admin: string;
     /** members defines the group members. */
-    members: MemberRequestSDKType[];
+    members: MemberSDKType[];
     /** group_metadata is any arbitrary metadata attached to the group. */
     group_metadata: string;
     /** group_policy_metadata is any arbitrary metadata attached to the group policy. */
     group_policy_metadata: string;
-    /**
-     * group_policy_as_admin is a boolean field, if set to true, the group policy account address will be used as group
-     * and group policy admin.
-     */
+    /** group_policy_as_admin is a boolean field, if set to true, the group policy account address will be used as group and group policy admin. */
     group_policy_as_admin: boolean;
     /** decision_policy specifies the group policy's decision policy. */
     decision_policy?: AnySDKType;
@@ -252,8 +246,8 @@ export interface MsgUpdateGroupPolicyAdminResponseSDKType {
 export interface MsgUpdateGroupPolicyDecisionPolicy {
     /** admin is the account address of the group admin. */
     admin: string;
-    /** group_policy_address is the account address of group policy. */
-    groupPolicyAddress: string;
+    /** address is the account address of group policy. */
+    address: string;
     /** decision_policy is the updated group policy's decision policy. */
     decisionPolicy?: Any;
 }
@@ -261,8 +255,8 @@ export interface MsgUpdateGroupPolicyDecisionPolicy {
 export interface MsgUpdateGroupPolicyDecisionPolicySDKType {
     /** admin is the account address of the group admin. */
     admin: string;
-    /** group_policy_address is the account address of group policy. */
-    group_policy_address: string;
+    /** address is the account address of group policy. */
+    address: string;
     /** decision_policy is the updated group policy's decision policy. */
     decision_policy?: AnySDKType;
 }
@@ -276,8 +270,8 @@ export interface MsgUpdateGroupPolicyDecisionPolicyResponseSDKType {
 export interface MsgUpdateGroupPolicyMetadata {
     /** admin is the account address of the group admin. */
     admin: string;
-    /** group_policy_address is the account address of group policy. */
-    groupPolicyAddress: string;
+    /** address is the account address of group policy. */
+    address: string;
     /** metadata is the updated group policy metadata. */
     metadata: string;
 }
@@ -285,8 +279,8 @@ export interface MsgUpdateGroupPolicyMetadata {
 export interface MsgUpdateGroupPolicyMetadataSDKType {
     /** admin is the account address of the group admin. */
     admin: string;
-    /** group_policy_address is the account address of group policy. */
-    group_policy_address: string;
+    /** address is the account address of group policy. */
+    address: string;
     /** metadata is the updated group policy metadata. */
     metadata: string;
 }
@@ -298,8 +292,8 @@ export interface MsgUpdateGroupPolicyMetadataResponseSDKType {
 }
 /** MsgSubmitProposal is the Msg/SubmitProposal request type. */
 export interface MsgSubmitProposal {
-    /** group_policy_address is the account address of group policy. */
-    groupPolicyAddress: string;
+    /** address is the account address of group policy. */
+    address: string;
     /**
      * proposers are the account addresses of the proposers.
      * Proposers signatures will be counted as yes votes.
@@ -318,8 +312,8 @@ export interface MsgSubmitProposal {
 }
 /** MsgSubmitProposal is the Msg/SubmitProposal request type. */
 export interface MsgSubmitProposalSDKType {
-    /** group_policy_address is the account address of group policy. */
-    group_policy_address: string;
+    /** address is the account address of group policy. */
+    address: string;
     /**
      * proposers are the account addresses of the proposers.
      * Proposers signatures will be counted as yes votes.
@@ -408,25 +402,21 @@ export interface MsgVoteResponseSDKType {
 export interface MsgExec {
     /** proposal is the unique ID of the proposal. */
     proposalId: Long;
-    /** executor is the account address used to execute the proposal. */
-    executor: string;
+    /** signer is the account address used to execute the proposal. */
+    signer: string;
 }
 /** MsgExec is the Msg/Exec request type. */
 export interface MsgExecSDKType {
     /** proposal is the unique ID of the proposal. */
     proposal_id: Long;
-    /** executor is the account address used to execute the proposal. */
-    executor: string;
+    /** signer is the account address used to execute the proposal. */
+    signer: string;
 }
 /** MsgExecResponse is the Msg/Exec request type. */
 export interface MsgExecResponse {
-    /** result is the final result of the proposal execution. */
-    result: ProposalExecutorResult;
 }
 /** MsgExecResponse is the Msg/Exec request type. */
 export interface MsgExecResponseSDKType {
-    /** result is the final result of the proposal execution. */
-    result: ProposalExecutorResultSDKType;
 }
 /** MsgLeaveGroup is the Msg/LeaveGroup request type. */
 export interface MsgLeaveGroup {
@@ -451,140 +441,196 @@ export interface MsgLeaveGroupResponseSDKType {
 export declare const MsgCreateGroup: {
     encode(message: MsgCreateGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroup;
-    fromPartial(object: DeepPartial<MsgCreateGroup>): MsgCreateGroup;
+    fromJSON(object: any): MsgCreateGroup;
+    toJSON(message: MsgCreateGroup): unknown;
+    fromPartial(object: Partial<MsgCreateGroup>): MsgCreateGroup;
 };
 export declare const MsgCreateGroupResponse: {
     encode(message: MsgCreateGroupResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroupResponse;
-    fromPartial(object: DeepPartial<MsgCreateGroupResponse>): MsgCreateGroupResponse;
+    fromJSON(object: any): MsgCreateGroupResponse;
+    toJSON(message: MsgCreateGroupResponse): unknown;
+    fromPartial(object: Partial<MsgCreateGroupResponse>): MsgCreateGroupResponse;
 };
 export declare const MsgUpdateGroupMembers: {
     encode(message: MsgUpdateGroupMembers, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupMembers;
-    fromPartial(object: DeepPartial<MsgUpdateGroupMembers>): MsgUpdateGroupMembers;
+    fromJSON(object: any): MsgUpdateGroupMembers;
+    toJSON(message: MsgUpdateGroupMembers): unknown;
+    fromPartial(object: Partial<MsgUpdateGroupMembers>): MsgUpdateGroupMembers;
 };
 export declare const MsgUpdateGroupMembersResponse: {
     encode(_: MsgUpdateGroupMembersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupMembersResponse;
-    fromPartial(_: DeepPartial<MsgUpdateGroupMembersResponse>): MsgUpdateGroupMembersResponse;
+    fromJSON(_: any): MsgUpdateGroupMembersResponse;
+    toJSON(_: MsgUpdateGroupMembersResponse): unknown;
+    fromPartial(_: Partial<MsgUpdateGroupMembersResponse>): MsgUpdateGroupMembersResponse;
 };
 export declare const MsgUpdateGroupAdmin: {
     encode(message: MsgUpdateGroupAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupAdmin;
-    fromPartial(object: DeepPartial<MsgUpdateGroupAdmin>): MsgUpdateGroupAdmin;
+    fromJSON(object: any): MsgUpdateGroupAdmin;
+    toJSON(message: MsgUpdateGroupAdmin): unknown;
+    fromPartial(object: Partial<MsgUpdateGroupAdmin>): MsgUpdateGroupAdmin;
 };
 export declare const MsgUpdateGroupAdminResponse: {
     encode(_: MsgUpdateGroupAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupAdminResponse;
-    fromPartial(_: DeepPartial<MsgUpdateGroupAdminResponse>): MsgUpdateGroupAdminResponse;
+    fromJSON(_: any): MsgUpdateGroupAdminResponse;
+    toJSON(_: MsgUpdateGroupAdminResponse): unknown;
+    fromPartial(_: Partial<MsgUpdateGroupAdminResponse>): MsgUpdateGroupAdminResponse;
 };
 export declare const MsgUpdateGroupMetadata: {
     encode(message: MsgUpdateGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupMetadata;
-    fromPartial(object: DeepPartial<MsgUpdateGroupMetadata>): MsgUpdateGroupMetadata;
+    fromJSON(object: any): MsgUpdateGroupMetadata;
+    toJSON(message: MsgUpdateGroupMetadata): unknown;
+    fromPartial(object: Partial<MsgUpdateGroupMetadata>): MsgUpdateGroupMetadata;
 };
 export declare const MsgUpdateGroupMetadataResponse: {
     encode(_: MsgUpdateGroupMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupMetadataResponse;
-    fromPartial(_: DeepPartial<MsgUpdateGroupMetadataResponse>): MsgUpdateGroupMetadataResponse;
+    fromJSON(_: any): MsgUpdateGroupMetadataResponse;
+    toJSON(_: MsgUpdateGroupMetadataResponse): unknown;
+    fromPartial(_: Partial<MsgUpdateGroupMetadataResponse>): MsgUpdateGroupMetadataResponse;
 };
 export declare const MsgCreateGroupPolicy: {
     encode(message: MsgCreateGroupPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroupPolicy;
-    fromPartial(object: DeepPartial<MsgCreateGroupPolicy>): MsgCreateGroupPolicy;
+    fromJSON(object: any): MsgCreateGroupPolicy;
+    toJSON(message: MsgCreateGroupPolicy): unknown;
+    fromPartial(object: Partial<MsgCreateGroupPolicy>): MsgCreateGroupPolicy;
 };
 export declare const MsgCreateGroupPolicyResponse: {
     encode(message: MsgCreateGroupPolicyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroupPolicyResponse;
-    fromPartial(object: DeepPartial<MsgCreateGroupPolicyResponse>): MsgCreateGroupPolicyResponse;
+    fromJSON(object: any): MsgCreateGroupPolicyResponse;
+    toJSON(message: MsgCreateGroupPolicyResponse): unknown;
+    fromPartial(object: Partial<MsgCreateGroupPolicyResponse>): MsgCreateGroupPolicyResponse;
 };
 export declare const MsgUpdateGroupPolicyAdmin: {
     encode(message: MsgUpdateGroupPolicyAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdmin;
-    fromPartial(object: DeepPartial<MsgUpdateGroupPolicyAdmin>): MsgUpdateGroupPolicyAdmin;
+    fromJSON(object: any): MsgUpdateGroupPolicyAdmin;
+    toJSON(message: MsgUpdateGroupPolicyAdmin): unknown;
+    fromPartial(object: Partial<MsgUpdateGroupPolicyAdmin>): MsgUpdateGroupPolicyAdmin;
 };
 export declare const MsgCreateGroupWithPolicy: {
     encode(message: MsgCreateGroupWithPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroupWithPolicy;
-    fromPartial(object: DeepPartial<MsgCreateGroupWithPolicy>): MsgCreateGroupWithPolicy;
+    fromJSON(object: any): MsgCreateGroupWithPolicy;
+    toJSON(message: MsgCreateGroupWithPolicy): unknown;
+    fromPartial(object: Partial<MsgCreateGroupWithPolicy>): MsgCreateGroupWithPolicy;
 };
 export declare const MsgCreateGroupWithPolicyResponse: {
     encode(message: MsgCreateGroupWithPolicyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroupWithPolicyResponse;
-    fromPartial(object: DeepPartial<MsgCreateGroupWithPolicyResponse>): MsgCreateGroupWithPolicyResponse;
+    fromJSON(object: any): MsgCreateGroupWithPolicyResponse;
+    toJSON(message: MsgCreateGroupWithPolicyResponse): unknown;
+    fromPartial(object: Partial<MsgCreateGroupWithPolicyResponse>): MsgCreateGroupWithPolicyResponse;
 };
 export declare const MsgUpdateGroupPolicyAdminResponse: {
     encode(_: MsgUpdateGroupPolicyAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdminResponse;
-    fromPartial(_: DeepPartial<MsgUpdateGroupPolicyAdminResponse>): MsgUpdateGroupPolicyAdminResponse;
+    fromJSON(_: any): MsgUpdateGroupPolicyAdminResponse;
+    toJSON(_: MsgUpdateGroupPolicyAdminResponse): unknown;
+    fromPartial(_: Partial<MsgUpdateGroupPolicyAdminResponse>): MsgUpdateGroupPolicyAdminResponse;
 };
 export declare const MsgUpdateGroupPolicyDecisionPolicy: {
     encode(message: MsgUpdateGroupPolicyDecisionPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyDecisionPolicy;
-    fromPartial(object: DeepPartial<MsgUpdateGroupPolicyDecisionPolicy>): MsgUpdateGroupPolicyDecisionPolicy;
+    fromJSON(object: any): MsgUpdateGroupPolicyDecisionPolicy;
+    toJSON(message: MsgUpdateGroupPolicyDecisionPolicy): unknown;
+    fromPartial(object: Partial<MsgUpdateGroupPolicyDecisionPolicy>): MsgUpdateGroupPolicyDecisionPolicy;
 };
 export declare const MsgUpdateGroupPolicyDecisionPolicyResponse: {
     encode(_: MsgUpdateGroupPolicyDecisionPolicyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyDecisionPolicyResponse;
-    fromPartial(_: DeepPartial<MsgUpdateGroupPolicyDecisionPolicyResponse>): MsgUpdateGroupPolicyDecisionPolicyResponse;
+    fromJSON(_: any): MsgUpdateGroupPolicyDecisionPolicyResponse;
+    toJSON(_: MsgUpdateGroupPolicyDecisionPolicyResponse): unknown;
+    fromPartial(_: Partial<MsgUpdateGroupPolicyDecisionPolicyResponse>): MsgUpdateGroupPolicyDecisionPolicyResponse;
 };
 export declare const MsgUpdateGroupPolicyMetadata: {
     encode(message: MsgUpdateGroupPolicyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyMetadata;
-    fromPartial(object: DeepPartial<MsgUpdateGroupPolicyMetadata>): MsgUpdateGroupPolicyMetadata;
+    fromJSON(object: any): MsgUpdateGroupPolicyMetadata;
+    toJSON(message: MsgUpdateGroupPolicyMetadata): unknown;
+    fromPartial(object: Partial<MsgUpdateGroupPolicyMetadata>): MsgUpdateGroupPolicyMetadata;
 };
 export declare const MsgUpdateGroupPolicyMetadataResponse: {
     encode(_: MsgUpdateGroupPolicyMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyMetadataResponse;
-    fromPartial(_: DeepPartial<MsgUpdateGroupPolicyMetadataResponse>): MsgUpdateGroupPolicyMetadataResponse;
+    fromJSON(_: any): MsgUpdateGroupPolicyMetadataResponse;
+    toJSON(_: MsgUpdateGroupPolicyMetadataResponse): unknown;
+    fromPartial(_: Partial<MsgUpdateGroupPolicyMetadataResponse>): MsgUpdateGroupPolicyMetadataResponse;
 };
 export declare const MsgSubmitProposal: {
     encode(message: MsgSubmitProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposal;
-    fromPartial(object: DeepPartial<MsgSubmitProposal>): MsgSubmitProposal;
+    fromJSON(object: any): MsgSubmitProposal;
+    toJSON(message: MsgSubmitProposal): unknown;
+    fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal;
 };
 export declare const MsgSubmitProposalResponse: {
     encode(message: MsgSubmitProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposalResponse;
-    fromPartial(object: DeepPartial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
+    fromJSON(object: any): MsgSubmitProposalResponse;
+    toJSON(message: MsgSubmitProposalResponse): unknown;
+    fromPartial(object: Partial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
 };
 export declare const MsgWithdrawProposal: {
     encode(message: MsgWithdrawProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawProposal;
-    fromPartial(object: DeepPartial<MsgWithdrawProposal>): MsgWithdrawProposal;
+    fromJSON(object: any): MsgWithdrawProposal;
+    toJSON(message: MsgWithdrawProposal): unknown;
+    fromPartial(object: Partial<MsgWithdrawProposal>): MsgWithdrawProposal;
 };
 export declare const MsgWithdrawProposalResponse: {
     encode(_: MsgWithdrawProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawProposalResponse;
-    fromPartial(_: DeepPartial<MsgWithdrawProposalResponse>): MsgWithdrawProposalResponse;
+    fromJSON(_: any): MsgWithdrawProposalResponse;
+    toJSON(_: MsgWithdrawProposalResponse): unknown;
+    fromPartial(_: Partial<MsgWithdrawProposalResponse>): MsgWithdrawProposalResponse;
 };
 export declare const MsgVote: {
     encode(message: MsgVote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVote;
-    fromPartial(object: DeepPartial<MsgVote>): MsgVote;
+    fromJSON(object: any): MsgVote;
+    toJSON(message: MsgVote): unknown;
+    fromPartial(object: Partial<MsgVote>): MsgVote;
 };
 export declare const MsgVoteResponse: {
     encode(_: MsgVoteResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteResponse;
-    fromPartial(_: DeepPartial<MsgVoteResponse>): MsgVoteResponse;
+    fromJSON(_: any): MsgVoteResponse;
+    toJSON(_: MsgVoteResponse): unknown;
+    fromPartial(_: Partial<MsgVoteResponse>): MsgVoteResponse;
 };
 export declare const MsgExec: {
     encode(message: MsgExec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExec;
-    fromPartial(object: DeepPartial<MsgExec>): MsgExec;
+    fromJSON(object: any): MsgExec;
+    toJSON(message: MsgExec): unknown;
+    fromPartial(object: Partial<MsgExec>): MsgExec;
 };
 export declare const MsgExecResponse: {
-    encode(message: MsgExecResponse, writer?: _m0.Writer): _m0.Writer;
+    encode(_: MsgExecResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecResponse;
-    fromPartial(object: DeepPartial<MsgExecResponse>): MsgExecResponse;
+    fromJSON(_: any): MsgExecResponse;
+    toJSON(_: MsgExecResponse): unknown;
+    fromPartial(_: Partial<MsgExecResponse>): MsgExecResponse;
 };
 export declare const MsgLeaveGroup: {
     encode(message: MsgLeaveGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLeaveGroup;
-    fromPartial(object: DeepPartial<MsgLeaveGroup>): MsgLeaveGroup;
+    fromJSON(object: any): MsgLeaveGroup;
+    toJSON(message: MsgLeaveGroup): unknown;
+    fromPartial(object: Partial<MsgLeaveGroup>): MsgLeaveGroup;
 };
 export declare const MsgLeaveGroupResponse: {
     encode(_: MsgLeaveGroupResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLeaveGroupResponse;
-    fromPartial(_: DeepPartial<MsgLeaveGroupResponse>): MsgLeaveGroupResponse;
+    fromJSON(_: any): MsgLeaveGroupResponse;
+    toJSON(_: MsgLeaveGroupResponse): unknown;
+    fromPartial(_: Partial<MsgLeaveGroupResponse>): MsgLeaveGroupResponse;
 };

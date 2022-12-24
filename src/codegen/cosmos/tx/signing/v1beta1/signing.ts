@@ -1,7 +1,7 @@
 import { CompactBitArray, CompactBitArraySDKType } from "../../../crypto/multisig/v1beta1/multisig";
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long, isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 /**
  * SignMode represents a signing mode with its own security guarantees.
  * 
@@ -48,20 +48,6 @@ export enum SignMode {
    * Amino JSON and will be removed in the future.
    */
   SIGN_MODE_LEGACY_AMINO_JSON = 127,
-
-  /**
-   * SIGN_MODE_EIP_191 - SIGN_MODE_EIP_191 specifies the sign mode for EIP 191 signing on the Cosmos
-   * SDK. Ref: https://eips.ethereum.org/EIPS/eip-191
-   * 
-   * Currently, SIGN_MODE_EIP_191 is registered as a SignMode enum variant,
-   * but is not implemented on the SDK by default. To enable EIP-191, you need
-   * to pass a custom `TxConfig` that has an implementation of
-   * `SignModeHandler` for EIP-191. The SDK may decide to fully support
-   * EIP-191 in the future.
-   * 
-   * Since: cosmos-sdk 0.45.2
-   */
-  SIGN_MODE_EIP_191 = 191,
   UNRECOGNIZED = -1,
 }
 /**
@@ -110,20 +96,6 @@ export enum SignModeSDKType {
    * Amino JSON and will be removed in the future.
    */
   SIGN_MODE_LEGACY_AMINO_JSON = 127,
-
-  /**
-   * SIGN_MODE_EIP_191 - SIGN_MODE_EIP_191 specifies the sign mode for EIP 191 signing on the Cosmos
-   * SDK. Ref: https://eips.ethereum.org/EIPS/eip-191
-   * 
-   * Currently, SIGN_MODE_EIP_191 is registered as a SignMode enum variant,
-   * but is not implemented on the SDK by default. To enable EIP-191, you need
-   * to pass a custom `TxConfig` that has an implementation of
-   * `SignModeHandler` for EIP-191. The SDK may decide to fully support
-   * EIP-191 in the future.
-   * 
-   * Since: cosmos-sdk 0.45.2
-   */
-  SIGN_MODE_EIP_191 = 191,
   UNRECOGNIZED = -1,
 }
 export function signModeFromJSON(object: any): SignMode {
@@ -148,10 +120,6 @@ export function signModeFromJSON(object: any): SignMode {
     case "SIGN_MODE_LEGACY_AMINO_JSON":
       return SignMode.SIGN_MODE_LEGACY_AMINO_JSON;
 
-    case 191:
-    case "SIGN_MODE_EIP_191":
-      return SignMode.SIGN_MODE_EIP_191;
-
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -174,9 +142,6 @@ export function signModeToJSON(object: SignMode): string {
 
     case SignMode.SIGN_MODE_LEGACY_AMINO_JSON:
       return "SIGN_MODE_LEGACY_AMINO_JSON";
-
-    case SignMode.SIGN_MODE_EIP_191:
-      return "SIGN_MODE_EIP_191";
 
     case SignMode.UNRECOGNIZED:
     default:
@@ -325,7 +290,25 @@ export const SignatureDescriptors = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SignatureDescriptors>): SignatureDescriptors {
+  fromJSON(object: any): SignatureDescriptors {
+    return {
+      signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => SignatureDescriptor.fromJSON(e)) : []
+    };
+  },
+
+  toJSON(message: SignatureDescriptors): unknown {
+    const obj: any = {};
+
+    if (message.signatures) {
+      obj.signatures = message.signatures.map(e => e ? SignatureDescriptor.toJSON(e) : undefined);
+    } else {
+      obj.signatures = [];
+    }
+
+    return obj;
+  },
+
+  fromPartial(object: Partial<SignatureDescriptors>): SignatureDescriptors {
     const message = createBaseSignatureDescriptors();
     message.signatures = object.signatures?.map(e => SignatureDescriptor.fromPartial(e)) || [];
     return message;
@@ -388,7 +371,23 @@ export const SignatureDescriptor = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SignatureDescriptor>): SignatureDescriptor {
+  fromJSON(object: any): SignatureDescriptor {
+    return {
+      publicKey: isSet(object.publicKey) ? Any.fromJSON(object.publicKey) : undefined,
+      data: isSet(object.data) ? SignatureDescriptor_Data.fromJSON(object.data) : undefined,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO
+    };
+  },
+
+  toJSON(message: SignatureDescriptor): unknown {
+    const obj: any = {};
+    message.publicKey !== undefined && (obj.publicKey = message.publicKey ? Any.toJSON(message.publicKey) : undefined);
+    message.data !== undefined && (obj.data = message.data ? SignatureDescriptor_Data.toJSON(message.data) : undefined);
+    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
+    return obj;
+  },
+
+  fromPartial(object: Partial<SignatureDescriptor>): SignatureDescriptor {
     const message = createBaseSignatureDescriptor();
     message.publicKey = object.publicKey !== undefined && object.publicKey !== null ? Any.fromPartial(object.publicKey) : undefined;
     message.data = object.data !== undefined && object.data !== null ? SignatureDescriptor_Data.fromPartial(object.data) : undefined;
@@ -444,7 +443,21 @@ export const SignatureDescriptor_Data = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SignatureDescriptor_Data>): SignatureDescriptor_Data {
+  fromJSON(object: any): SignatureDescriptor_Data {
+    return {
+      single: isSet(object.single) ? SignatureDescriptor_Data_Single.fromJSON(object.single) : undefined,
+      multi: isSet(object.multi) ? SignatureDescriptor_Data_Multi.fromJSON(object.multi) : undefined
+    };
+  },
+
+  toJSON(message: SignatureDescriptor_Data): unknown {
+    const obj: any = {};
+    message.single !== undefined && (obj.single = message.single ? SignatureDescriptor_Data_Single.toJSON(message.single) : undefined);
+    message.multi !== undefined && (obj.multi = message.multi ? SignatureDescriptor_Data_Multi.toJSON(message.multi) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<SignatureDescriptor_Data>): SignatureDescriptor_Data {
     const message = createBaseSignatureDescriptor_Data();
     message.single = object.single !== undefined && object.single !== null ? SignatureDescriptor_Data_Single.fromPartial(object.single) : undefined;
     message.multi = object.multi !== undefined && object.multi !== null ? SignatureDescriptor_Data_Multi.fromPartial(object.multi) : undefined;
@@ -499,7 +512,21 @@ export const SignatureDescriptor_Data_Single = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single {
+  fromJSON(object: any): SignatureDescriptor_Data_Single {
+    return {
+      mode: isSet(object.mode) ? signModeFromJSON(object.mode) : 0,
+      signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array()
+    };
+  },
+
+  toJSON(message: SignatureDescriptor_Data_Single): unknown {
+    const obj: any = {};
+    message.mode !== undefined && (obj.mode = signModeToJSON(message.mode));
+    message.signature !== undefined && (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : new Uint8Array()));
+    return obj;
+  },
+
+  fromPartial(object: Partial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single {
     const message = createBaseSignatureDescriptor_Data_Single();
     message.mode = object.mode ?? 0;
     message.signature = object.signature ?? new Uint8Array();
@@ -554,7 +581,27 @@ export const SignatureDescriptor_Data_Multi = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi {
+  fromJSON(object: any): SignatureDescriptor_Data_Multi {
+    return {
+      bitarray: isSet(object.bitarray) ? CompactBitArray.fromJSON(object.bitarray) : undefined,
+      signatures: Array.isArray(object?.signatures) ? object.signatures.map((e: any) => SignatureDescriptor_Data.fromJSON(e)) : []
+    };
+  },
+
+  toJSON(message: SignatureDescriptor_Data_Multi): unknown {
+    const obj: any = {};
+    message.bitarray !== undefined && (obj.bitarray = message.bitarray ? CompactBitArray.toJSON(message.bitarray) : undefined);
+
+    if (message.signatures) {
+      obj.signatures = message.signatures.map(e => e ? SignatureDescriptor_Data.toJSON(e) : undefined);
+    } else {
+      obj.signatures = [];
+    }
+
+    return obj;
+  },
+
+  fromPartial(object: Partial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi {
     const message = createBaseSignatureDescriptor_Data_Multi();
     message.bitarray = object.bitarray !== undefined && object.bitarray !== null ? CompactBitArray.fromPartial(object.bitarray) : undefined;
     message.signatures = object.signatures?.map(e => SignatureDescriptor_Data.fromPartial(e)) || [];

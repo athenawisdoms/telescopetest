@@ -1,6 +1,6 @@
 import { ProposalExecutorResult, ProposalExecutorResultSDKType } from "./types";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** EventCreateGroup is an event emitted when a group is created. */
 export interface EventCreateGroup {
     /** group_id is the unique ID of the group. */
@@ -77,8 +77,6 @@ export interface EventExec {
     proposalId: Long;
     /** result is the proposal execution result. */
     result: ProposalExecutorResult;
-    /** logs contains error logs in case the execution result is FAILURE. */
-    logs: string;
 }
 /** EventExec is an event emitted when a proposal is executed. */
 export interface EventExecSDKType {
@@ -86,8 +84,6 @@ export interface EventExecSDKType {
     proposal_id: Long;
     /** result is the proposal execution result. */
     result: ProposalExecutorResultSDKType;
-    /** logs contains error logs in case the execution result is FAILURE. */
-    logs: string;
 }
 /** EventLeaveGroup is an event emitted when group member leaves the group. */
 export interface EventLeaveGroup {
@@ -106,45 +102,63 @@ export interface EventLeaveGroupSDKType {
 export declare const EventCreateGroup: {
     encode(message: EventCreateGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventCreateGroup;
-    fromPartial(object: DeepPartial<EventCreateGroup>): EventCreateGroup;
+    fromJSON(object: any): EventCreateGroup;
+    toJSON(message: EventCreateGroup): unknown;
+    fromPartial(object: Partial<EventCreateGroup>): EventCreateGroup;
 };
 export declare const EventUpdateGroup: {
     encode(message: EventUpdateGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventUpdateGroup;
-    fromPartial(object: DeepPartial<EventUpdateGroup>): EventUpdateGroup;
+    fromJSON(object: any): EventUpdateGroup;
+    toJSON(message: EventUpdateGroup): unknown;
+    fromPartial(object: Partial<EventUpdateGroup>): EventUpdateGroup;
 };
 export declare const EventCreateGroupPolicy: {
     encode(message: EventCreateGroupPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventCreateGroupPolicy;
-    fromPartial(object: DeepPartial<EventCreateGroupPolicy>): EventCreateGroupPolicy;
+    fromJSON(object: any): EventCreateGroupPolicy;
+    toJSON(message: EventCreateGroupPolicy): unknown;
+    fromPartial(object: Partial<EventCreateGroupPolicy>): EventCreateGroupPolicy;
 };
 export declare const EventUpdateGroupPolicy: {
     encode(message: EventUpdateGroupPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventUpdateGroupPolicy;
-    fromPartial(object: DeepPartial<EventUpdateGroupPolicy>): EventUpdateGroupPolicy;
+    fromJSON(object: any): EventUpdateGroupPolicy;
+    toJSON(message: EventUpdateGroupPolicy): unknown;
+    fromPartial(object: Partial<EventUpdateGroupPolicy>): EventUpdateGroupPolicy;
 };
 export declare const EventSubmitProposal: {
     encode(message: EventSubmitProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventSubmitProposal;
-    fromPartial(object: DeepPartial<EventSubmitProposal>): EventSubmitProposal;
+    fromJSON(object: any): EventSubmitProposal;
+    toJSON(message: EventSubmitProposal): unknown;
+    fromPartial(object: Partial<EventSubmitProposal>): EventSubmitProposal;
 };
 export declare const EventWithdrawProposal: {
     encode(message: EventWithdrawProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventWithdrawProposal;
-    fromPartial(object: DeepPartial<EventWithdrawProposal>): EventWithdrawProposal;
+    fromJSON(object: any): EventWithdrawProposal;
+    toJSON(message: EventWithdrawProposal): unknown;
+    fromPartial(object: Partial<EventWithdrawProposal>): EventWithdrawProposal;
 };
 export declare const EventVote: {
     encode(message: EventVote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventVote;
-    fromPartial(object: DeepPartial<EventVote>): EventVote;
+    fromJSON(object: any): EventVote;
+    toJSON(message: EventVote): unknown;
+    fromPartial(object: Partial<EventVote>): EventVote;
 };
 export declare const EventExec: {
     encode(message: EventExec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventExec;
-    fromPartial(object: DeepPartial<EventExec>): EventExec;
+    fromJSON(object: any): EventExec;
+    toJSON(message: EventExec): unknown;
+    fromPartial(object: Partial<EventExec>): EventExec;
 };
 export declare const EventLeaveGroup: {
     encode(message: EventLeaveGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventLeaveGroup;
-    fromPartial(object: DeepPartial<EventLeaveGroup>): EventLeaveGroup;
+    fromJSON(object: any): EventLeaveGroup;
+    toJSON(message: EventLeaveGroup): unknown;
+    fromPartial(object: Partial<EventLeaveGroup>): EventLeaveGroup;
 };

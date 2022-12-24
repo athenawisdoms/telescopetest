@@ -40,13 +40,7 @@ export interface Query {
   /** GroupsByMember queries groups by member address. */
 
   groupsByMember(request: QueryGroupsByMemberRequest): Promise<QueryGroupsByMemberResponse>;
-  /**
-   * TallyResult returns the tally result of a proposal. If the proposal is
-   * still in voting period, then this query computes the current tally state,
-   * which might not be final. On the other hand, if the proposal is final,
-   * then it simply returns the `final_tally_result` state stored in the
-   * proposal itself.
-   */
+  /** TallyResult queries the tally of a proposal votes. */
 
   tallyResult(request: QueryTallyResultRequest): Promise<QueryTallyResultResponse>;
 }

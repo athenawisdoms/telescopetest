@@ -1,11 +1,12 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** ModuleDescriptor describes an app module. */
 export interface ModuleDescriptor {
     /**
      * go_import names the package that should be imported by an app to load the
-     * module in the runtime module registry. It is required to make debugging
-     * of configuration errors easier for users.
+     * module in the runtime module registry. Either go_import must be defined here
+     * or the go_package option must be defined at the file level to indicate
+     * to users where to location the module implementation. go_import takes
+     * precedence over go_package when both are defined.
      */
     goImport: string;
     /**
@@ -30,8 +31,10 @@ export interface ModuleDescriptor {
 export interface ModuleDescriptorSDKType {
     /**
      * go_import names the package that should be imported by an app to load the
-     * module in the runtime module registry. It is required to make debugging
-     * of configuration errors easier for users.
+     * module in the runtime module registry. Either go_import must be defined here
+     * or the go_package option must be defined at the file level to indicate
+     * to users where to location the module implementation. go_import takes
+     * precedence over go_package when both are defined.
      */
     go_import: string;
     /**
@@ -65,8 +68,8 @@ export interface PackageReference {
      * present in a previous version.
      *
      * A package should indicate its revision with a source code comment
-     * above the package declaration in one of its files containing the
-     * text "Revision N" where N is an integer revision. All packages start
+     * above the package declaration in one of its fields containing the
+     * test "Revision N" where N is an integer revision. All packages start
      * at revision 0 the first time they are released in a module.
      *
      * When a new version of a module is released and items are added to existing
@@ -108,8 +111,8 @@ export interface PackageReferenceSDKType {
      * present in a previous version.
      *
      * A package should indicate its revision with a source code comment
-     * above the package declaration in one of its files containing the
-     * text "Revision N" where N is an integer revision. All packages start
+     * above the package declaration in one of its fields containing the
+     * test "Revision N" where N is an integer revision. All packages start
      * at revision 0 the first time they are released in a module.
      *
      * When a new version of a module is released and items are added to existing
@@ -163,15 +166,21 @@ export interface MigrateFromInfoSDKType {
 export declare const ModuleDescriptor: {
     encode(message: ModuleDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDescriptor;
-    fromPartial(object: DeepPartial<ModuleDescriptor>): ModuleDescriptor;
+    fromJSON(object: any): ModuleDescriptor;
+    toJSON(message: ModuleDescriptor): unknown;
+    fromPartial(object: Partial<ModuleDescriptor>): ModuleDescriptor;
 };
 export declare const PackageReference: {
     encode(message: PackageReference, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PackageReference;
-    fromPartial(object: DeepPartial<PackageReference>): PackageReference;
+    fromJSON(object: any): PackageReference;
+    toJSON(message: PackageReference): unknown;
+    fromPartial(object: Partial<PackageReference>): PackageReference;
 };
 export declare const MigrateFromInfo: {
     encode(message: MigrateFromInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MigrateFromInfo;
-    fromPartial(object: DeepPartial<MigrateFromInfo>): MigrateFromInfo;
+    fromJSON(object: any): MigrateFromInfo;
+    toJSON(message: MigrateFromInfo): unknown;
+    fromPartial(object: Partial<MigrateFromInfo>): MigrateFromInfo;
 };

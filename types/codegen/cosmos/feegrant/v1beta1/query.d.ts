@@ -1,7 +1,6 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Grant, GrantSDKType } from "./feegrant";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** QueryAllowanceRequest is the request type for the Query/Allowance RPC method. */
 export interface QueryAllowanceRequest {
     /** granter is the address of the user granting an allowance of their funds. */
@@ -52,42 +51,26 @@ export interface QueryAllowancesResponseSDKType {
     /** pagination defines an pagination for the response. */
     pagination?: PageResponseSDKType;
 }
-/**
- * QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterRequest {
     granter: string;
     /** pagination defines an pagination for the request. */
     pagination?: PageRequest;
 }
-/**
- * QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterRequestSDKType {
     granter: string;
     /** pagination defines an pagination for the request. */
     pagination?: PageRequestSDKType;
 }
-/**
- * QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterResponse {
     /** allowances that have been issued by the granter. */
     allowances: Grant[];
     /** pagination defines an pagination for the response. */
     pagination?: PageResponse;
 }
-/**
- * QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method.
- *
- * Since: cosmos-sdk 0.46
- */
+/** QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterResponseSDKType {
     /** allowances that have been issued by the granter. */
     allowances: GrantSDKType[];
@@ -97,30 +80,42 @@ export interface QueryAllowancesByGranterResponseSDKType {
 export declare const QueryAllowanceRequest: {
     encode(message: QueryAllowanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowanceRequest;
-    fromPartial(object: DeepPartial<QueryAllowanceRequest>): QueryAllowanceRequest;
+    fromJSON(object: any): QueryAllowanceRequest;
+    toJSON(message: QueryAllowanceRequest): unknown;
+    fromPartial(object: Partial<QueryAllowanceRequest>): QueryAllowanceRequest;
 };
 export declare const QueryAllowanceResponse: {
     encode(message: QueryAllowanceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowanceResponse;
-    fromPartial(object: DeepPartial<QueryAllowanceResponse>): QueryAllowanceResponse;
+    fromJSON(object: any): QueryAllowanceResponse;
+    toJSON(message: QueryAllowanceResponse): unknown;
+    fromPartial(object: Partial<QueryAllowanceResponse>): QueryAllowanceResponse;
 };
 export declare const QueryAllowancesRequest: {
     encode(message: QueryAllowancesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesRequest;
-    fromPartial(object: DeepPartial<QueryAllowancesRequest>): QueryAllowancesRequest;
+    fromJSON(object: any): QueryAllowancesRequest;
+    toJSON(message: QueryAllowancesRequest): unknown;
+    fromPartial(object: Partial<QueryAllowancesRequest>): QueryAllowancesRequest;
 };
 export declare const QueryAllowancesResponse: {
     encode(message: QueryAllowancesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesResponse;
-    fromPartial(object: DeepPartial<QueryAllowancesResponse>): QueryAllowancesResponse;
+    fromJSON(object: any): QueryAllowancesResponse;
+    toJSON(message: QueryAllowancesResponse): unknown;
+    fromPartial(object: Partial<QueryAllowancesResponse>): QueryAllowancesResponse;
 };
 export declare const QueryAllowancesByGranterRequest: {
     encode(message: QueryAllowancesByGranterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesByGranterRequest;
-    fromPartial(object: DeepPartial<QueryAllowancesByGranterRequest>): QueryAllowancesByGranterRequest;
+    fromJSON(object: any): QueryAllowancesByGranterRequest;
+    toJSON(message: QueryAllowancesByGranterRequest): unknown;
+    fromPartial(object: Partial<QueryAllowancesByGranterRequest>): QueryAllowancesByGranterRequest;
 };
 export declare const QueryAllowancesByGranterResponse: {
     encode(message: QueryAllowancesByGranterResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesByGranterResponse;
-    fromPartial(object: DeepPartial<QueryAllowancesByGranterResponse>): QueryAllowancesByGranterResponse;
+    fromJSON(object: any): QueryAllowancesByGranterResponse;
+    toJSON(message: QueryAllowancesByGranterResponse): unknown;
+    fromPartial(object: Partial<QueryAllowancesByGranterResponse>): QueryAllowancesByGranterResponse;
 };

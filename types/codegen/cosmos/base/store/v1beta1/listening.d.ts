@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../../helpers";
 /**
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
@@ -33,5 +32,7 @@ export interface StoreKVPairSDKType {
 export declare const StoreKVPair: {
     encode(message: StoreKVPair, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StoreKVPair;
-    fromPartial(object: DeepPartial<StoreKVPair>): StoreKVPair;
+    fromJSON(object: any): StoreKVPair;
+    toJSON(message: StoreKVPair): unknown;
+    fromPartial(object: Partial<StoreKVPair>): StoreKVPair;
 };

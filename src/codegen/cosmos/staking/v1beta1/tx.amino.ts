@@ -1,7 +1,8 @@
+//@ts-nocheck
 import { AminoMsg, decodeBech32Pubkey, encodeBech32Pubkey } from "@cosmjs/amino";
 import { fromBase64, toBase64 } from "@cosmjs/encoding";
 import { Long } from "../../../helpers";
-import { MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate, MsgCancelUnbondingDelegation } from "./tx";
+import { MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate } from "./tx";
 export interface AminoMsgCreateValidator extends AminoMsg {
   type: "cosmos-sdk/MsgCreateValidator";
   value: {
@@ -77,18 +78,6 @@ export interface AminoMsgUndelegate extends AminoMsg {
       denom: string;
       amount: string;
     };
-  };
-}
-export interface AminoMsgCancelUnbondingDelegation extends AminoMsg {
-  type: "cosmos-sdk/MsgCancelUnbondingDelegation";
-  value: {
-    delegator_address: string;
-    validator_address: string;
-    amount: {
-      denom: string;
-      amount: string;
-    };
-    creation_height: string;
   };
 }
 export const AminoConverter = {
@@ -300,41 +289,6 @@ export const AminoConverter = {
           denom: amount.denom,
           amount: amount.amount
         }
-      };
-    }
-  },
-  "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegation": {
-    aminoType: "cosmos-sdk/MsgCancelUnbondingDelegation",
-    toAmino: ({
-      delegatorAddress,
-      validatorAddress,
-      amount,
-      creationHeight
-    }: MsgCancelUnbondingDelegation): AminoMsgCancelUnbondingDelegation["value"] => {
-      return {
-        delegator_address: delegatorAddress,
-        validator_address: validatorAddress,
-        amount: {
-          denom: amount.denom,
-          amount: Long.fromValue(amount.amount).toString()
-        },
-        creation_height: creationHeight.toString()
-      };
-    },
-    fromAmino: ({
-      delegator_address,
-      validator_address,
-      amount,
-      creation_height
-    }: AminoMsgCancelUnbondingDelegation["value"]): MsgCancelUnbondingDelegation => {
-      return {
-        delegatorAddress: delegator_address,
-        validatorAddress: validator_address,
-        amount: {
-          denom: amount.denom,
-          amount: amount.amount
-        },
-        creationHeight: Long.fromString(creation_height)
       };
     }
   }

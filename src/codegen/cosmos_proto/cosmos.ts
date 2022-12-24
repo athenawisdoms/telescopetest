@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../helpers";
+import { isSet } from "../helpers";
 export enum ScalarType {
   SCALAR_TYPE_UNSPECIFIED = 0,
   SCALAR_TYPE_STRING = 1,
@@ -121,19 +121,6 @@ export interface ScalarDescriptor {
    */
 
   fieldType: ScalarType[];
-  /**
-   * legacy_amino_encoding is an optional string to describe the encoding
-   * format used by Amino. The field type is chosen to be a string so that
-   * the value can either be:
-   * - a machine-readable string, such as "base64", "bech32" or "utf8",
-   * - or a human-readable string, for instance a short specification of how
-   * a big integer would be encoded using Amino.
-   * 
-   * If left empty, then the Amino encoding is expected to be the same as the
-   * Protobuf one.
-   */
-
-  legacyAminoEncoding: string;
 }
 /**
  * ScalarDescriptor describes an scalar type to be used with
@@ -168,19 +155,6 @@ export interface ScalarDescriptorSDKType {
    */
 
   field_type: ScalarTypeSDKType[];
-  /**
-   * legacy_amino_encoding is an optional string to describe the encoding
-   * format used by Amino. The field type is chosen to be a string so that
-   * the value can either be:
-   * - a machine-readable string, such as "base64", "bech32" or "utf8",
-   * - or a human-readable string, for instance a short specification of how
-   * a big integer would be encoded using Amino.
-   * 
-   * If left empty, then the Amino encoding is expected to be the same as the
-   * Protobuf one.
-   */
-
-  legacy_amino_encoding: string;
 }
 
 function createBaseInterfaceDescriptor(): InterfaceDescriptor {
@@ -229,7 +203,21 @@ export const InterfaceDescriptor = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<InterfaceDescriptor>): InterfaceDescriptor {
+  fromJSON(object: any): InterfaceDescriptor {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      description: isSet(object.description) ? String(object.description) : ""
+    };
+  },
+
+  toJSON(message: InterfaceDescriptor): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.description !== undefined && (obj.description = message.description);
+    return obj;
+  },
+
+  fromPartial(object: Partial<InterfaceDescriptor>): InterfaceDescriptor {
     const message = createBaseInterfaceDescriptor();
     message.name = object.name ?? "";
     message.description = object.description ?? "";
@@ -242,8 +230,7 @@ function createBaseScalarDescriptor(): ScalarDescriptor {
   return {
     name: "",
     description: "",
-    fieldType: [],
-    legacyAminoEncoding: ""
+    fieldType: []
   };
 }
 
@@ -264,11 +251,6 @@ export const ScalarDescriptor = {
     }
 
     writer.ldelim();
-
-    if (message.legacyAminoEncoding !== "") {
-      writer.uint32(34).string(message.legacyAminoEncoding);
-    }
-
     return writer;
   },
 
@@ -302,10 +284,6 @@ export const ScalarDescriptor = {
 
           break;
 
-        case 4:
-          message.legacyAminoEncoding = reader.string();
-          break;
-
         default:
           reader.skipType(tag & 7);
           break;
@@ -315,12 +293,33 @@ export const ScalarDescriptor = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ScalarDescriptor>): ScalarDescriptor {
+  fromJSON(object: any): ScalarDescriptor {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      fieldType: Array.isArray(object?.fieldType) ? object.fieldType.map((e: any) => scalarTypeFromJSON(e)) : []
+    };
+  },
+
+  toJSON(message: ScalarDescriptor): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.description !== undefined && (obj.description = message.description);
+
+    if (message.fieldType) {
+      obj.fieldType = message.fieldType.map(e => scalarTypeToJSON(e));
+    } else {
+      obj.fieldType = [];
+    }
+
+    return obj;
+  },
+
+  fromPartial(object: Partial<ScalarDescriptor>): ScalarDescriptor {
     const message = createBaseScalarDescriptor();
     message.name = object.name ?? "";
     message.description = object.description ?? "";
     message.fieldType = object.fieldType?.map(e => e) || [];
-    message.legacyAminoEncoding = object.legacyAminoEncoding ?? "";
     return message;
   }
 

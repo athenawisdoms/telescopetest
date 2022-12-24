@@ -1,6 +1,6 @@
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * ConsensusParams contains consensus critical parameters that determine the
  * validity of blocks.
@@ -152,30 +152,42 @@ export interface HashedParamsSDKType {
 export declare const ConsensusParams: {
     encode(message: ConsensusParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusParams;
-    fromPartial(object: DeepPartial<ConsensusParams>): ConsensusParams;
+    fromJSON(object: any): ConsensusParams;
+    toJSON(message: ConsensusParams): unknown;
+    fromPartial(object: Partial<ConsensusParams>): ConsensusParams;
 };
 export declare const BlockParams: {
     encode(message: BlockParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockParams;
-    fromPartial(object: DeepPartial<BlockParams>): BlockParams;
+    fromJSON(object: any): BlockParams;
+    toJSON(message: BlockParams): unknown;
+    fromPartial(object: Partial<BlockParams>): BlockParams;
 };
 export declare const EvidenceParams: {
     encode(message: EvidenceParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EvidenceParams;
-    fromPartial(object: DeepPartial<EvidenceParams>): EvidenceParams;
+    fromJSON(object: any): EvidenceParams;
+    toJSON(message: EvidenceParams): unknown;
+    fromPartial(object: Partial<EvidenceParams>): EvidenceParams;
 };
 export declare const ValidatorParams: {
     encode(message: ValidatorParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorParams;
-    fromPartial(object: DeepPartial<ValidatorParams>): ValidatorParams;
+    fromJSON(object: any): ValidatorParams;
+    toJSON(message: ValidatorParams): unknown;
+    fromPartial(object: Partial<ValidatorParams>): ValidatorParams;
 };
 export declare const VersionParams: {
     encode(message: VersionParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): VersionParams;
-    fromPartial(object: DeepPartial<VersionParams>): VersionParams;
+    fromJSON(object: any): VersionParams;
+    toJSON(message: VersionParams): unknown;
+    fromPartial(object: Partial<VersionParams>): VersionParams;
 };
 export declare const HashedParams: {
     encode(message: HashedParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HashedParams;
-    fromPartial(object: DeepPartial<HashedParams>): HashedParams;
+    fromJSON(object: any): HashedParams;
+    toJSON(message: HashedParams): unknown;
+    fromPartial(object: Partial<HashedParams>): HashedParams;
 };

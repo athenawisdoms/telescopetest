@@ -1,6 +1,6 @@
 import { Rpc } from "../../../helpers";
 import { QueryClient } from "@cosmjs/stargate";
-import { QueryAccountsRequest, QueryAccountsResponse, QueryAccountRequest, QueryAccountResponse, QueryAccountAddressByIDRequest, QueryAccountAddressByIDResponse, QueryParamsRequest, QueryParamsResponse, QueryModuleAccountsRequest, QueryModuleAccountsResponse, Bech32PrefixRequest, Bech32PrefixResponse, AddressBytesToStringRequest, AddressBytesToStringResponse, AddressStringToBytesRequest, AddressStringToBytesResponse } from "./query";
+import { QueryAccountsRequest, QueryAccountsResponse, QueryAccountRequest, QueryAccountResponse, QueryParamsRequest, QueryParamsResponse, QueryModuleAccountsRequest, QueryModuleAccountsResponse, Bech32PrefixRequest, Bech32PrefixResponse, AddressBytesToStringRequest, AddressBytesToStringResponse, AddressStringToBytesRequest, AddressStringToBytesResponse } from "./query";
 /** Query defines the gRPC querier service. */
 export interface Query {
     /**
@@ -11,37 +11,15 @@ export interface Query {
     accounts(request?: QueryAccountsRequest): Promise<QueryAccountsResponse>;
     /** Account returns account details based on address. */
     account(request: QueryAccountRequest): Promise<QueryAccountResponse>;
-    /**
-     * AccountAddressByID returns account address based on account number.
-     *
-     * Since: cosmos-sdk 0.46.2
-     */
-    accountAddressByID(request: QueryAccountAddressByIDRequest): Promise<QueryAccountAddressByIDResponse>;
     /** Params queries all parameters. */
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
-    /**
-     * ModuleAccounts returns all the existing module accounts.
-     *
-     * Since: cosmos-sdk 0.46
-     */
+    /** ModuleAccounts returns all the existing module accounts. */
     moduleAccounts(request?: QueryModuleAccountsRequest): Promise<QueryModuleAccountsResponse>;
-    /**
-     * Bech32Prefix queries bech32Prefix
-     *
-     * Since: cosmos-sdk 0.46
-     */
+    /** Bech32 queries bech32Prefix */
     bech32Prefix(request?: Bech32PrefixRequest): Promise<Bech32PrefixResponse>;
-    /**
-     * AddressBytesToString converts Account Address bytes to string
-     *
-     * Since: cosmos-sdk 0.46
-     */
+    /** AddressBytesToString converts Account Address bytes to string */
     addressBytesToString(request: AddressBytesToStringRequest): Promise<AddressBytesToStringResponse>;
-    /**
-     * AddressStringToBytes converts Address string to bytes
-     *
-     * Since: cosmos-sdk 0.46
-     */
+    /** AddressStringToBytes converts Address string to bytes */
     addressStringToBytes(request: AddressStringToBytesRequest): Promise<AddressStringToBytesResponse>;
 }
 export declare class QueryClientImpl implements Query {
@@ -49,7 +27,6 @@ export declare class QueryClientImpl implements Query {
     constructor(rpc: Rpc);
     accounts(request?: QueryAccountsRequest): Promise<QueryAccountsResponse>;
     account(request: QueryAccountRequest): Promise<QueryAccountResponse>;
-    accountAddressByID(request: QueryAccountAddressByIDRequest): Promise<QueryAccountAddressByIDResponse>;
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
     moduleAccounts(request?: QueryModuleAccountsRequest): Promise<QueryModuleAccountsResponse>;
     bech32Prefix(request?: Bech32PrefixRequest): Promise<Bech32PrefixResponse>;
@@ -59,7 +36,6 @@ export declare class QueryClientImpl implements Query {
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     accounts(request?: QueryAccountsRequest): Promise<QueryAccountsResponse>;
     account(request: QueryAccountRequest): Promise<QueryAccountResponse>;
-    accountAddressByID(request: QueryAccountAddressByIDRequest): Promise<QueryAccountAddressByIDResponse>;
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
     moduleAccounts(request?: QueryModuleAccountsRequest): Promise<QueryModuleAccountsResponse>;
     bech32Prefix(request?: Bech32PrefixRequest): Promise<Bech32PrefixResponse>;

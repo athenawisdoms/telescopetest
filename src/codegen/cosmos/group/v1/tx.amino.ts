@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { voteOptionFromJSON } from "./types";
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "../../../helpers";
@@ -10,6 +11,10 @@ export interface AminoMsgCreateGroup extends AminoMsg {
       address: string;
       weight: string;
       metadata: string;
+      added_at: {
+        seconds: string;
+        nanos: number;
+      };
     }[];
     metadata: string;
   };
@@ -23,6 +28,10 @@ export interface AminoMsgUpdateGroupMembers extends AminoMsg {
       address: string;
       weight: string;
       metadata: string;
+      added_at: {
+        seconds: string;
+        nanos: number;
+      };
     }[];
   };
 }
@@ -62,6 +71,10 @@ export interface AminoMsgCreateGroupWithPolicy extends AminoMsg {
       address: string;
       weight: string;
       metadata: string;
+      added_at: {
+        seconds: string;
+        nanos: number;
+      };
     }[];
     group_metadata: string;
     group_policy_metadata: string;
@@ -76,7 +89,7 @@ export interface AminoMsgUpdateGroupPolicyAdmin extends AminoMsg {
   type: "cosmos-sdk/MsgUpdateGroupPolicyAdmin";
   value: {
     admin: string;
-    group_policy_address: string;
+    address: string;
     new_admin: string;
   };
 }
@@ -84,7 +97,7 @@ export interface AminoMsgUpdateGroupPolicyDecisionPolicy extends AminoMsg {
   type: "cosmos-sdk/MsgUpdateGroupPolicyDecisionPolicy";
   value: {
     admin: string;
-    group_policy_address: string;
+    address: string;
     decision_policy: {
       type_url: string;
       value: Uint8Array;
@@ -95,14 +108,14 @@ export interface AminoMsgUpdateGroupPolicyMetadata extends AminoMsg {
   type: "cosmos-sdk/MsgUpdateGroupPolicyMetadata";
   value: {
     admin: string;
-    group_policy_address: string;
+    address: string;
     metadata: string;
   };
 }
 export interface AminoMsgSubmitProposal extends AminoMsg {
   type: "cosmos-sdk/group/MsgSubmitProposal";
   value: {
-    group_policy_address: string;
+    address: string;
     proposers: string[];
     metadata: string;
     messages: {
@@ -133,7 +146,7 @@ export interface AminoMsgExec extends AminoMsg {
   type: "cosmos-sdk/group/MsgExec";
   value: {
     proposal_id: string;
-    executor: string;
+    signer: string;
   };
 }
 export interface AminoMsgLeaveGroup extends AminoMsg {
@@ -156,7 +169,8 @@ export const AminoConverter = {
         members: members.map(el0 => ({
           address: el0.address,
           weight: el0.weight,
-          metadata: el0.metadata
+          metadata: el0.metadata,
+          added_at: el0.addedAt
         })),
         metadata
       };
@@ -171,7 +185,8 @@ export const AminoConverter = {
         members: members.map(el0 => ({
           address: el0.address,
           weight: el0.weight,
-          metadata: el0.metadata
+          metadata: el0.metadata,
+          addedAt: el0.added_at
         })),
         metadata
       };
@@ -190,7 +205,8 @@ export const AminoConverter = {
         member_updates: memberUpdates.map(el0 => ({
           address: el0.address,
           weight: el0.weight,
-          metadata: el0.metadata
+          metadata: el0.metadata,
+          added_at: el0.addedAt
         }))
       };
     },
@@ -205,7 +221,8 @@ export const AminoConverter = {
         memberUpdates: member_updates.map(el0 => ({
           address: el0.address,
           weight: el0.weight,
-          metadata: el0.metadata
+          metadata: el0.metadata,
+          addedAt: el0.added_at
         }))
       };
     }
@@ -310,7 +327,8 @@ export const AminoConverter = {
         members: members.map(el0 => ({
           address: el0.address,
           weight: el0.weight,
-          metadata: el0.metadata
+          metadata: el0.metadata,
+          added_at: el0.addedAt
         })),
         group_metadata: groupMetadata,
         group_policy_metadata: groupPolicyMetadata,
@@ -334,7 +352,8 @@ export const AminoConverter = {
         members: members.map(el0 => ({
           address: el0.address,
           weight: el0.weight,
-          metadata: el0.metadata
+          metadata: el0.metadata,
+          addedAt: el0.added_at
         })),
         groupMetadata: group_metadata,
         groupPolicyMetadata: group_policy_metadata,
@@ -350,23 +369,23 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgUpdateGroupPolicyAdmin",
     toAmino: ({
       admin,
-      groupPolicyAddress,
+      address,
       newAdmin
     }: MsgUpdateGroupPolicyAdmin): AminoMsgUpdateGroupPolicyAdmin["value"] => {
       return {
         admin,
-        group_policy_address: groupPolicyAddress,
+        address,
         new_admin: newAdmin
       };
     },
     fromAmino: ({
       admin,
-      group_policy_address,
+      address,
       new_admin
     }: AminoMsgUpdateGroupPolicyAdmin["value"]): MsgUpdateGroupPolicyAdmin => {
       return {
         admin,
-        groupPolicyAddress: group_policy_address,
+        address,
         newAdmin: new_admin
       };
     }
@@ -375,12 +394,12 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgUpdateGroupPolicyDecisionPolicy",
     toAmino: ({
       admin,
-      groupPolicyAddress,
+      address,
       decisionPolicy
     }: MsgUpdateGroupPolicyDecisionPolicy): AminoMsgUpdateGroupPolicyDecisionPolicy["value"] => {
       return {
         admin,
-        group_policy_address: groupPolicyAddress,
+        address,
         decision_policy: {
           type_url: decisionPolicy.typeUrl,
           value: decisionPolicy.value
@@ -389,12 +408,12 @@ export const AminoConverter = {
     },
     fromAmino: ({
       admin,
-      group_policy_address,
+      address,
       decision_policy
     }: AminoMsgUpdateGroupPolicyDecisionPolicy["value"]): MsgUpdateGroupPolicyDecisionPolicy => {
       return {
         admin,
-        groupPolicyAddress: group_policy_address,
+        address,
         decisionPolicy: {
           typeUrl: decision_policy.type_url,
           value: decision_policy.value
@@ -406,23 +425,23 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgUpdateGroupPolicyMetadata",
     toAmino: ({
       admin,
-      groupPolicyAddress,
+      address,
       metadata
     }: MsgUpdateGroupPolicyMetadata): AminoMsgUpdateGroupPolicyMetadata["value"] => {
       return {
         admin,
-        group_policy_address: groupPolicyAddress,
+        address,
         metadata
       };
     },
     fromAmino: ({
       admin,
-      group_policy_address,
+      address,
       metadata
     }: AminoMsgUpdateGroupPolicyMetadata["value"]): MsgUpdateGroupPolicyMetadata => {
       return {
         admin,
-        groupPolicyAddress: group_policy_address,
+        address,
         metadata
       };
     }
@@ -430,14 +449,14 @@ export const AminoConverter = {
   "/cosmos.group.v1.MsgSubmitProposal": {
     aminoType: "cosmos-sdk/group/MsgSubmitProposal",
     toAmino: ({
-      groupPolicyAddress,
+      address,
       proposers,
       metadata,
       messages,
       exec
     }: MsgSubmitProposal): AminoMsgSubmitProposal["value"] => {
       return {
-        group_policy_address: groupPolicyAddress,
+        address,
         proposers,
         metadata,
         messages: messages.map(el0 => ({
@@ -448,14 +467,14 @@ export const AminoConverter = {
       };
     },
     fromAmino: ({
-      group_policy_address,
+      address,
       proposers,
       metadata,
       messages,
       exec
     }: AminoMsgSubmitProposal["value"]): MsgSubmitProposal => {
       return {
-        groupPolicyAddress: group_policy_address,
+        address,
         proposers,
         metadata,
         messages: messages.map(el0 => ({
@@ -524,20 +543,20 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/group/MsgExec",
     toAmino: ({
       proposalId,
-      executor
+      signer
     }: MsgExec): AminoMsgExec["value"] => {
       return {
         proposal_id: proposalId.toString(),
-        executor
+        signer
       };
     },
     fromAmino: ({
       proposal_id,
-      executor
+      signer
     }: AminoMsgExec["value"]): MsgExec => {
       return {
         proposalId: Long.fromString(proposal_id),
-        executor
+        signer
       };
     }
   },

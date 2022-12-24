@@ -1,35 +1,35 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
+import { Timestamp, TimestampSDKType } from "../../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
- * BasicAllowance implements Allowance with a one-time grant of coins
+ * BasicAllowance implements Allowance with a one-time grant of tokens
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
 export interface BasicAllowance {
     /**
-     * spend_limit specifies the maximum amount of coins that can be spent
-     * by this allowance and will be updated as coins are spent. If it is
+     * spend_limit specifies the maximum amount of tokens that can be spent
+     * by this allowance and will be updated as tokens are spent. If it is
      * empty, there is no spend limit and any amount of coins can be spent.
      */
     spendLimit: Coin[];
     /** expiration specifies an optional time when this allowance expires */
-    expiration?: Date;
+    expiration?: Timestamp;
 }
 /**
- * BasicAllowance implements Allowance with a one-time grant of coins
+ * BasicAllowance implements Allowance with a one-time grant of tokens
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
  */
 export interface BasicAllowanceSDKType {
     /**
-     * spend_limit specifies the maximum amount of coins that can be spent
-     * by this allowance and will be updated as coins are spent. If it is
+     * spend_limit specifies the maximum amount of tokens that can be spent
+     * by this allowance and will be updated as tokens are spent. If it is
      * empty, there is no spend limit and any amount of coins can be spent.
      */
     spend_limit: CoinSDKType[];
     /** expiration specifies an optional time when this allowance expires */
-    expiration?: Date;
+    expiration?: TimestampSDKType;
 }
 /**
  * PeriodicAllowance extends Allowance to allow for both a maximum cap,
@@ -55,7 +55,7 @@ export interface PeriodicAllowance {
      * it is calculated from the start time of the first transaction after the
      * last period ended
      */
-    periodReset?: Date;
+    periodReset?: Timestamp;
 }
 /**
  * PeriodicAllowance extends Allowance to allow for both a maximum cap,
@@ -81,7 +81,7 @@ export interface PeriodicAllowanceSDKType {
      * it is calculated from the start time of the first transaction after the
      * last period ended
      */
-    period_reset?: Date;
+    period_reset?: TimestampSDKType;
 }
 /** AllowedMsgAllowance creates allowance only for specified message types. */
 export interface AllowedMsgAllowance {
@@ -118,20 +118,28 @@ export interface GrantSDKType {
 export declare const BasicAllowance: {
     encode(message: BasicAllowance, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BasicAllowance;
-    fromPartial(object: DeepPartial<BasicAllowance>): BasicAllowance;
+    fromJSON(object: any): BasicAllowance;
+    toJSON(message: BasicAllowance): unknown;
+    fromPartial(object: Partial<BasicAllowance>): BasicAllowance;
 };
 export declare const PeriodicAllowance: {
     encode(message: PeriodicAllowance, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PeriodicAllowance;
-    fromPartial(object: DeepPartial<PeriodicAllowance>): PeriodicAllowance;
+    fromJSON(object: any): PeriodicAllowance;
+    toJSON(message: PeriodicAllowance): unknown;
+    fromPartial(object: Partial<PeriodicAllowance>): PeriodicAllowance;
 };
 export declare const AllowedMsgAllowance: {
     encode(message: AllowedMsgAllowance, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllowedMsgAllowance;
-    fromPartial(object: DeepPartial<AllowedMsgAllowance>): AllowedMsgAllowance;
+    fromJSON(object: any): AllowedMsgAllowance;
+    toJSON(message: AllowedMsgAllowance): unknown;
+    fromPartial(object: Partial<AllowedMsgAllowance>): AllowedMsgAllowance;
 };
 export declare const Grant: {
     encode(message: Grant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Grant;
-    fromPartial(object: DeepPartial<Grant>): Grant;
+    fromJSON(object: any): Grant;
+    toJSON(message: Grant): unknown;
+    fromPartial(object: Partial<Grant>): Grant;
 };

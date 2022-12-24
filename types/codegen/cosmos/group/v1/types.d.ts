@@ -1,13 +1,11 @@
+import { Timestamp, TimestampSDKType } from "../../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** VoteOption enumerates the valid vote options for a given proposal. */
 export declare enum VoteOption {
-    /**
-     * VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines an unspecified vote option which will
-     * return an error.
-     */
+    /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */
     VOTE_OPTION_UNSPECIFIED = 0,
     /** VOTE_OPTION_YES - VOTE_OPTION_YES defines a yes vote option. */
     VOTE_OPTION_YES = 1,
@@ -21,10 +19,7 @@ export declare enum VoteOption {
 }
 /** VoteOption enumerates the valid vote options for a given proposal. */
 export declare enum VoteOptionSDKType {
-    /**
-     * VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines an unspecified vote option which will
-     * return an error.
-     */
+    /** VOTE_OPTION_UNSPECIFIED - VOTE_OPTION_UNSPECIFIED defines a no-op vote option. */
     VOTE_OPTION_UNSPECIFIED = 0,
     /** VOTE_OPTION_YES - VOTE_OPTION_YES defines a yes vote option. */
     VOTE_OPTION_YES = 1,
@@ -42,60 +37,64 @@ export declare function voteOptionToJSON(object: VoteOption): string;
 export declare enum ProposalStatus {
     /** PROPOSAL_STATUS_UNSPECIFIED - An empty value is invalid and not allowed. */
     PROPOSAL_STATUS_UNSPECIFIED = 0,
-    /** PROPOSAL_STATUS_SUBMITTED - Initial status of a proposal when submitted. */
+    /** PROPOSAL_STATUS_SUBMITTED - Initial status of a proposal when persisted. */
     PROPOSAL_STATUS_SUBMITTED = 1,
+    /** PROPOSAL_STATUS_CLOSED - Final status of a proposal when the final tally was executed. */
+    PROPOSAL_STATUS_CLOSED = 2,
+    /** PROPOSAL_STATUS_ABORTED - Final status of a proposal when the group was modified before the final tally. */
+    PROPOSAL_STATUS_ABORTED = 3,
     /**
-     * PROPOSAL_STATUS_ACCEPTED - Final status of a proposal when the final tally is done and the outcome
-     * passes the group policy's decision policy.
+     * PROPOSAL_STATUS_WITHDRAWN - A proposal can be deleted before the voting start time by the owner. When this happens the final status
+     * is Withdrawn.
      */
-    PROPOSAL_STATUS_ACCEPTED = 2,
-    /**
-     * PROPOSAL_STATUS_REJECTED - Final status of a proposal when the final tally is done and the outcome
-     * is rejected by the group policy's decision policy.
-     */
-    PROPOSAL_STATUS_REJECTED = 3,
-    /**
-     * PROPOSAL_STATUS_ABORTED - Final status of a proposal when the group policy is modified before the
-     * final tally.
-     */
-    PROPOSAL_STATUS_ABORTED = 4,
-    /**
-     * PROPOSAL_STATUS_WITHDRAWN - A proposal can be withdrawn before the voting start time by the owner.
-     * When this happens the final status is Withdrawn.
-     */
-    PROPOSAL_STATUS_WITHDRAWN = 5,
+    PROPOSAL_STATUS_WITHDRAWN = 4,
     UNRECOGNIZED = -1
 }
 /** ProposalStatus defines proposal statuses. */
 export declare enum ProposalStatusSDKType {
     /** PROPOSAL_STATUS_UNSPECIFIED - An empty value is invalid and not allowed. */
     PROPOSAL_STATUS_UNSPECIFIED = 0,
-    /** PROPOSAL_STATUS_SUBMITTED - Initial status of a proposal when submitted. */
+    /** PROPOSAL_STATUS_SUBMITTED - Initial status of a proposal when persisted. */
     PROPOSAL_STATUS_SUBMITTED = 1,
+    /** PROPOSAL_STATUS_CLOSED - Final status of a proposal when the final tally was executed. */
+    PROPOSAL_STATUS_CLOSED = 2,
+    /** PROPOSAL_STATUS_ABORTED - Final status of a proposal when the group was modified before the final tally. */
+    PROPOSAL_STATUS_ABORTED = 3,
     /**
-     * PROPOSAL_STATUS_ACCEPTED - Final status of a proposal when the final tally is done and the outcome
-     * passes the group policy's decision policy.
+     * PROPOSAL_STATUS_WITHDRAWN - A proposal can be deleted before the voting start time by the owner. When this happens the final status
+     * is Withdrawn.
      */
-    PROPOSAL_STATUS_ACCEPTED = 2,
-    /**
-     * PROPOSAL_STATUS_REJECTED - Final status of a proposal when the final tally is done and the outcome
-     * is rejected by the group policy's decision policy.
-     */
-    PROPOSAL_STATUS_REJECTED = 3,
-    /**
-     * PROPOSAL_STATUS_ABORTED - Final status of a proposal when the group policy is modified before the
-     * final tally.
-     */
-    PROPOSAL_STATUS_ABORTED = 4,
-    /**
-     * PROPOSAL_STATUS_WITHDRAWN - A proposal can be withdrawn before the voting start time by the owner.
-     * When this happens the final status is Withdrawn.
-     */
-    PROPOSAL_STATUS_WITHDRAWN = 5,
+    PROPOSAL_STATUS_WITHDRAWN = 4,
     UNRECOGNIZED = -1
 }
 export declare function proposalStatusFromJSON(object: any): ProposalStatus;
 export declare function proposalStatusToJSON(object: ProposalStatus): string;
+/** ProposalResult defines types of proposal results. */
+export declare enum ProposalResult {
+    /** PROPOSAL_RESULT_UNSPECIFIED - An empty value is invalid and not allowed */
+    PROPOSAL_RESULT_UNSPECIFIED = 0,
+    /** PROPOSAL_RESULT_UNFINALIZED - Until a final tally has happened the status is unfinalized */
+    PROPOSAL_RESULT_UNFINALIZED = 1,
+    /** PROPOSAL_RESULT_ACCEPTED - Final result of the tally */
+    PROPOSAL_RESULT_ACCEPTED = 2,
+    /** PROPOSAL_RESULT_REJECTED - Final result of the tally */
+    PROPOSAL_RESULT_REJECTED = 3,
+    UNRECOGNIZED = -1
+}
+/** ProposalResult defines types of proposal results. */
+export declare enum ProposalResultSDKType {
+    /** PROPOSAL_RESULT_UNSPECIFIED - An empty value is invalid and not allowed */
+    PROPOSAL_RESULT_UNSPECIFIED = 0,
+    /** PROPOSAL_RESULT_UNFINALIZED - Until a final tally has happened the status is unfinalized */
+    PROPOSAL_RESULT_UNFINALIZED = 1,
+    /** PROPOSAL_RESULT_ACCEPTED - Final result of the tally */
+    PROPOSAL_RESULT_ACCEPTED = 2,
+    /** PROPOSAL_RESULT_REJECTED - Final result of the tally */
+    PROPOSAL_RESULT_REJECTED = 3,
+    UNRECOGNIZED = -1
+}
+export declare function proposalResultFromJSON(object: any): ProposalResult;
+export declare function proposalResultToJSON(object: ProposalResult): string;
 /** ProposalExecutorResult defines types of proposal executor results. */
 export declare enum ProposalExecutorResult {
     /** PROPOSAL_EXECUTOR_RESULT_UNSPECIFIED - An empty value is not allowed. */
@@ -124,122 +123,66 @@ export declare function proposalExecutorResultFromJSON(object: any): ProposalExe
 export declare function proposalExecutorResultToJSON(object: ProposalExecutorResult): string;
 /**
  * Member represents a group member with an account address,
- * non-zero weight, metadata and added_at timestamp.
+ * non-zero weight and metadata.
  */
 export interface Member {
     /** address is the member's account address. */
     address: string;
     /** weight is the member's voting weight that should be greater than 0. */
     weight: string;
-    /** metadata is any arbitrary metadata attached to the member. */
+    /** metadata is any arbitrary metadata to attached to the member. */
     metadata: string;
     /** added_at is a timestamp specifying when a member was added. */
-    addedAt?: Date;
+    addedAt?: Timestamp;
 }
 /**
  * Member represents a group member with an account address,
- * non-zero weight, metadata and added_at timestamp.
+ * non-zero weight and metadata.
  */
 export interface MemberSDKType {
     /** address is the member's account address. */
     address: string;
     /** weight is the member's voting weight that should be greater than 0. */
     weight: string;
-    /** metadata is any arbitrary metadata attached to the member. */
+    /** metadata is any arbitrary metadata to attached to the member. */
     metadata: string;
     /** added_at is a timestamp specifying when a member was added. */
-    added_at?: Date;
+    added_at?: TimestampSDKType;
 }
-/**
- * MemberRequest represents a group member to be used in Msg server requests.
- * Contrary to `Member`, it doesn't have any `added_at` field
- * since this field cannot be set as part of requests.
- */
-export interface MemberRequest {
-    /** address is the member's account address. */
-    address: string;
-    /** weight is the member's voting weight that should be greater than 0. */
-    weight: string;
-    /** metadata is any arbitrary metadata attached to the member. */
-    metadata: string;
+/** Members defines a repeated slice of Member objects. */
+export interface Members {
+    /** members is the list of members. */
+    members: Member[];
 }
-/**
- * MemberRequest represents a group member to be used in Msg server requests.
- * Contrary to `Member`, it doesn't have any `added_at` field
- * since this field cannot be set as part of requests.
- */
-export interface MemberRequestSDKType {
-    /** address is the member's account address. */
-    address: string;
-    /** weight is the member's voting weight that should be greater than 0. */
-    weight: string;
-    /** metadata is any arbitrary metadata attached to the member. */
-    metadata: string;
+/** Members defines a repeated slice of Member objects. */
+export interface MembersSDKType {
+    /** members is the list of members. */
+    members: MemberSDKType[];
 }
-/**
- * ThresholdDecisionPolicy is a decision policy where a proposal passes when it
- * satisfies the two following conditions:
- * 1. The sum of all `YES` voters' weights is greater or equal than the defined
- *    `threshold`.
- * 2. The voting and execution periods of the proposal respect the parameters
- *    given by `windows`.
- */
+/** ThresholdDecisionPolicy implements the DecisionPolicy interface */
 export interface ThresholdDecisionPolicy {
-    /**
-     * threshold is the minimum weighted sum of `YES` votes that must be met or
-     * exceeded for a proposal to succeed.
-     */
+    /** threshold is the minimum weighted sum of yes votes that must be met or exceeded for a proposal to succeed. */
     threshold: string;
     /** windows defines the different windows for voting and execution. */
     windows?: DecisionPolicyWindows;
 }
-/**
- * ThresholdDecisionPolicy is a decision policy where a proposal passes when it
- * satisfies the two following conditions:
- * 1. The sum of all `YES` voters' weights is greater or equal than the defined
- *    `threshold`.
- * 2. The voting and execution periods of the proposal respect the parameters
- *    given by `windows`.
- */
+/** ThresholdDecisionPolicy implements the DecisionPolicy interface */
 export interface ThresholdDecisionPolicySDKType {
-    /**
-     * threshold is the minimum weighted sum of `YES` votes that must be met or
-     * exceeded for a proposal to succeed.
-     */
+    /** threshold is the minimum weighted sum of yes votes that must be met or exceeded for a proposal to succeed. */
     threshold: string;
     /** windows defines the different windows for voting and execution. */
     windows?: DecisionPolicyWindowsSDKType;
 }
-/**
- * PercentageDecisionPolicy is a decision policy where a proposal passes when
- * it satisfies the two following conditions:
- * 1. The percentage of all `YES` voters' weights out of the total group weight
- *    is greater or equal than the given `percentage`.
- * 2. The voting and execution periods of the proposal respect the parameters
- *    given by `windows`.
- */
+/** PercentageDecisionPolicy implements the DecisionPolicy interface */
 export interface PercentageDecisionPolicy {
-    /**
-     * percentage is the minimum percentage the weighted sum of `YES` votes must
-     * meet for a proposal to succeed.
-     */
+    /** percentage is the minimum percentage the weighted sum of yes votes must meet for a proposal to succeed. */
     percentage: string;
     /** windows defines the different windows for voting and execution. */
     windows?: DecisionPolicyWindows;
 }
-/**
- * PercentageDecisionPolicy is a decision policy where a proposal passes when
- * it satisfies the two following conditions:
- * 1. The percentage of all `YES` voters' weights out of the total group weight
- *    is greater or equal than the given `percentage`.
- * 2. The voting and execution periods of the proposal respect the parameters
- *    given by `windows`.
- */
+/** PercentageDecisionPolicy implements the DecisionPolicy interface */
 export interface PercentageDecisionPolicySDKType {
-    /**
-     * percentage is the minimum percentage the weighted sum of `YES` votes must
-     * meet for a proposal to succeed.
-     */
+    /** percentage is the minimum percentage the weighted sum of yes votes must meet for a proposal to succeed. */
     percentage: string;
     /** windows defines the different windows for voting and execution. */
     windows?: DecisionPolicyWindowsSDKType;
@@ -306,7 +249,7 @@ export interface GroupInfo {
     /** total_weight is the sum of the group members' weights. */
     totalWeight: string;
     /** created_at is a timestamp specifying when a group was created. */
-    createdAt?: Date;
+    createdAt?: Timestamp;
 }
 /** GroupInfo represents the high-level on-chain information for a group. */
 export interface GroupInfoSDKType {
@@ -326,7 +269,7 @@ export interface GroupInfoSDKType {
     /** total_weight is the sum of the group members' weights. */
     total_weight: string;
     /** created_at is a timestamp specifying when a group was created. */
-    created_at?: Date;
+    created_at?: TimestampSDKType;
 }
 /** GroupMember represents the relationship between a group and a member. */
 export interface GroupMember {
@@ -360,7 +303,7 @@ export interface GroupPolicyInfo {
     /** decision_policy specifies the group policy's decision policy. */
     decisionPolicy?: Any;
     /** created_at is a timestamp specifying when a group policy was created. */
-    createdAt?: Date;
+    createdAt?: Timestamp;
 }
 /** GroupPolicyInfo represents the high-level on-chain information for a group policy. */
 export interface GroupPolicyInfoSDKType {
@@ -380,7 +323,7 @@ export interface GroupPolicyInfoSDKType {
     /** decision_policy specifies the group policy's decision policy. */
     decision_policy?: AnySDKType;
     /** created_at is a timestamp specifying when a group policy was created. */
-    created_at?: Date;
+    created_at?: TimestampSDKType;
 }
 /**
  * Proposal defines a group proposal. Any member of a group can submit a proposal
@@ -391,46 +334,49 @@ export interface GroupPolicyInfoSDKType {
 export interface Proposal {
     /** id is the unique id of the proposal. */
     id: Long;
-    /** group_policy_address is the account address of group policy. */
-    groupPolicyAddress: string;
+    /** address is the account address of group policy. */
+    address: string;
     /** metadata is any arbitrary metadata to attached to the proposal. */
     metadata: string;
     /** proposers are the account addresses of the proposers. */
     proposers: string[];
     /** submit_time is a timestamp specifying when a proposal was submitted. */
-    submitTime?: Date;
+    submitTime?: Timestamp;
     /**
-     * group_version tracks the version of the group at proposal submission.
-     * This field is here for informational purposes only.
+     * group_version tracks the version of the group that this proposal corresponds to.
+     * When group membership is changed, existing proposals from previous group versions will become invalid.
      */
     groupVersion: Long;
     /**
-     * group_policy_version tracks the version of the group policy at proposal submission.
-     * When a decision policy is changed, existing proposals from previous policy
-     * versions will become invalid with the `ABORTED` status.
-     * This field is here for informational purposes only.
+     * group_policy_version tracks the version of the group policy that this proposal corresponds to.
+     * When a decision policy is changed, existing proposals from previous policy versions will become invalid.
      */
     groupPolicyVersion: Long;
     /** status represents the high level position in the life cycle of the proposal. Initial value is Submitted. */
     status: ProposalStatus;
     /**
+     * result is the final result based on the votes and election rule. Initial value is unfinalized.
+     * The result is persisted so that clients can always rely on this state and not have to replicate the logic.
+     */
+    result: ProposalResult;
+    /**
      * final_tally_result contains the sums of all weighted votes for this
-     * proposal for each vote option. It is empty at submission, and only
-     * populated after tallying, at voting period end or at proposal execution,
-     * whichever happens first.
+     * proposal for each vote option, after tallying. When querying a proposal
+     * via gRPC, this field is not populated until the proposal's voting period
+     * has ended.
      */
     finalTallyResult?: TallyResult;
     /**
      * voting_period_end is the timestamp before which voting must be done.
      * Unless a successfull MsgExec is called before (to execute a proposal whose
      * tally is successful before the voting period ends), tallying will be done
-     * at this point, and the `final_tally_result`and `status` fields will be
-     * accordingly updated.
+     * at this point, and the `final_tally_result`, as well
+     * as `status` and `result` fields will be accordingly updated.
      */
-    votingPeriodEnd?: Date;
-    /** executor_result is the final result of the proposal execution. Initial value is NotRun. */
+    votingPeriodEnd?: Timestamp;
+    /** executor_result is the final result based on the votes and election rule. Initial value is NotRun. */
     executorResult: ProposalExecutorResult;
-    /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
+    /** messages is a list of Msgs that will be executed if the proposal passes. */
     messages: Any[];
 }
 /**
@@ -442,46 +388,49 @@ export interface Proposal {
 export interface ProposalSDKType {
     /** id is the unique id of the proposal. */
     id: Long;
-    /** group_policy_address is the account address of group policy. */
-    group_policy_address: string;
+    /** address is the account address of group policy. */
+    address: string;
     /** metadata is any arbitrary metadata to attached to the proposal. */
     metadata: string;
     /** proposers are the account addresses of the proposers. */
     proposers: string[];
     /** submit_time is a timestamp specifying when a proposal was submitted. */
-    submit_time?: Date;
+    submit_time?: TimestampSDKType;
     /**
-     * group_version tracks the version of the group at proposal submission.
-     * This field is here for informational purposes only.
+     * group_version tracks the version of the group that this proposal corresponds to.
+     * When group membership is changed, existing proposals from previous group versions will become invalid.
      */
     group_version: Long;
     /**
-     * group_policy_version tracks the version of the group policy at proposal submission.
-     * When a decision policy is changed, existing proposals from previous policy
-     * versions will become invalid with the `ABORTED` status.
-     * This field is here for informational purposes only.
+     * group_policy_version tracks the version of the group policy that this proposal corresponds to.
+     * When a decision policy is changed, existing proposals from previous policy versions will become invalid.
      */
     group_policy_version: Long;
     /** status represents the high level position in the life cycle of the proposal. Initial value is Submitted. */
     status: ProposalStatusSDKType;
     /**
+     * result is the final result based on the votes and election rule. Initial value is unfinalized.
+     * The result is persisted so that clients can always rely on this state and not have to replicate the logic.
+     */
+    result: ProposalResultSDKType;
+    /**
      * final_tally_result contains the sums of all weighted votes for this
-     * proposal for each vote option. It is empty at submission, and only
-     * populated after tallying, at voting period end or at proposal execution,
-     * whichever happens first.
+     * proposal for each vote option, after tallying. When querying a proposal
+     * via gRPC, this field is not populated until the proposal's voting period
+     * has ended.
      */
     final_tally_result?: TallyResultSDKType;
     /**
      * voting_period_end is the timestamp before which voting must be done.
      * Unless a successfull MsgExec is called before (to execute a proposal whose
      * tally is successful before the voting period ends), tallying will be done
-     * at this point, and the `final_tally_result`and `status` fields will be
-     * accordingly updated.
+     * at this point, and the `final_tally_result`, as well
+     * as `status` and `result` fields will be accordingly updated.
      */
-    voting_period_end?: Date;
-    /** executor_result is the final result of the proposal execution. Initial value is NotRun. */
+    voting_period_end?: TimestampSDKType;
+    /** executor_result is the final result based on the votes and election rule. Initial value is NotRun. */
     executor_result: ProposalExecutorResultSDKType;
-    /** messages is a list of `sdk.Msg`s that will be executed if the proposal passes. */
+    /** messages is a list of Msgs that will be executed if the proposal passes. */
     messages: AnySDKType[];
 }
 /** TallyResult represents the sum of weighted votes for each vote option. */
@@ -490,7 +439,7 @@ export interface TallyResult {
     yesCount: string;
     /** abstain_count is the weighted sum of abstainers. */
     abstainCount: string;
-    /** no_count is the weighted sum of no votes. */
+    /** no is the weighted sum of no votes. */
     noCount: string;
     /** no_with_veto_count is the weighted sum of veto. */
     noWithVetoCount: string;
@@ -501,7 +450,7 @@ export interface TallyResultSDKType {
     yes_count: string;
     /** abstain_count is the weighted sum of abstainers. */
     abstain_count: string;
-    /** no_count is the weighted sum of no votes. */
+    /** no is the weighted sum of no votes. */
     no_count: string;
     /** no_with_veto_count is the weighted sum of veto. */
     no_with_veto_count: string;
@@ -517,7 +466,7 @@ export interface Vote {
     /** metadata is any arbitrary metadata to attached to the vote. */
     metadata: string;
     /** submit_time is the timestamp when the vote was submitted. */
-    submitTime?: Date;
+    submitTime?: Timestamp;
 }
 /** Vote represents a vote for a proposal. */
 export interface VoteSDKType {
@@ -530,60 +479,82 @@ export interface VoteSDKType {
     /** metadata is any arbitrary metadata to attached to the vote. */
     metadata: string;
     /** submit_time is the timestamp when the vote was submitted. */
-    submit_time?: Date;
+    submit_time?: TimestampSDKType;
 }
 export declare const Member: {
     encode(message: Member, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Member;
-    fromPartial(object: DeepPartial<Member>): Member;
+    fromJSON(object: any): Member;
+    toJSON(message: Member): unknown;
+    fromPartial(object: Partial<Member>): Member;
 };
-export declare const MemberRequest: {
-    encode(message: MemberRequest, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MemberRequest;
-    fromPartial(object: DeepPartial<MemberRequest>): MemberRequest;
+export declare const Members: {
+    encode(message: Members, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Members;
+    fromJSON(object: any): Members;
+    toJSON(message: Members): unknown;
+    fromPartial(object: Partial<Members>): Members;
 };
 export declare const ThresholdDecisionPolicy: {
     encode(message: ThresholdDecisionPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ThresholdDecisionPolicy;
-    fromPartial(object: DeepPartial<ThresholdDecisionPolicy>): ThresholdDecisionPolicy;
+    fromJSON(object: any): ThresholdDecisionPolicy;
+    toJSON(message: ThresholdDecisionPolicy): unknown;
+    fromPartial(object: Partial<ThresholdDecisionPolicy>): ThresholdDecisionPolicy;
 };
 export declare const PercentageDecisionPolicy: {
     encode(message: PercentageDecisionPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PercentageDecisionPolicy;
-    fromPartial(object: DeepPartial<PercentageDecisionPolicy>): PercentageDecisionPolicy;
+    fromJSON(object: any): PercentageDecisionPolicy;
+    toJSON(message: PercentageDecisionPolicy): unknown;
+    fromPartial(object: Partial<PercentageDecisionPolicy>): PercentageDecisionPolicy;
 };
 export declare const DecisionPolicyWindows: {
     encode(message: DecisionPolicyWindows, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DecisionPolicyWindows;
-    fromPartial(object: DeepPartial<DecisionPolicyWindows>): DecisionPolicyWindows;
+    fromJSON(object: any): DecisionPolicyWindows;
+    toJSON(message: DecisionPolicyWindows): unknown;
+    fromPartial(object: Partial<DecisionPolicyWindows>): DecisionPolicyWindows;
 };
 export declare const GroupInfo: {
     encode(message: GroupInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GroupInfo;
-    fromPartial(object: DeepPartial<GroupInfo>): GroupInfo;
+    fromJSON(object: any): GroupInfo;
+    toJSON(message: GroupInfo): unknown;
+    fromPartial(object: Partial<GroupInfo>): GroupInfo;
 };
 export declare const GroupMember: {
     encode(message: GroupMember, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GroupMember;
-    fromPartial(object: DeepPartial<GroupMember>): GroupMember;
+    fromJSON(object: any): GroupMember;
+    toJSON(message: GroupMember): unknown;
+    fromPartial(object: Partial<GroupMember>): GroupMember;
 };
 export declare const GroupPolicyInfo: {
     encode(message: GroupPolicyInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GroupPolicyInfo;
-    fromPartial(object: DeepPartial<GroupPolicyInfo>): GroupPolicyInfo;
+    fromJSON(object: any): GroupPolicyInfo;
+    toJSON(message: GroupPolicyInfo): unknown;
+    fromPartial(object: Partial<GroupPolicyInfo>): GroupPolicyInfo;
 };
 export declare const Proposal: {
     encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
-    fromPartial(object: DeepPartial<Proposal>): Proposal;
+    fromJSON(object: any): Proposal;
+    toJSON(message: Proposal): unknown;
+    fromPartial(object: Partial<Proposal>): Proposal;
 };
 export declare const TallyResult: {
     encode(message: TallyResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TallyResult;
-    fromPartial(object: DeepPartial<TallyResult>): TallyResult;
+    fromJSON(object: any): TallyResult;
+    toJSON(message: TallyResult): unknown;
+    fromPartial(object: Partial<TallyResult>): TallyResult;
 };
 export declare const Vote: {
     encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
-    fromPartial(object: DeepPartial<Vote>): Vote;
+    fromJSON(object: any): Vote;
+    toJSON(message: Vote): unknown;
+    fromPartial(object: Partial<Vote>): Vote;
 };

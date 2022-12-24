@@ -1,7 +1,7 @@
 import { CompactBitArray, CompactBitArraySDKType } from "../../../crypto/multisig/v1beta1/multisig";
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /**
  * SignMode represents a signing mode with its own security guarantees.
  *
@@ -43,19 +43,6 @@ export declare enum SignMode {
      * Amino JSON and will be removed in the future.
      */
     SIGN_MODE_LEGACY_AMINO_JSON = 127,
-    /**
-     * SIGN_MODE_EIP_191 - SIGN_MODE_EIP_191 specifies the sign mode for EIP 191 signing on the Cosmos
-     * SDK. Ref: https://eips.ethereum.org/EIPS/eip-191
-     *
-     * Currently, SIGN_MODE_EIP_191 is registered as a SignMode enum variant,
-     * but is not implemented on the SDK by default. To enable EIP-191, you need
-     * to pass a custom `TxConfig` that has an implementation of
-     * `SignModeHandler` for EIP-191. The SDK may decide to fully support
-     * EIP-191 in the future.
-     *
-     * Since: cosmos-sdk 0.45.2
-     */
-    SIGN_MODE_EIP_191 = 191,
     UNRECOGNIZED = -1
 }
 /**
@@ -99,19 +86,6 @@ export declare enum SignModeSDKType {
      * Amino JSON and will be removed in the future.
      */
     SIGN_MODE_LEGACY_AMINO_JSON = 127,
-    /**
-     * SIGN_MODE_EIP_191 - SIGN_MODE_EIP_191 specifies the sign mode for EIP 191 signing on the Cosmos
-     * SDK. Ref: https://eips.ethereum.org/EIPS/eip-191
-     *
-     * Currently, SIGN_MODE_EIP_191 is registered as a SignMode enum variant,
-     * but is not implemented on the SDK by default. To enable EIP-191, you need
-     * to pass a custom `TxConfig` that has an implementation of
-     * `SignModeHandler` for EIP-191. The SDK may decide to fully support
-     * EIP-191 in the future.
-     *
-     * Since: cosmos-sdk 0.45.2
-     */
-    SIGN_MODE_EIP_191 = 191,
     UNRECOGNIZED = -1
 }
 export declare function signModeFromJSON(object: any): SignMode;
@@ -205,25 +179,35 @@ export interface SignatureDescriptor_Data_MultiSDKType {
 export declare const SignatureDescriptors: {
     encode(message: SignatureDescriptors, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptors;
-    fromPartial(object: DeepPartial<SignatureDescriptors>): SignatureDescriptors;
+    fromJSON(object: any): SignatureDescriptors;
+    toJSON(message: SignatureDescriptors): unknown;
+    fromPartial(object: Partial<SignatureDescriptors>): SignatureDescriptors;
 };
 export declare const SignatureDescriptor: {
     encode(message: SignatureDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor;
-    fromPartial(object: DeepPartial<SignatureDescriptor>): SignatureDescriptor;
+    fromJSON(object: any): SignatureDescriptor;
+    toJSON(message: SignatureDescriptor): unknown;
+    fromPartial(object: Partial<SignatureDescriptor>): SignatureDescriptor;
 };
 export declare const SignatureDescriptor_Data: {
     encode(message: SignatureDescriptor_Data, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data;
-    fromPartial(object: DeepPartial<SignatureDescriptor_Data>): SignatureDescriptor_Data;
+    fromJSON(object: any): SignatureDescriptor_Data;
+    toJSON(message: SignatureDescriptor_Data): unknown;
+    fromPartial(object: Partial<SignatureDescriptor_Data>): SignatureDescriptor_Data;
 };
 export declare const SignatureDescriptor_Data_Single: {
     encode(message: SignatureDescriptor_Data_Single, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Single;
-    fromPartial(object: DeepPartial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single;
+    fromJSON(object: any): SignatureDescriptor_Data_Single;
+    toJSON(message: SignatureDescriptor_Data_Single): unknown;
+    fromPartial(object: Partial<SignatureDescriptor_Data_Single>): SignatureDescriptor_Data_Single;
 };
 export declare const SignatureDescriptor_Data_Multi: {
     encode(message: SignatureDescriptor_Data_Multi, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignatureDescriptor_Data_Multi;
-    fromPartial(object: DeepPartial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi;
+    fromJSON(object: any): SignatureDescriptor_Data_Multi;
+    toJSON(message: SignatureDescriptor_Data_Multi): unknown;
+    fromPartial(object: Partial<SignatureDescriptor_Data_Multi>): SignatureDescriptor_Data_Multi;
 };

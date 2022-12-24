@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { GroupInfo, GroupInfoSDKType, GroupPolicyInfo, GroupPolicyInfoSDKType, GroupMember, GroupMemberSDKType, Proposal, ProposalSDKType, Vote, VoteSDKType, TallyResult, TallyResultSDKType } from "./types";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** QueryGroupInfoRequest is the Query/GroupInfo request type. */
 export interface QueryGroupInfoRequest {
     /** group_id is the unique ID of the group. */
@@ -333,130 +333,182 @@ export interface QueryTallyResultResponseSDKType {
 export declare const QueryGroupInfoRequest: {
     encode(message: QueryGroupInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupInfoRequest;
-    fromPartial(object: DeepPartial<QueryGroupInfoRequest>): QueryGroupInfoRequest;
+    fromJSON(object: any): QueryGroupInfoRequest;
+    toJSON(message: QueryGroupInfoRequest): unknown;
+    fromPartial(object: Partial<QueryGroupInfoRequest>): QueryGroupInfoRequest;
 };
 export declare const QueryGroupInfoResponse: {
     encode(message: QueryGroupInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupInfoResponse;
-    fromPartial(object: DeepPartial<QueryGroupInfoResponse>): QueryGroupInfoResponse;
+    fromJSON(object: any): QueryGroupInfoResponse;
+    toJSON(message: QueryGroupInfoResponse): unknown;
+    fromPartial(object: Partial<QueryGroupInfoResponse>): QueryGroupInfoResponse;
 };
 export declare const QueryGroupPolicyInfoRequest: {
     encode(message: QueryGroupPolicyInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPolicyInfoRequest;
-    fromPartial(object: DeepPartial<QueryGroupPolicyInfoRequest>): QueryGroupPolicyInfoRequest;
+    fromJSON(object: any): QueryGroupPolicyInfoRequest;
+    toJSON(message: QueryGroupPolicyInfoRequest): unknown;
+    fromPartial(object: Partial<QueryGroupPolicyInfoRequest>): QueryGroupPolicyInfoRequest;
 };
 export declare const QueryGroupPolicyInfoResponse: {
     encode(message: QueryGroupPolicyInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPolicyInfoResponse;
-    fromPartial(object: DeepPartial<QueryGroupPolicyInfoResponse>): QueryGroupPolicyInfoResponse;
+    fromJSON(object: any): QueryGroupPolicyInfoResponse;
+    toJSON(message: QueryGroupPolicyInfoResponse): unknown;
+    fromPartial(object: Partial<QueryGroupPolicyInfoResponse>): QueryGroupPolicyInfoResponse;
 };
 export declare const QueryGroupMembersRequest: {
     encode(message: QueryGroupMembersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupMembersRequest;
-    fromPartial(object: DeepPartial<QueryGroupMembersRequest>): QueryGroupMembersRequest;
+    fromJSON(object: any): QueryGroupMembersRequest;
+    toJSON(message: QueryGroupMembersRequest): unknown;
+    fromPartial(object: Partial<QueryGroupMembersRequest>): QueryGroupMembersRequest;
 };
 export declare const QueryGroupMembersResponse: {
     encode(message: QueryGroupMembersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupMembersResponse;
-    fromPartial(object: DeepPartial<QueryGroupMembersResponse>): QueryGroupMembersResponse;
+    fromJSON(object: any): QueryGroupMembersResponse;
+    toJSON(message: QueryGroupMembersResponse): unknown;
+    fromPartial(object: Partial<QueryGroupMembersResponse>): QueryGroupMembersResponse;
 };
 export declare const QueryGroupsByAdminRequest: {
     encode(message: QueryGroupsByAdminRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupsByAdminRequest;
-    fromPartial(object: DeepPartial<QueryGroupsByAdminRequest>): QueryGroupsByAdminRequest;
+    fromJSON(object: any): QueryGroupsByAdminRequest;
+    toJSON(message: QueryGroupsByAdminRequest): unknown;
+    fromPartial(object: Partial<QueryGroupsByAdminRequest>): QueryGroupsByAdminRequest;
 };
 export declare const QueryGroupsByAdminResponse: {
     encode(message: QueryGroupsByAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupsByAdminResponse;
-    fromPartial(object: DeepPartial<QueryGroupsByAdminResponse>): QueryGroupsByAdminResponse;
+    fromJSON(object: any): QueryGroupsByAdminResponse;
+    toJSON(message: QueryGroupsByAdminResponse): unknown;
+    fromPartial(object: Partial<QueryGroupsByAdminResponse>): QueryGroupsByAdminResponse;
 };
 export declare const QueryGroupPoliciesByGroupRequest: {
     encode(message: QueryGroupPoliciesByGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPoliciesByGroupRequest;
-    fromPartial(object: DeepPartial<QueryGroupPoliciesByGroupRequest>): QueryGroupPoliciesByGroupRequest;
+    fromJSON(object: any): QueryGroupPoliciesByGroupRequest;
+    toJSON(message: QueryGroupPoliciesByGroupRequest): unknown;
+    fromPartial(object: Partial<QueryGroupPoliciesByGroupRequest>): QueryGroupPoliciesByGroupRequest;
 };
 export declare const QueryGroupPoliciesByGroupResponse: {
     encode(message: QueryGroupPoliciesByGroupResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPoliciesByGroupResponse;
-    fromPartial(object: DeepPartial<QueryGroupPoliciesByGroupResponse>): QueryGroupPoliciesByGroupResponse;
+    fromJSON(object: any): QueryGroupPoliciesByGroupResponse;
+    toJSON(message: QueryGroupPoliciesByGroupResponse): unknown;
+    fromPartial(object: Partial<QueryGroupPoliciesByGroupResponse>): QueryGroupPoliciesByGroupResponse;
 };
 export declare const QueryGroupPoliciesByAdminRequest: {
     encode(message: QueryGroupPoliciesByAdminRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPoliciesByAdminRequest;
-    fromPartial(object: DeepPartial<QueryGroupPoliciesByAdminRequest>): QueryGroupPoliciesByAdminRequest;
+    fromJSON(object: any): QueryGroupPoliciesByAdminRequest;
+    toJSON(message: QueryGroupPoliciesByAdminRequest): unknown;
+    fromPartial(object: Partial<QueryGroupPoliciesByAdminRequest>): QueryGroupPoliciesByAdminRequest;
 };
 export declare const QueryGroupPoliciesByAdminResponse: {
     encode(message: QueryGroupPoliciesByAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPoliciesByAdminResponse;
-    fromPartial(object: DeepPartial<QueryGroupPoliciesByAdminResponse>): QueryGroupPoliciesByAdminResponse;
+    fromJSON(object: any): QueryGroupPoliciesByAdminResponse;
+    toJSON(message: QueryGroupPoliciesByAdminResponse): unknown;
+    fromPartial(object: Partial<QueryGroupPoliciesByAdminResponse>): QueryGroupPoliciesByAdminResponse;
 };
 export declare const QueryProposalRequest: {
     encode(message: QueryProposalRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalRequest;
-    fromPartial(object: DeepPartial<QueryProposalRequest>): QueryProposalRequest;
+    fromJSON(object: any): QueryProposalRequest;
+    toJSON(message: QueryProposalRequest): unknown;
+    fromPartial(object: Partial<QueryProposalRequest>): QueryProposalRequest;
 };
 export declare const QueryProposalResponse: {
     encode(message: QueryProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalResponse;
-    fromPartial(object: DeepPartial<QueryProposalResponse>): QueryProposalResponse;
+    fromJSON(object: any): QueryProposalResponse;
+    toJSON(message: QueryProposalResponse): unknown;
+    fromPartial(object: Partial<QueryProposalResponse>): QueryProposalResponse;
 };
 export declare const QueryProposalsByGroupPolicyRequest: {
     encode(message: QueryProposalsByGroupPolicyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsByGroupPolicyRequest;
-    fromPartial(object: DeepPartial<QueryProposalsByGroupPolicyRequest>): QueryProposalsByGroupPolicyRequest;
+    fromJSON(object: any): QueryProposalsByGroupPolicyRequest;
+    toJSON(message: QueryProposalsByGroupPolicyRequest): unknown;
+    fromPartial(object: Partial<QueryProposalsByGroupPolicyRequest>): QueryProposalsByGroupPolicyRequest;
 };
 export declare const QueryProposalsByGroupPolicyResponse: {
     encode(message: QueryProposalsByGroupPolicyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsByGroupPolicyResponse;
-    fromPartial(object: DeepPartial<QueryProposalsByGroupPolicyResponse>): QueryProposalsByGroupPolicyResponse;
+    fromJSON(object: any): QueryProposalsByGroupPolicyResponse;
+    toJSON(message: QueryProposalsByGroupPolicyResponse): unknown;
+    fromPartial(object: Partial<QueryProposalsByGroupPolicyResponse>): QueryProposalsByGroupPolicyResponse;
 };
 export declare const QueryVoteByProposalVoterRequest: {
     encode(message: QueryVoteByProposalVoterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVoteByProposalVoterRequest;
-    fromPartial(object: DeepPartial<QueryVoteByProposalVoterRequest>): QueryVoteByProposalVoterRequest;
+    fromJSON(object: any): QueryVoteByProposalVoterRequest;
+    toJSON(message: QueryVoteByProposalVoterRequest): unknown;
+    fromPartial(object: Partial<QueryVoteByProposalVoterRequest>): QueryVoteByProposalVoterRequest;
 };
 export declare const QueryVoteByProposalVoterResponse: {
     encode(message: QueryVoteByProposalVoterResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVoteByProposalVoterResponse;
-    fromPartial(object: DeepPartial<QueryVoteByProposalVoterResponse>): QueryVoteByProposalVoterResponse;
+    fromJSON(object: any): QueryVoteByProposalVoterResponse;
+    toJSON(message: QueryVoteByProposalVoterResponse): unknown;
+    fromPartial(object: Partial<QueryVoteByProposalVoterResponse>): QueryVoteByProposalVoterResponse;
 };
 export declare const QueryVotesByProposalRequest: {
     encode(message: QueryVotesByProposalRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesByProposalRequest;
-    fromPartial(object: DeepPartial<QueryVotesByProposalRequest>): QueryVotesByProposalRequest;
+    fromJSON(object: any): QueryVotesByProposalRequest;
+    toJSON(message: QueryVotesByProposalRequest): unknown;
+    fromPartial(object: Partial<QueryVotesByProposalRequest>): QueryVotesByProposalRequest;
 };
 export declare const QueryVotesByProposalResponse: {
     encode(message: QueryVotesByProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesByProposalResponse;
-    fromPartial(object: DeepPartial<QueryVotesByProposalResponse>): QueryVotesByProposalResponse;
+    fromJSON(object: any): QueryVotesByProposalResponse;
+    toJSON(message: QueryVotesByProposalResponse): unknown;
+    fromPartial(object: Partial<QueryVotesByProposalResponse>): QueryVotesByProposalResponse;
 };
 export declare const QueryVotesByVoterRequest: {
     encode(message: QueryVotesByVoterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesByVoterRequest;
-    fromPartial(object: DeepPartial<QueryVotesByVoterRequest>): QueryVotesByVoterRequest;
+    fromJSON(object: any): QueryVotesByVoterRequest;
+    toJSON(message: QueryVotesByVoterRequest): unknown;
+    fromPartial(object: Partial<QueryVotesByVoterRequest>): QueryVotesByVoterRequest;
 };
 export declare const QueryVotesByVoterResponse: {
     encode(message: QueryVotesByVoterResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesByVoterResponse;
-    fromPartial(object: DeepPartial<QueryVotesByVoterResponse>): QueryVotesByVoterResponse;
+    fromJSON(object: any): QueryVotesByVoterResponse;
+    toJSON(message: QueryVotesByVoterResponse): unknown;
+    fromPartial(object: Partial<QueryVotesByVoterResponse>): QueryVotesByVoterResponse;
 };
 export declare const QueryGroupsByMemberRequest: {
     encode(message: QueryGroupsByMemberRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupsByMemberRequest;
-    fromPartial(object: DeepPartial<QueryGroupsByMemberRequest>): QueryGroupsByMemberRequest;
+    fromJSON(object: any): QueryGroupsByMemberRequest;
+    toJSON(message: QueryGroupsByMemberRequest): unknown;
+    fromPartial(object: Partial<QueryGroupsByMemberRequest>): QueryGroupsByMemberRequest;
 };
 export declare const QueryGroupsByMemberResponse: {
     encode(message: QueryGroupsByMemberResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupsByMemberResponse;
-    fromPartial(object: DeepPartial<QueryGroupsByMemberResponse>): QueryGroupsByMemberResponse;
+    fromJSON(object: any): QueryGroupsByMemberResponse;
+    toJSON(message: QueryGroupsByMemberResponse): unknown;
+    fromPartial(object: Partial<QueryGroupsByMemberResponse>): QueryGroupsByMemberResponse;
 };
 export declare const QueryTallyResultRequest: {
     encode(message: QueryTallyResultRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultRequest;
-    fromPartial(object: DeepPartial<QueryTallyResultRequest>): QueryTallyResultRequest;
+    fromJSON(object: any): QueryTallyResultRequest;
+    toJSON(message: QueryTallyResultRequest): unknown;
+    fromPartial(object: Partial<QueryTallyResultRequest>): QueryTallyResultRequest;
 };
 export declare const QueryTallyResultResponse: {
     encode(message: QueryTallyResultResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultResponse;
-    fromPartial(object: DeepPartial<QueryTallyResultResponse>): QueryTallyResultResponse;
+    fromJSON(object: any): QueryTallyResultResponse;
+    toJSON(message: QueryTallyResultResponse): unknown;
+    fromPartial(object: Partial<QueryTallyResultResponse>): QueryTallyResultResponse;
 };

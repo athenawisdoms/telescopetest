@@ -1,7 +1,7 @@
 import { ProposalStatus, ProposalStatusSDKType, Proposal, ProposalSDKType, Vote, VoteSDKType, VotingParams, VotingParamsSDKType, DepositParams, DepositParamsSDKType, TallyParams, TallyParamsSDKType, Deposit, DepositSDKType, TallyResult, TallyResultSDKType } from "./gov";
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** QueryProposalRequest is the request type for the Query/Proposal RPC method. */
 export interface QueryProposalRequest {
     /** proposal_id defines the unique id of the proposal. */
@@ -64,14 +64,14 @@ export interface QueryProposalsResponseSDKType {
 export interface QueryVoteRequest {
     /** proposal_id defines the unique id of the proposal. */
     proposalId: Long;
-    /** voter defines the voter address for the proposals. */
+    /** voter defines the oter address for the proposals. */
     voter: string;
 }
 /** QueryVoteRequest is the request type for the Query/Vote RPC method. */
 export interface QueryVoteRequestSDKType {
     /** proposal_id defines the unique id of the proposal. */
     proposal_id: Long;
-    /** voter defines the voter address for the proposals. */
+    /** voter defines the oter address for the proposals. */
     voter: string;
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
@@ -219,80 +219,112 @@ export interface QueryTallyResultResponseSDKType {
 export declare const QueryProposalRequest: {
     encode(message: QueryProposalRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalRequest;
-    fromPartial(object: DeepPartial<QueryProposalRequest>): QueryProposalRequest;
+    fromJSON(object: any): QueryProposalRequest;
+    toJSON(message: QueryProposalRequest): unknown;
+    fromPartial(object: Partial<QueryProposalRequest>): QueryProposalRequest;
 };
 export declare const QueryProposalResponse: {
     encode(message: QueryProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalResponse;
-    fromPartial(object: DeepPartial<QueryProposalResponse>): QueryProposalResponse;
+    fromJSON(object: any): QueryProposalResponse;
+    toJSON(message: QueryProposalResponse): unknown;
+    fromPartial(object: Partial<QueryProposalResponse>): QueryProposalResponse;
 };
 export declare const QueryProposalsRequest: {
     encode(message: QueryProposalsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsRequest;
-    fromPartial(object: DeepPartial<QueryProposalsRequest>): QueryProposalsRequest;
+    fromJSON(object: any): QueryProposalsRequest;
+    toJSON(message: QueryProposalsRequest): unknown;
+    fromPartial(object: Partial<QueryProposalsRequest>): QueryProposalsRequest;
 };
 export declare const QueryProposalsResponse: {
     encode(message: QueryProposalsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsResponse;
-    fromPartial(object: DeepPartial<QueryProposalsResponse>): QueryProposalsResponse;
+    fromJSON(object: any): QueryProposalsResponse;
+    toJSON(message: QueryProposalsResponse): unknown;
+    fromPartial(object: Partial<QueryProposalsResponse>): QueryProposalsResponse;
 };
 export declare const QueryVoteRequest: {
     encode(message: QueryVoteRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVoteRequest;
-    fromPartial(object: DeepPartial<QueryVoteRequest>): QueryVoteRequest;
+    fromJSON(object: any): QueryVoteRequest;
+    toJSON(message: QueryVoteRequest): unknown;
+    fromPartial(object: Partial<QueryVoteRequest>): QueryVoteRequest;
 };
 export declare const QueryVoteResponse: {
     encode(message: QueryVoteResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVoteResponse;
-    fromPartial(object: DeepPartial<QueryVoteResponse>): QueryVoteResponse;
+    fromJSON(object: any): QueryVoteResponse;
+    toJSON(message: QueryVoteResponse): unknown;
+    fromPartial(object: Partial<QueryVoteResponse>): QueryVoteResponse;
 };
 export declare const QueryVotesRequest: {
     encode(message: QueryVotesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesRequest;
-    fromPartial(object: DeepPartial<QueryVotesRequest>): QueryVotesRequest;
+    fromJSON(object: any): QueryVotesRequest;
+    toJSON(message: QueryVotesRequest): unknown;
+    fromPartial(object: Partial<QueryVotesRequest>): QueryVotesRequest;
 };
 export declare const QueryVotesResponse: {
     encode(message: QueryVotesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesResponse;
-    fromPartial(object: DeepPartial<QueryVotesResponse>): QueryVotesResponse;
+    fromJSON(object: any): QueryVotesResponse;
+    toJSON(message: QueryVotesResponse): unknown;
+    fromPartial(object: Partial<QueryVotesResponse>): QueryVotesResponse;
 };
 export declare const QueryParamsRequest: {
     encode(message: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromPartial(object: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
+    fromJSON(object: any): QueryParamsRequest;
+    toJSON(message: QueryParamsRequest): unknown;
+    fromPartial(object: Partial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
-    fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
+    fromJSON(object: any): QueryParamsResponse;
+    toJSON(message: QueryParamsResponse): unknown;
+    fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryDepositRequest: {
     encode(message: QueryDepositRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositRequest;
-    fromPartial(object: DeepPartial<QueryDepositRequest>): QueryDepositRequest;
+    fromJSON(object: any): QueryDepositRequest;
+    toJSON(message: QueryDepositRequest): unknown;
+    fromPartial(object: Partial<QueryDepositRequest>): QueryDepositRequest;
 };
 export declare const QueryDepositResponse: {
     encode(message: QueryDepositResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositResponse;
-    fromPartial(object: DeepPartial<QueryDepositResponse>): QueryDepositResponse;
+    fromJSON(object: any): QueryDepositResponse;
+    toJSON(message: QueryDepositResponse): unknown;
+    fromPartial(object: Partial<QueryDepositResponse>): QueryDepositResponse;
 };
 export declare const QueryDepositsRequest: {
     encode(message: QueryDepositsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositsRequest;
-    fromPartial(object: DeepPartial<QueryDepositsRequest>): QueryDepositsRequest;
+    fromJSON(object: any): QueryDepositsRequest;
+    toJSON(message: QueryDepositsRequest): unknown;
+    fromPartial(object: Partial<QueryDepositsRequest>): QueryDepositsRequest;
 };
 export declare const QueryDepositsResponse: {
     encode(message: QueryDepositsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDepositsResponse;
-    fromPartial(object: DeepPartial<QueryDepositsResponse>): QueryDepositsResponse;
+    fromJSON(object: any): QueryDepositsResponse;
+    toJSON(message: QueryDepositsResponse): unknown;
+    fromPartial(object: Partial<QueryDepositsResponse>): QueryDepositsResponse;
 };
 export declare const QueryTallyResultRequest: {
     encode(message: QueryTallyResultRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultRequest;
-    fromPartial(object: DeepPartial<QueryTallyResultRequest>): QueryTallyResultRequest;
+    fromJSON(object: any): QueryTallyResultRequest;
+    toJSON(message: QueryTallyResultRequest): unknown;
+    fromPartial(object: Partial<QueryTallyResultRequest>): QueryTallyResultRequest;
 };
 export declare const QueryTallyResultResponse: {
     encode(message: QueryTallyResultResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultResponse;
-    fromPartial(object: DeepPartial<QueryTallyResultResponse>): QueryTallyResultResponse;
+    fromJSON(object: any): QueryTallyResultResponse;
+    toJSON(message: QueryTallyResultResponse): unknown;
+    fromPartial(object: Partial<QueryTallyResultResponse>): QueryTallyResultResponse;
 };

@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
+import { isSet } from "../../../helpers";
 /** TableDescriptor describes an ORM table. */
 
 export interface TableDescriptor {
@@ -129,7 +129,7 @@ export interface SecondaryIndexDescriptor {
    * Index keys are prefixed by the varint encoded table id and the varint
    * encoded index id plus any additional prefix specified by the schema.
    * 
-   * In addition the field segments, non-unique index keys are suffixed with
+   * In addition the the field segments, non-unique index keys are suffixed with
    * any additional primary key fields not present in the index fields so that the
    * primary key can be reconstructed. Unique indexes instead of being suffixed
    * store the remaining primary key fields in the value..
@@ -155,7 +155,7 @@ export interface SecondaryIndexDescriptorSDKType {
    * Index keys are prefixed by the varint encoded table id and the varint
    * encoded index id plus any additional prefix specified by the schema.
    * 
-   * In addition the field segments, non-unique index keys are suffixed with
+   * In addition the the field segments, non-unique index keys are suffixed with
    * any additional primary key fields not present in the index fields so that the
    * primary key can be reconstructed. Unique indexes instead of being suffixed
    * store the remaining primary key fields in the value..
@@ -248,7 +248,29 @@ export const TableDescriptor = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<TableDescriptor>): TableDescriptor {
+  fromJSON(object: any): TableDescriptor {
+    return {
+      primaryKey: isSet(object.primaryKey) ? PrimaryKeyDescriptor.fromJSON(object.primaryKey) : undefined,
+      index: Array.isArray(object?.index) ? object.index.map((e: any) => SecondaryIndexDescriptor.fromJSON(e)) : [],
+      id: isSet(object.id) ? Number(object.id) : 0
+    };
+  },
+
+  toJSON(message: TableDescriptor): unknown {
+    const obj: any = {};
+    message.primaryKey !== undefined && (obj.primaryKey = message.primaryKey ? PrimaryKeyDescriptor.toJSON(message.primaryKey) : undefined);
+
+    if (message.index) {
+      obj.index = message.index.map(e => e ? SecondaryIndexDescriptor.toJSON(e) : undefined);
+    } else {
+      obj.index = [];
+    }
+
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    return obj;
+  },
+
+  fromPartial(object: Partial<TableDescriptor>): TableDescriptor {
     const message = createBaseTableDescriptor();
     message.primaryKey = object.primaryKey !== undefined && object.primaryKey !== null ? PrimaryKeyDescriptor.fromPartial(object.primaryKey) : undefined;
     message.index = object.index?.map(e => SecondaryIndexDescriptor.fromPartial(e)) || [];
@@ -304,7 +326,21 @@ export const PrimaryKeyDescriptor = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PrimaryKeyDescriptor>): PrimaryKeyDescriptor {
+  fromJSON(object: any): PrimaryKeyDescriptor {
+    return {
+      fields: isSet(object.fields) ? String(object.fields) : "",
+      autoIncrement: isSet(object.autoIncrement) ? Boolean(object.autoIncrement) : false
+    };
+  },
+
+  toJSON(message: PrimaryKeyDescriptor): unknown {
+    const obj: any = {};
+    message.fields !== undefined && (obj.fields = message.fields);
+    message.autoIncrement !== undefined && (obj.autoIncrement = message.autoIncrement);
+    return obj;
+  },
+
+  fromPartial(object: Partial<PrimaryKeyDescriptor>): PrimaryKeyDescriptor {
     const message = createBasePrimaryKeyDescriptor();
     message.fields = object.fields ?? "";
     message.autoIncrement = object.autoIncrement ?? false;
@@ -368,7 +404,23 @@ export const SecondaryIndexDescriptor = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SecondaryIndexDescriptor>): SecondaryIndexDescriptor {
+  fromJSON(object: any): SecondaryIndexDescriptor {
+    return {
+      fields: isSet(object.fields) ? String(object.fields) : "",
+      id: isSet(object.id) ? Number(object.id) : 0,
+      unique: isSet(object.unique) ? Boolean(object.unique) : false
+    };
+  },
+
+  toJSON(message: SecondaryIndexDescriptor): unknown {
+    const obj: any = {};
+    message.fields !== undefined && (obj.fields = message.fields);
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.unique !== undefined && (obj.unique = message.unique);
+    return obj;
+  },
+
+  fromPartial(object: Partial<SecondaryIndexDescriptor>): SecondaryIndexDescriptor {
     const message = createBaseSecondaryIndexDescriptor();
     message.fields = object.fields ?? "";
     message.id = object.id ?? 0;
@@ -415,7 +467,19 @@ export const SingletonDescriptor = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SingletonDescriptor>): SingletonDescriptor {
+  fromJSON(object: any): SingletonDescriptor {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0
+    };
+  },
+
+  toJSON(message: SingletonDescriptor): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    return obj;
+  },
+
+  fromPartial(object: Partial<SingletonDescriptor>): SingletonDescriptor {
     const message = createBaseSingletonDescriptor();
     message.id = object.id ?? 0;
     return message;

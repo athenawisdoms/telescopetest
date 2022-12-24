@@ -1,8 +1,8 @@
 import { Description, DescriptionSDKType, CommissionRates, CommissionRatesSDKType } from "./staking";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
+import { Timestamp, TimestampSDKType } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
 export interface MsgCreateValidator {
     description?: Description;
@@ -107,11 +107,11 @@ export interface MsgBeginRedelegateSDKType {
 }
 /** MsgBeginRedelegateResponse defines the Msg/BeginRedelegate response type. */
 export interface MsgBeginRedelegateResponse {
-    completionTime?: Date;
+    completionTime?: Timestamp;
 }
 /** MsgBeginRedelegateResponse defines the Msg/BeginRedelegate response type. */
 export interface MsgBeginRedelegateResponseSDKType {
-    completion_time?: Date;
+    completion_time?: TimestampSDKType;
 }
 /**
  * MsgUndelegate defines a SDK message for performing an undelegation from a
@@ -133,109 +133,79 @@ export interface MsgUndelegateSDKType {
 }
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponse {
-    completionTime?: Date;
+    completionTime?: Timestamp;
 }
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponseSDKType {
-    completion_time?: Date;
-}
-/**
- * MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
- *
- * Since: cosmos-sdk 0.46
- */
-export interface MsgCancelUnbondingDelegation {
-    delegatorAddress: string;
-    validatorAddress: string;
-    /** amount is always less than or equal to unbonding delegation entry balance */
-    amount?: Coin;
-    /** creation_height is the height which the unbonding took place. */
-    creationHeight: Long;
-}
-/**
- * MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
- *
- * Since: cosmos-sdk 0.46
- */
-export interface MsgCancelUnbondingDelegationSDKType {
-    delegator_address: string;
-    validator_address: string;
-    /** amount is always less than or equal to unbonding delegation entry balance */
-    amount?: CoinSDKType;
-    /** creation_height is the height which the unbonding took place. */
-    creation_height: Long;
-}
-/**
- * MsgCancelUnbondingDelegationResponse
- *
- * Since: cosmos-sdk 0.46
- */
-export interface MsgCancelUnbondingDelegationResponse {
-}
-/**
- * MsgCancelUnbondingDelegationResponse
- *
- * Since: cosmos-sdk 0.46
- */
-export interface MsgCancelUnbondingDelegationResponseSDKType {
+    completion_time?: TimestampSDKType;
 }
 export declare const MsgCreateValidator: {
     encode(message: MsgCreateValidator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidator;
-    fromPartial(object: DeepPartial<MsgCreateValidator>): MsgCreateValidator;
+    fromJSON(object: any): MsgCreateValidator;
+    toJSON(message: MsgCreateValidator): unknown;
+    fromPartial(object: Partial<MsgCreateValidator>): MsgCreateValidator;
 };
 export declare const MsgCreateValidatorResponse: {
     encode(_: MsgCreateValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidatorResponse;
-    fromPartial(_: DeepPartial<MsgCreateValidatorResponse>): MsgCreateValidatorResponse;
+    fromJSON(_: any): MsgCreateValidatorResponse;
+    toJSON(_: MsgCreateValidatorResponse): unknown;
+    fromPartial(_: Partial<MsgCreateValidatorResponse>): MsgCreateValidatorResponse;
 };
 export declare const MsgEditValidator: {
     encode(message: MsgEditValidator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidator;
-    fromPartial(object: DeepPartial<MsgEditValidator>): MsgEditValidator;
+    fromJSON(object: any): MsgEditValidator;
+    toJSON(message: MsgEditValidator): unknown;
+    fromPartial(object: Partial<MsgEditValidator>): MsgEditValidator;
 };
 export declare const MsgEditValidatorResponse: {
     encode(_: MsgEditValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidatorResponse;
-    fromPartial(_: DeepPartial<MsgEditValidatorResponse>): MsgEditValidatorResponse;
+    fromJSON(_: any): MsgEditValidatorResponse;
+    toJSON(_: MsgEditValidatorResponse): unknown;
+    fromPartial(_: Partial<MsgEditValidatorResponse>): MsgEditValidatorResponse;
 };
 export declare const MsgDelegate: {
     encode(message: MsgDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegate;
-    fromPartial(object: DeepPartial<MsgDelegate>): MsgDelegate;
+    fromJSON(object: any): MsgDelegate;
+    toJSON(message: MsgDelegate): unknown;
+    fromPartial(object: Partial<MsgDelegate>): MsgDelegate;
 };
 export declare const MsgDelegateResponse: {
     encode(_: MsgDelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateResponse;
-    fromPartial(_: DeepPartial<MsgDelegateResponse>): MsgDelegateResponse;
+    fromJSON(_: any): MsgDelegateResponse;
+    toJSON(_: MsgDelegateResponse): unknown;
+    fromPartial(_: Partial<MsgDelegateResponse>): MsgDelegateResponse;
 };
 export declare const MsgBeginRedelegate: {
     encode(message: MsgBeginRedelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegate;
-    fromPartial(object: DeepPartial<MsgBeginRedelegate>): MsgBeginRedelegate;
+    fromJSON(object: any): MsgBeginRedelegate;
+    toJSON(message: MsgBeginRedelegate): unknown;
+    fromPartial(object: Partial<MsgBeginRedelegate>): MsgBeginRedelegate;
 };
 export declare const MsgBeginRedelegateResponse: {
     encode(message: MsgBeginRedelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegateResponse;
-    fromPartial(object: DeepPartial<MsgBeginRedelegateResponse>): MsgBeginRedelegateResponse;
+    fromJSON(object: any): MsgBeginRedelegateResponse;
+    toJSON(message: MsgBeginRedelegateResponse): unknown;
+    fromPartial(object: Partial<MsgBeginRedelegateResponse>): MsgBeginRedelegateResponse;
 };
 export declare const MsgUndelegate: {
     encode(message: MsgUndelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegate;
-    fromPartial(object: DeepPartial<MsgUndelegate>): MsgUndelegate;
+    fromJSON(object: any): MsgUndelegate;
+    toJSON(message: MsgUndelegate): unknown;
+    fromPartial(object: Partial<MsgUndelegate>): MsgUndelegate;
 };
 export declare const MsgUndelegateResponse: {
     encode(message: MsgUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateResponse;
-    fromPartial(object: DeepPartial<MsgUndelegateResponse>): MsgUndelegateResponse;
-};
-export declare const MsgCancelUnbondingDelegation: {
-    encode(message: MsgCancelUnbondingDelegation, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelUnbondingDelegation;
-    fromPartial(object: DeepPartial<MsgCancelUnbondingDelegation>): MsgCancelUnbondingDelegation;
-};
-export declare const MsgCancelUnbondingDelegationResponse: {
-    encode(_: MsgCancelUnbondingDelegationResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelUnbondingDelegationResponse;
-    fromPartial(_: DeepPartial<MsgCancelUnbondingDelegationResponse>): MsgCancelUnbondingDelegationResponse;
+    fromJSON(object: any): MsgUndelegateResponse;
+    toJSON(message: MsgUndelegateResponse): unknown;
+    fromPartial(object: Partial<MsgUndelegateResponse>): MsgUndelegateResponse;
 };

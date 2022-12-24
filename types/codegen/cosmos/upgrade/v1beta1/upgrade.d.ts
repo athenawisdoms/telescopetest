@@ -1,6 +1,7 @@
+import { Timestamp, TimestampSDKType } from "../../../google/protobuf/timestamp";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** Plan specifies information about a planned upgrade and when it should occur. */
 export interface Plan {
     /**
@@ -19,7 +20,7 @@ export interface Plan {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    time?: Date;
+    time?: Timestamp;
     /**
      * The height at which the upgrade must be performed.
      * Only used if Time is not set.
@@ -56,7 +57,7 @@ export interface PlanSDKType {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    time?: Date;
+    time?: TimestampSDKType;
     /**
      * The height at which the upgrade must be performed.
      * Only used if Time is not set.
@@ -146,20 +147,28 @@ export interface ModuleVersionSDKType {
 export declare const Plan: {
     encode(message: Plan, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Plan;
-    fromPartial(object: DeepPartial<Plan>): Plan;
+    fromJSON(object: any): Plan;
+    toJSON(message: Plan): unknown;
+    fromPartial(object: Partial<Plan>): Plan;
 };
 export declare const SoftwareUpgradeProposal: {
     encode(message: SoftwareUpgradeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SoftwareUpgradeProposal;
-    fromPartial(object: DeepPartial<SoftwareUpgradeProposal>): SoftwareUpgradeProposal;
+    fromJSON(object: any): SoftwareUpgradeProposal;
+    toJSON(message: SoftwareUpgradeProposal): unknown;
+    fromPartial(object: Partial<SoftwareUpgradeProposal>): SoftwareUpgradeProposal;
 };
 export declare const CancelSoftwareUpgradeProposal: {
     encode(message: CancelSoftwareUpgradeProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CancelSoftwareUpgradeProposal;
-    fromPartial(object: DeepPartial<CancelSoftwareUpgradeProposal>): CancelSoftwareUpgradeProposal;
+    fromJSON(object: any): CancelSoftwareUpgradeProposal;
+    toJSON(message: CancelSoftwareUpgradeProposal): unknown;
+    fromPartial(object: Partial<CancelSoftwareUpgradeProposal>): CancelSoftwareUpgradeProposal;
 };
 export declare const ModuleVersion: {
     encode(message: ModuleVersion, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleVersion;
-    fromPartial(object: DeepPartial<ModuleVersion>): ModuleVersion;
+    fromJSON(object: any): ModuleVersion;
+    toJSON(message: ModuleVersion): unknown;
+    fromPartial(object: Partial<ModuleVersion>): ModuleVersion;
 };

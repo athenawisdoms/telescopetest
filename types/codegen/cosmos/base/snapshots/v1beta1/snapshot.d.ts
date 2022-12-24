@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "../../../../helpers";
+import { Long } from "../../../../helpers";
 /** Snapshot contains Tendermint state sync snapshot info. */
 export interface Snapshot {
     height: Long;
@@ -26,11 +26,7 @@ export interface MetadataSDKType {
     /** SHA-256 chunk hashes */
     chunk_hashes: Uint8Array[];
 }
-/**
- * SnapshotItem is an item contained in a rootmulti.Store snapshot.
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotItem is an item contained in a rootmulti.Store snapshot. */
 export interface SnapshotItem {
     store?: SnapshotStoreItem;
     iavl?: SnapshotIAVLItem;
@@ -39,11 +35,7 @@ export interface SnapshotItem {
     kv?: SnapshotKVItem;
     schema?: SnapshotSchema;
 }
-/**
- * SnapshotItem is an item contained in a rootmulti.Store snapshot.
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotItem is an item contained in a rootmulti.Store snapshot. */
 export interface SnapshotItemSDKType {
     store?: SnapshotStoreItemSDKType;
     iavl?: SnapshotIAVLItemSDKType;
@@ -52,27 +44,15 @@ export interface SnapshotItemSDKType {
     kv?: SnapshotKVItemSDKType;
     schema?: SnapshotSchemaSDKType;
 }
-/**
- * SnapshotStoreItem contains metadata about a snapshotted store.
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotStoreItem contains metadata about a snapshotted store. */
 export interface SnapshotStoreItem {
     name: string;
 }
-/**
- * SnapshotStoreItem contains metadata about a snapshotted store.
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotStoreItem contains metadata about a snapshotted store. */
 export interface SnapshotStoreItemSDKType {
     name: string;
 }
-/**
- * SnapshotIAVLItem is an exported IAVL node.
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotIAVLItem is an exported IAVL node. */
 export interface SnapshotIAVLItem {
     key: Uint8Array;
     value: Uint8Array;
@@ -81,11 +61,7 @@ export interface SnapshotIAVLItem {
     /** height is depth of the tree. */
     height: number;
 }
-/**
- * SnapshotIAVLItem is an exported IAVL node.
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotIAVLItem is an exported IAVL node. */
 export interface SnapshotIAVLItemSDKType {
     key: Uint8Array;
     value: Uint8Array;
@@ -94,116 +70,102 @@ export interface SnapshotIAVLItemSDKType {
     /** height is depth of the tree. */
     height: number;
 }
-/**
- * SnapshotExtensionMeta contains metadata about an external snapshotter.
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotExtensionMeta contains metadata about an external snapshotter. */
 export interface SnapshotExtensionMeta {
     name: string;
     format: number;
 }
-/**
- * SnapshotExtensionMeta contains metadata about an external snapshotter.
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotExtensionMeta contains metadata about an external snapshotter. */
 export interface SnapshotExtensionMetaSDKType {
     name: string;
     format: number;
 }
-/**
- * SnapshotExtensionPayload contains payloads of an external snapshotter.
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotExtensionPayload contains payloads of an external snapshotter. */
 export interface SnapshotExtensionPayload {
     payload: Uint8Array;
 }
-/**
- * SnapshotExtensionPayload contains payloads of an external snapshotter.
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotExtensionPayload contains payloads of an external snapshotter. */
 export interface SnapshotExtensionPayloadSDKType {
     payload: Uint8Array;
 }
-/**
- * SnapshotKVItem is an exported Key/Value Pair
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotKVItem is an exported Key/Value Pair */
 export interface SnapshotKVItem {
     key: Uint8Array;
     value: Uint8Array;
 }
-/**
- * SnapshotKVItem is an exported Key/Value Pair
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotKVItem is an exported Key/Value Pair */
 export interface SnapshotKVItemSDKType {
     key: Uint8Array;
     value: Uint8Array;
 }
-/**
- * SnapshotSchema is an exported schema of smt store
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotSchema is an exported schema of smt store */
 export interface SnapshotSchema {
     keys: Uint8Array[];
 }
-/**
- * SnapshotSchema is an exported schema of smt store
- *
- * Since: cosmos-sdk 0.46
- */
+/** SnapshotSchema is an exported schema of smt store */
 export interface SnapshotSchemaSDKType {
     keys: Uint8Array[];
 }
 export declare const Snapshot: {
     encode(message: Snapshot, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Snapshot;
-    fromPartial(object: DeepPartial<Snapshot>): Snapshot;
+    fromJSON(object: any): Snapshot;
+    toJSON(message: Snapshot): unknown;
+    fromPartial(object: Partial<Snapshot>): Snapshot;
 };
 export declare const Metadata: {
     encode(message: Metadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Metadata;
-    fromPartial(object: DeepPartial<Metadata>): Metadata;
+    fromJSON(object: any): Metadata;
+    toJSON(message: Metadata): unknown;
+    fromPartial(object: Partial<Metadata>): Metadata;
 };
 export declare const SnapshotItem: {
     encode(message: SnapshotItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotItem;
-    fromPartial(object: DeepPartial<SnapshotItem>): SnapshotItem;
+    fromJSON(object: any): SnapshotItem;
+    toJSON(message: SnapshotItem): unknown;
+    fromPartial(object: Partial<SnapshotItem>): SnapshotItem;
 };
 export declare const SnapshotStoreItem: {
     encode(message: SnapshotStoreItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotStoreItem;
-    fromPartial(object: DeepPartial<SnapshotStoreItem>): SnapshotStoreItem;
+    fromJSON(object: any): SnapshotStoreItem;
+    toJSON(message: SnapshotStoreItem): unknown;
+    fromPartial(object: Partial<SnapshotStoreItem>): SnapshotStoreItem;
 };
 export declare const SnapshotIAVLItem: {
     encode(message: SnapshotIAVLItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotIAVLItem;
-    fromPartial(object: DeepPartial<SnapshotIAVLItem>): SnapshotIAVLItem;
+    fromJSON(object: any): SnapshotIAVLItem;
+    toJSON(message: SnapshotIAVLItem): unknown;
+    fromPartial(object: Partial<SnapshotIAVLItem>): SnapshotIAVLItem;
 };
 export declare const SnapshotExtensionMeta: {
     encode(message: SnapshotExtensionMeta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotExtensionMeta;
-    fromPartial(object: DeepPartial<SnapshotExtensionMeta>): SnapshotExtensionMeta;
+    fromJSON(object: any): SnapshotExtensionMeta;
+    toJSON(message: SnapshotExtensionMeta): unknown;
+    fromPartial(object: Partial<SnapshotExtensionMeta>): SnapshotExtensionMeta;
 };
 export declare const SnapshotExtensionPayload: {
     encode(message: SnapshotExtensionPayload, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotExtensionPayload;
-    fromPartial(object: DeepPartial<SnapshotExtensionPayload>): SnapshotExtensionPayload;
+    fromJSON(object: any): SnapshotExtensionPayload;
+    toJSON(message: SnapshotExtensionPayload): unknown;
+    fromPartial(object: Partial<SnapshotExtensionPayload>): SnapshotExtensionPayload;
 };
 export declare const SnapshotKVItem: {
     encode(message: SnapshotKVItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotKVItem;
-    fromPartial(object: DeepPartial<SnapshotKVItem>): SnapshotKVItem;
+    fromJSON(object: any): SnapshotKVItem;
+    toJSON(message: SnapshotKVItem): unknown;
+    fromPartial(object: Partial<SnapshotKVItem>): SnapshotKVItem;
 };
 export declare const SnapshotSchema: {
     encode(message: SnapshotSchema, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotSchema;
-    fromPartial(object: DeepPartial<SnapshotSchema>): SnapshotSchema;
+    fromJSON(object: any): SnapshotSchema;
+    toJSON(message: SnapshotSchema): unknown;
+    fromPartial(object: Partial<SnapshotSchema>): SnapshotSchema;
 };

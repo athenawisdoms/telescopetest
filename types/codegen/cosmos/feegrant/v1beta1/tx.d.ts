@@ -1,6 +1,5 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /**
  * MsgGrantAllowance adds permission for Grantee to spend up to Allowance
  * of fees from the account of Granter.
@@ -54,20 +53,28 @@ export interface MsgRevokeAllowanceResponseSDKType {
 export declare const MsgGrantAllowance: {
     encode(message: MsgGrantAllowance, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrantAllowance;
-    fromPartial(object: DeepPartial<MsgGrantAllowance>): MsgGrantAllowance;
+    fromJSON(object: any): MsgGrantAllowance;
+    toJSON(message: MsgGrantAllowance): unknown;
+    fromPartial(object: Partial<MsgGrantAllowance>): MsgGrantAllowance;
 };
 export declare const MsgGrantAllowanceResponse: {
     encode(_: MsgGrantAllowanceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrantAllowanceResponse;
-    fromPartial(_: DeepPartial<MsgGrantAllowanceResponse>): MsgGrantAllowanceResponse;
+    fromJSON(_: any): MsgGrantAllowanceResponse;
+    toJSON(_: MsgGrantAllowanceResponse): unknown;
+    fromPartial(_: Partial<MsgGrantAllowanceResponse>): MsgGrantAllowanceResponse;
 };
 export declare const MsgRevokeAllowance: {
     encode(message: MsgRevokeAllowance, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevokeAllowance;
-    fromPartial(object: DeepPartial<MsgRevokeAllowance>): MsgRevokeAllowance;
+    fromJSON(object: any): MsgRevokeAllowance;
+    toJSON(message: MsgRevokeAllowance): unknown;
+    fromPartial(object: Partial<MsgRevokeAllowance>): MsgRevokeAllowance;
 };
 export declare const MsgRevokeAllowanceResponse: {
     encode(_: MsgRevokeAllowanceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevokeAllowanceResponse;
-    fromPartial(_: DeepPartial<MsgRevokeAllowanceResponse>): MsgRevokeAllowanceResponse;
+    fromJSON(_: any): MsgRevokeAllowanceResponse;
+    toJSON(_: MsgRevokeAllowanceResponse): unknown;
+    fromPartial(_: Partial<MsgRevokeAllowanceResponse>): MsgRevokeAllowanceResponse;
 };

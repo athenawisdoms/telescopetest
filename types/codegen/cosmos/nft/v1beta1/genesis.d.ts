@@ -1,6 +1,5 @@
 import { Class, ClassSDKType, NFT, NFTSDKType } from "./nft";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
 /** GenesisState defines the nft module's genesis state. */
 export interface GenesisState {
     /** class defines the class of the nft type. */
@@ -30,10 +29,14 @@ export interface EntrySDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
-    fromPartial(object: DeepPartial<GenesisState>): GenesisState;
+    fromJSON(object: any): GenesisState;
+    toJSON(message: GenesisState): unknown;
+    fromPartial(object: Partial<GenesisState>): GenesisState;
 };
 export declare const Entry: {
     encode(message: Entry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Entry;
-    fromPartial(object: DeepPartial<Entry>): Entry;
+    fromJSON(object: any): Entry;
+    toJSON(message: Entry): unknown;
+    fromPartial(object: Partial<Entry>): Entry;
 };

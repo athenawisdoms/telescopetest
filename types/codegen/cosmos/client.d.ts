@@ -1,5 +1,6 @@
-import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
+import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
 import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
+import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 export declare const cosmosAminoConverters: {
     "/cosmos.vesting.v1beta1.MsgCreateVestingAccount": {
         aminoType: string;
@@ -253,27 +254,6 @@ export declare const cosmosAminoConverters: {
             };
         }) => import("./staking/v1beta1/tx").MsgUndelegate;
     };
-    "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegation": {
-        aminoType: string;
-        toAmino: ({ delegatorAddress, validatorAddress, amount, creationHeight }: import("./staking/v1beta1/tx").MsgCancelUnbondingDelegation) => {
-            delegator_address: string;
-            validator_address: string;
-            amount: {
-                denom: string;
-                amount: string;
-            };
-            creation_height: string;
-        };
-        fromAmino: ({ delegator_address, validator_address, amount, creation_height }: {
-            delegator_address: string;
-            validator_address: string;
-            amount: {
-                denom: string;
-                amount: string;
-            };
-            creation_height: string;
-        }) => import("./staking/v1beta1/tx").MsgCancelUnbondingDelegation;
-    };
     "/cosmos.slashing.v1beta1.MsgUnjail": {
         aminoType: string;
         toAmino: ({ validatorAddr }: import("./slashing/v1beta1/tx").MsgUnjail) => {
@@ -306,6 +286,10 @@ export declare const cosmosAminoConverters: {
                 address: string;
                 weight: string;
                 metadata: string;
+                added_at: {
+                    seconds: string;
+                    nanos: number;
+                };
             }[];
             metadata: string;
         };
@@ -315,6 +299,10 @@ export declare const cosmosAminoConverters: {
                 address: string;
                 weight: string;
                 metadata: string;
+                added_at: {
+                    seconds: string;
+                    nanos: number;
+                };
             }[];
             metadata: string;
         }) => import("./group/v1/tx").MsgCreateGroup;
@@ -328,6 +316,10 @@ export declare const cosmosAminoConverters: {
                 address: string;
                 weight: string;
                 metadata: string;
+                added_at: {
+                    seconds: string;
+                    nanos: number;
+                };
             }[];
         };
         fromAmino: ({ admin, group_id, member_updates }: {
@@ -337,6 +329,10 @@ export declare const cosmosAminoConverters: {
                 address: string;
                 weight: string;
                 metadata: string;
+                added_at: {
+                    seconds: string;
+                    nanos: number;
+                };
             }[];
         }) => import("./group/v1/tx").MsgUpdateGroupMembers;
     };
@@ -395,6 +391,10 @@ export declare const cosmosAminoConverters: {
                 address: string;
                 weight: string;
                 metadata: string;
+                added_at: {
+                    seconds: string;
+                    nanos: number;
+                };
             }[];
             group_metadata: string;
             group_policy_metadata: string;
@@ -410,6 +410,10 @@ export declare const cosmosAminoConverters: {
                 address: string;
                 weight: string;
                 metadata: string;
+                added_at: {
+                    seconds: string;
+                    nanos: number;
+                };
             }[];
             group_metadata: string;
             group_policy_metadata: string;
@@ -422,30 +426,30 @@ export declare const cosmosAminoConverters: {
     };
     "/cosmos.group.v1.MsgUpdateGroupPolicyAdmin": {
         aminoType: string;
-        toAmino: ({ admin, groupPolicyAddress, newAdmin }: import("./group/v1/tx").MsgUpdateGroupPolicyAdmin) => {
+        toAmino: ({ admin, address, newAdmin }: import("./group/v1/tx").MsgUpdateGroupPolicyAdmin) => {
             admin: string;
-            group_policy_address: string;
+            address: string;
             new_admin: string;
         };
-        fromAmino: ({ admin, group_policy_address, new_admin }: {
+        fromAmino: ({ admin, address, new_admin }: {
             admin: string;
-            group_policy_address: string;
+            address: string;
             new_admin: string;
         }) => import("./group/v1/tx").MsgUpdateGroupPolicyAdmin;
     };
     "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy": {
         aminoType: string;
-        toAmino: ({ admin, groupPolicyAddress, decisionPolicy }: import("./group/v1/tx").MsgUpdateGroupPolicyDecisionPolicy) => {
+        toAmino: ({ admin, address, decisionPolicy }: import("./group/v1/tx").MsgUpdateGroupPolicyDecisionPolicy) => {
             admin: string;
-            group_policy_address: string;
+            address: string;
             decision_policy: {
                 type_url: string;
                 value: Uint8Array;
             };
         };
-        fromAmino: ({ admin, group_policy_address, decision_policy }: {
+        fromAmino: ({ admin, address, decision_policy }: {
             admin: string;
-            group_policy_address: string;
+            address: string;
             decision_policy: {
                 type_url: string;
                 value: Uint8Array;
@@ -454,21 +458,21 @@ export declare const cosmosAminoConverters: {
     };
     "/cosmos.group.v1.MsgUpdateGroupPolicyMetadata": {
         aminoType: string;
-        toAmino: ({ admin, groupPolicyAddress, metadata }: import("./group/v1/tx").MsgUpdateGroupPolicyMetadata) => {
+        toAmino: ({ admin, address, metadata }: import("./group/v1/tx").MsgUpdateGroupPolicyMetadata) => {
             admin: string;
-            group_policy_address: string;
+            address: string;
             metadata: string;
         };
-        fromAmino: ({ admin, group_policy_address, metadata }: {
+        fromAmino: ({ admin, address, metadata }: {
             admin: string;
-            group_policy_address: string;
+            address: string;
             metadata: string;
         }) => import("./group/v1/tx").MsgUpdateGroupPolicyMetadata;
     };
     "/cosmos.group.v1.MsgSubmitProposal": {
         aminoType: string;
-        toAmino: ({ groupPolicyAddress, proposers, metadata, messages, exec }: import("./group/v1/tx").MsgSubmitProposal) => {
-            group_policy_address: string;
+        toAmino: ({ address, proposers, metadata, messages, exec }: import("./group/v1/tx").MsgSubmitProposal) => {
+            address: string;
             proposers: string[];
             metadata: string;
             messages: {
@@ -477,8 +481,8 @@ export declare const cosmosAminoConverters: {
             }[];
             exec: number;
         };
-        fromAmino: ({ group_policy_address, proposers, metadata, messages, exec }: {
-            group_policy_address: string;
+        fromAmino: ({ address, proposers, metadata, messages, exec }: {
+            address: string;
             proposers: string[];
             metadata: string;
             messages: {
@@ -518,13 +522,13 @@ export declare const cosmosAminoConverters: {
     };
     "/cosmos.group.v1.MsgExec": {
         aminoType: string;
-        toAmino: ({ proposalId, executor }: import("./group/v1/tx").MsgExec) => {
+        toAmino: ({ proposalId, signer }: import("./group/v1/tx").MsgExec) => {
             proposal_id: string;
-            executor: string;
+            signer: string;
         };
-        fromAmino: ({ proposal_id, executor }: {
+        fromAmino: ({ proposal_id, signer }: {
             proposal_id: string;
-            executor: string;
+            signer: string;
         }) => import("./group/v1/tx").MsgExec;
     };
     "/cosmos.group.v1.MsgLeaveGroup": {
@@ -943,6 +947,6 @@ export declare const getSigningCosmosClientOptions: () => {
     aminoTypes: AminoTypes;
 };
 export declare const getSigningCosmosClient: ({ rpcEndpoint, signer }: {
-    rpcEndpoint: string;
+    rpcEndpoint: string | HttpEndpoint;
     signer: OfflineSigner;
 }) => Promise<SigningStargateClient>;

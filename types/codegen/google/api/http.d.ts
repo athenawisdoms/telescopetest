@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../helpers";
 /**
  * Defines the HTTP configuration for an API service. It contains a list of
  * [HttpRule][google.api.HttpRule], each specifying the mapping of an RPC method
@@ -707,15 +706,21 @@ export interface CustomHttpPatternSDKType {
 export declare const Http: {
     encode(message: Http, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Http;
-    fromPartial(object: DeepPartial<Http>): Http;
+    fromJSON(object: any): Http;
+    toJSON(message: Http): unknown;
+    fromPartial(object: Partial<Http>): Http;
 };
 export declare const HttpRule: {
     encode(message: HttpRule, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HttpRule;
-    fromPartial(object: DeepPartial<HttpRule>): HttpRule;
+    fromJSON(object: any): HttpRule;
+    toJSON(message: HttpRule): unknown;
+    fromPartial(object: Partial<HttpRule>): HttpRule;
 };
 export declare const CustomHttpPattern: {
     encode(message: CustomHttpPattern, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CustomHttpPattern;
-    fromPartial(object: DeepPartial<CustomHttpPattern>): CustomHttpPattern;
+    fromJSON(object: any): CustomHttpPattern;
+    toJSON(message: CustomHttpPattern): unknown;
+    fromPartial(object: Partial<CustomHttpPattern>): CustomHttpPattern;
 };
